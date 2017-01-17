@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header('Posts')">
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container">
+    <div class="panel panel-default" th:each="post : ${postList}" th:object="${post}">
+        <a th:href="@{'/cryptos/' + *{id}}"><div class="panel panel-heading" th:text="*{title}">Title</div></a>
+        <div class="panel panel-body" th:text="*{body}">Body</div>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
