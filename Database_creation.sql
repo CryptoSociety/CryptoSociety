@@ -1,0 +1,61 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `cryptosociety` DEFAULT CHARACTER SET utf8 ;
+USE `cryptosociety` ;
+
+DROP TABLE IF EXISTS `cryptosociety`.`Users` ;
+
+CREATE TABLE IF NOT EXISTS `cryptosociety`.`Users` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(30) NOT NULL,
+  `email` VARCHAR(60) NOT NULL,
+  `password` VARCHAR(80) NOT NULL,
+  `points` INT UNSIGNED NOT NULL DEFAULT 0,
+  `is_admin` TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS `cryptosociety`.`Crypto` ;
+
+CREATE TABLE IF NOT EXISTS `cryptosociety`.`Crypto` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `owner_user_id` INT UNSIGNED NOT NULL,
+  `name` VARCHAR(60) NOT NULL,
+  `points` INT UNSIGNED NOT NULL DEFAULT 0,
+  `crypto_text` LONGTEXT NOT NULL,
+  `plain_text` LONGTEXT NOT NULL,
+  `solution` LONGTEXT NOT NULL,
+  `scheme` VARCHAR(45) NOT NULL,
+  `key` VARCHAR(45) NOT NULL,
+  `created` DATETIME NOT NULL,
+  `users_solved` INT UNSIGNED NOT NULL DEFAULT 0,
+  `is_approved` TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+    FOREIGN KEY (`owner_user_id`)
+    REFERENCES `cryptosociety`.`Users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+DROP TABLE IF EXISTS `cryptosociety`.`Users_Crypto` ;
+
+CREATE TABLE IF NOT EXISTS `cryptosociety`.`Users_Crypto` (
+  `user_id` INT UNSIGNED NOT NULL,
+  `crypto_id` INT UNSIGNED NOT NULL,
+  `solved` TINYINT(1) NOT NULL DEFAULT 0,
+    FOREIGN KEY (`user_id`)
+    REFERENCES `cryptosociety`.`Users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    FOREIGN KEY (`crypto_id`)
+    REFERENCES `cryptosociety`.`Crypto` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
