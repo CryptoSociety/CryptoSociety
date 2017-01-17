@@ -27,6 +27,18 @@ public class Cryptography {
         return plaintext.toString();
     }
 
+    public String atbash(String input, boolean punctuation){
+        input = prepare(input, punctuation);
+        StringBuilder result = new StringBuilder(input);
+        for (int i = 0; i < result.length(); i++){
+            char letter = result.charAt(i);
+            if(Character.isLetter(letter)){
+                result.setCharAt(i, ((char)((((int)'Z') - (int)letter)+(int)'A')));
+            }
+        }
+        return result.toString();
+    }
+
     private String prepare(String input, boolean punctuation) {
         input = input.toUpperCase();
         if (punctuation)
