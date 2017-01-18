@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
+<head th:replace="/fragments/header :: header(${'Login!'})">
 </head>
 <body>
-    <div>
-        <div th:object="${crypto}">
-            <div th:text="*{name}">Name</div>
-            <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
-            <div>Points: <span th:text="*{points}"></span></div>
-            <div th:text="*{cryptoText}">Crypto</div>
-            <div th:text="*{plainText}">Plaintext</div>
-            <div th:text="*{solution}">Solution</div>
-            <div th:text="*{scheme}">Scheme</div>
-            <div th:text="*{cryptokey}">Key</div>
-            <div th:text="*{usersSolved}">Users solved</div>
-            <div th:text="*{creationDate}">Created</div>
-            <div th:if="${showEditControls}">
-                <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post">
-                    <button>Delete</button>
-                </form>
-                <form th:action="@{'/cryptos/'+*{id}+'/edit'}" th:method="get">
-                    <button>Edit</button>
-                </form>
-            </div>
-            <div th:if="${solvable}">
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div th:object="${crypto}">
+                <div th:text="*{name}">Name</div>
+                <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+                <div>Points: <span th:text="*{points}"></span></div>
+                <div th:text="*{cryptoText}">Crypto</div>
+                <div th:text="*{plainText}">Plaintext</div>
+                <div th:text="*{solution}">Solution</div>
+                <div th:text="*{scheme}">Scheme</div>
+                <div th:text="*{cryptokey}">Key</div>
+                <div th:text="*{usersSolved}">Users solved</div>
+                <div th:text="*{creationDate}">Created</div>
+                <div th:if="${showEditControls}">
+                    <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post">
+                        <button>Delete</button>
+                    </form>
+                    <form th:action="@{'/cryptos/'+*{id}+'/edit'}" th:method="get">
+                        <button>Edit</button>
+                    </form>
+                </div>
+                <div th:if="${solvable}">
                 <form th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
                     <input type="text" name="solution" />
                     <button>Solve</button>
                 </form>
+              </div>
             </div>
         </div>
     </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
 </body>
 </html>

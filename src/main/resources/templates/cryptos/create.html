@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
+<head th:replace="fragments/header :: header(${'Create a Challenge!'})">
 </head>
 <body>
-<div>
-    <form th:action="@{'/cryptos/create'}" method="post" th:object="${crypto}">
-        <label>Name:</label>
-        <input th:value="*{name}" th:field="*{name}" />
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-        <label>plainText</label>
-        <textarea class="form-control" th:value="*{plainText}" th:field="*{plainText}"></textarea>
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}" th:errors="*{plainText}"></p>
-        <label>solution</label>
-        <textarea class="form-control" th:value="*{solution}" th:field="*{solution}"></textarea>
-        <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
-        <label>scheme</label>
-        <select name="scheme" id="scheme" th:value="*{scheme}" th:field="*{scheme}">
-            <option value="caesar">Caesar shift</option>
-        </select>
-        <label>key</label>
-        <input th:value="*{cryptokey}" th:field="*{cryptokey}"/>
-        <label>points</label>
-        <input type="number" th:value="*{points}" th:field="*{points}"/>
-        <input class="button btn-default" type="submit" />
-    </form>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <form th:action="@{'/cryptos/create'}" method="post" th:object="${crypto}">
+                <label>Name:</label>
+                <input th:value="*{name}" th:field="*{name}"/>
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                <label>plainText</label>
+                <textarea class="form-control" th:value="*{plainText}" th:field="*{plainText}"></textarea>
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}" th:errors="*{plainText}"></p>
+                <label>solution</label>
+                <textarea class="form-control" th:value="*{solution}" th:field="*{solution}"></textarea>
+                <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
+                <label>scheme</label>
+                <select name="scheme" id="scheme" th:value="*{scheme}" th:field="*{scheme}">
+                    <option value="caesar">Caesar shift</option>
+                </select>
+                <label>key</label>
+                <input th:value="*{cryptokey}" th:field="*{cryptokey}"/>
+                <label>points</label>
+                <input type="number" th:value="*{points}" th:field="*{points}"/>
+                <input class="button btn-default" type="submit"/>
+            </form>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
 </div>
 </body>
 </html>
