@@ -1,19 +1,116 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <h1 th:text="'Posts by '+*{user.username}"></h1>
-    <div>
-        <div th:each="crypto : ${user.cryptos}" th:object="${crypto}">
-            <a th:href="@{'/cryptos/' + *{id}}"><div th:text="*{name}">Title</div></a>
-            <div th:text="*{scheme}"></div>
-            <div th:text="*{cryptoText}">Puzzle</div>
-            <div th:text="*{creationDate}"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                    </button> <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="#">Link</a>
+                        </li>
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">One more separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-default">
+                            Submit
+                        </button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Link</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a href="#">Something else here</a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="#">Separated link</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 th:text="'Posts by '+*{user.username}"></h1>
+            <div>
+                <div th:each="crypto : ${user.cryptos}" th:object="${crypto}">
+                    <a th:href="@{'/cryptos/' + *{id}}"><div th:text="*{name}">Title</div></a>
+                    <div th:text="*{scheme}"></div>
+                    <div th:text="*{cryptoText}">Puzzle</div>
+                    <div th:text="*{creationDate}"></div>
+                </div>
+            </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 </html>
