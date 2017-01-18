@@ -13,7 +13,7 @@ public class UserCrypto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(optional = true)
+    @ManyToOne
     private Crypto crypto;
 
     @ManyToOne

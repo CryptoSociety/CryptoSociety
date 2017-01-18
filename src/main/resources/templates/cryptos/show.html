@@ -27,13 +27,12 @@
                         <button>Edit</button>
                     </form>
                 </div>
-                <!--TODO: Implement check that user hasn't already solved - presumably implementing a list in the User object of solved puzzles, and if user.listOfSolved contains crypto.id then don't show-->
-                <div sec:authorize="isAuthenticated()">
-                    <form th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
-                        <input type="text" name="solution"/>
-                        <button>Solve</button>
-                    </form>
-                </div>
+                <div th:if="${solvable}">
+                <form th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
+                    <input type="text" name="solution" />
+                    <button>Solve</button>
+                </form>
+              </div>
             </div>
         </div>
     </div>
