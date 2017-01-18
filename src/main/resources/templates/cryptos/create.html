@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form th:action="@{'/cryptos/create'}" method="post" th:object="${crypto}">
+        <label>Name:</label>
+        <input th:value="*{name}" th:field="*{name}" />
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+        <label>plainText</label>
+        <textarea class="form-control" th:value="*{plainText}" th:field="*{plainText}"></textarea>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}" th:errors="*{plainText}"></p>
+        <label>solution</label>
+        <textarea class="form-control" th:value="*{solution}" th:field="*{solution}"></textarea>
+        <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
+        <label>scheme</label>
+        <select name="scheme" id="scheme" th:value="*{scheme}" th:field="*{scheme}">
+            <option value="caesar">Caesar shift</option>
+        </select>
+        <label>key</label>
+        <input th:value="*{cryptokey}" th:field="*{cryptokey}"/>
+        <label>points</label>
+        <input type="number" th:value="*{points}" th:field="*{points}"/>
+        <input class="button btn-default" type="submit" />
+    </form>
+</div>
+</body>
+</html>
