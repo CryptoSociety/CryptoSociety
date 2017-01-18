@@ -38,7 +38,7 @@ public class CryptoController {
 
     @GetMapping()
     public String index(Model model){
-        List<Crypto> cryptoList = (List<Crypto>) cryptosRepo.findAll();
+        List<Crypto> cryptoList = cryptosRepo.findByActiveEquals(true);
         List<Crypto> orderedCryptoList = new ArrayList<>();
         for (int i = cryptoList.size()-1; i >= 0; i--) {
             orderedCryptoList.add(cryptoList.get(i));
@@ -62,9 +62,12 @@ public class CryptoController {
         }
         crypto.setUser(BaseController.loggedInUser());
         crypto.setUsersSolved(0);
-//        TODO: Make these actually matter
+
+//  TODO: Make these actually matter
         crypto.setCryptoText("TODO");
         crypto.setApproved(true);
+//----------------------------------------
+        crypto.setActive(true);
         cryptosRepo.save(crypto);
         return "redirect:/cryptos";
     }
@@ -74,14 +77,23 @@ public class CryptoController {
         Crypto crypto = cryptosRepo.findOne(id);
         model.addAttribute("crypto", crypto);
         model.addAttribute("showEditControls", isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId());
-        return "cryptos/show";
+        boolean solvable;
+        User user = loggedInUser();
+        if(isLoggedIn() && (loggedInUser().getId() != crypto.getUser().getId()) && userCryptosRepo.findByPlayerIdAndCryptoId(user.getId(), crypto.getId()) == null){
+            solvable = true;
+        } else {
+            solvable = false;
+        }
+        model.addAttribute("solvable", solvable);
+        return "/cryptos/show";
     }
 
     @PostMapping("/{id}/delete")
     public String deleteCrypto(@PathVariable long id){
         Crypto crypto = cryptosRepo.findOne(id);
         if(isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId()) {
-            cryptosRepo.delete(id);
+            crypto.setActive(false);
+            cryptosRepo.save(crypto);
             return "redirect:/cryptos";
         } else {
             return "redirect:/cryptos/{id}";
@@ -125,8 +137,10 @@ public class CryptoController {
 
     @PostMapping("{id}/solve")
     public String solveCrypto(@PathVariable long id, Model model){
-//        TODO: Implement actual check for correct-ness
+
+// TODO: Implement actual check for correct-ness
         boolean cryptoIsCorrect = true;
+//------------------------------------------------------
         if(cryptoIsCorrect){
             Crypto crypto = cryptosRepo.findOne(id);
             crypto.setUsersSolved(crypto.getUsersSolved()+1);
