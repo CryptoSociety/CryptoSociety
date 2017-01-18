@@ -56,6 +56,35 @@ public class Cryptography {
         return String.join("", rails);
     }
 
+    public String railfenceDecrypt(String ciphertext, int numberOfRails) {
+        StringBuilder plaintext = new StringBuilder();
+        plaintext.setLength(ciphertext.length());
+        int i = 0;
+        int jumpOne = numberOfRails*2-2;
+        int jumpTwo = 0;
+        boolean useFirstJump = true;
+        int insertLocation = 0;
+        int railcounter = 1;
+        while (i < ciphertext.length()) {
+            while (insertLocation < ciphertext.length()) {
+                if (jumpOne == 0)
+                    useFirstJump = false;
+                if (jumpTwo == 0)
+                    useFirstJump = true;
+                plaintext.setCharAt(insertLocation, ciphertext.charAt(i));
+                i++;
+                insertLocation += (useFirstJump) ? jumpOne : jumpTwo;
+                useFirstJump = !useFirstJump;
+            }
+            useFirstJump = true;
+            railcounter++;
+            insertLocation = railcounter - 1;
+            jumpOne = jumpOne - 2;
+            jumpTwo = jumpTwo + 2;
+        }
+        return plaintext.toString();
+    }
+
     private String prepare(String input, boolean punctuation) {
         input = input.toUpperCase();
         if (punctuation)
