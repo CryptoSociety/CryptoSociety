@@ -91,7 +91,7 @@ public class Cryptography {
         plaintext = prepare(plaintext, punctuation);
         StringBuilder ciphertext = new StringBuilder(plaintext);
         for (int i = 0; i < plaintext.length(); i++) {
-            if (isAlphnumeric(plaintext.charAt(i))) {
+            if (Character.isLetter(plaintext.charAt(i))) {
                 if (key.indexOf(plaintext.charAt(i)) % 2 == 0) {
                     ciphertext.setCharAt(i, key.charAt(key.indexOf(plaintext.charAt(i)) + 1));
                 } else
