@@ -1,27 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
-<div class="container">
-    <div class="panel panel-default" th:object="${crypto}">
-        <div class="panel panel-heading" th:text="*{name}">Title</div>
-        <div class="panel panel-body" th:text="*{plainText}">Body</div>
-        <!--<div><span th:text="*{modifyDate}">Last created/modified</span><span th:if="*{modifyDate} != *{creationDate}">*</span></div>-->
-        <!--<div th:if="${showEditControls}">-->
-        <!--<form th:action="@{'/templates.cryptos/'+*{id}+'/delete'}" th:method="post">-->
-            <!--<button>Delete</button>-->
-        <!--</form>-->
-        <!--<form th:action="@{'/templates.cryptos/'+*{id}+'/edit'}" th:method="get">-->
-            <!--<button>Edit</button>-->
-        <!--</form>-->
-        <form th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
-            <button>Solve</button>
-        </form>
-        <!--</div>-->
+    <div>
+        <div th:object="${crypto}">
+            <div th:text="*{name}">Name</div>
+            <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+            <div>Points: <span th:text="*{points}"></span></div>
+            <div th:text="*{cryptoText}">Crypto</div>
+            <div th:text="*{plainText}">Plaintext</div>
+            <div th:text="*{solution}">Solution</div>
+            <div th:text="*{scheme}">Scheme</div>
+            <div th:text="*{cryptokey}">Key</div>
+            <div th:text="*{usersSolved}">Users solved</div>
+            <div th:text="*{creationDate}">Created</div>
+            <div th:if="${showEditControls}">
+                <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post">
+                    <button>Delete</button>
+                </form>
+                <form th:action="@{'/cryptos/'+*{id}+'/edit'}" th:method="get">
+                    <button>Edit</button>
+                </form>
+            </div>
+            <!--TODO: Implement check that user hasn't already solved - presumably implementing a list in the User object of solved puzzles, and if user.listOfSolved contains crypto.id then don't show-->
+            <div sec:authorize="isAuthenticated()">
+                <form th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
+                    <input type="text" name="solution" />
+                    <button>Solve</button>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 </html>

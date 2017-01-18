@@ -46,17 +46,17 @@ public class User {
         password = user.password;
     }
 
-//    public List<Crypto> getCryptos(){
-//        return templates.cryptos;
-//    }
-//
-//    public List<Crypto> getOrderedCryptos(){
-//        List<Crypto> orderedCryptoList = new ArrayList<>();
-//        for (int i = templates.cryptos.size()-1; i >= 0; i--) {
-//            orderedCryptoList.add(templates.cryptos.get(i));
-//        }
-//        return orderedCryptoList;
-//    }
+    public List<Crypto> getCryptos(){
+        return cryptos;
+    }
+
+    public List<Crypto> getOrderedCryptos(){
+        List<Crypto> orderedCryptoList = new ArrayList<>();
+        for (int i = cryptos.size()-1; i >= 0; i--) {
+            orderedCryptoList.add(cryptos.get(i));
+        }
+        return orderedCryptoList;
+    }
 
     public long getId(){ return id;}
 
