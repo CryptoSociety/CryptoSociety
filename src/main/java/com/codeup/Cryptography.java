@@ -1,7 +1,5 @@
 package com.codeup;
 
-import sun.jvm.hotspot.types.basic.BasicOopField;
-
 import java.util.Arrays;
 
 /**
@@ -87,15 +85,13 @@ public class Cryptography {
         return plaintext.toString();
     }
 
-    public String kamasutra(String plaintext, String key, boolean punctuation){
+    public String kamasutra(String plaintext, char[] key, boolean punctuation) throws Exception {
+        AlphabetKey alphabetKey = new AlphabetKey(key);
         plaintext = prepare(plaintext, punctuation);
         StringBuilder ciphertext = new StringBuilder(plaintext);
         for (int i = 0; i < plaintext.length(); i++) {
             if (Character.isLetter(plaintext.charAt(i))) {
-                if (key.indexOf(plaintext.charAt(i)) % 2 == 0) {
-                    ciphertext.setCharAt(i, key.charAt(key.indexOf(plaintext.charAt(i)) + 1));
-                } else
-                    ciphertext.setCharAt(i, key.charAt(key.indexOf(plaintext.charAt(i)) - 1));
+                ciphertext.setCharAt(i, alphabetKey.getLetter(plaintext.charAt(i)));
             }
         }
         return ciphertext.toString();
