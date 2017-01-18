@@ -97,4 +97,12 @@ public class User {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
+    public List<UserCrypto> getUserCryptos() {
+        return userCryptos;
+    }
+
+    public void setUserCryptos(List<UserCrypto> userCryptos) {
+        this.userCryptos = userCryptos;
+    }
 }

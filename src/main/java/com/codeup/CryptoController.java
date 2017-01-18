@@ -38,7 +38,7 @@ public class CryptoController {
 
     @GetMapping()
     public String index(Model model){
-        List<Crypto> cryptoList = (List<Crypto>) cryptosRepo.findAll();
+        List<Crypto> cryptoList = cryptosRepo.findByActiveEquals(true);
         List<Crypto> orderedCryptoList = new ArrayList<>();
         for (int i = cryptoList.size()-1; i >= 0; i--) {
             orderedCryptoList.add(cryptoList.get(i));
@@ -65,6 +65,7 @@ public class CryptoController {
 //        TODO: Make these actually matter
         crypto.setCryptoText("TODO");
         crypto.setApproved(true);
+        crypto.setActive(true);
         cryptosRepo.save(crypto);
         return "redirect:/cryptos";
     }
@@ -74,14 +75,23 @@ public class CryptoController {
         Crypto crypto = cryptosRepo.findOne(id);
         model.addAttribute("crypto", crypto);
         model.addAttribute("showEditControls", isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId());
-        return "cryptos/show";
+        boolean solvable;
+        User user = loggedInUser();
+        if(isLoggedIn() && (loggedInUser().getId() != crypto.getUser().getId()) && userCryptosRepo.findByPlayerIdAndCryptoId(user.getId(), crypto.getId()) == null){
+            solvable = true;
+        } else {
+            solvable = false;
+        }
+        model.addAttribute("solvable", solvable);
+        return "/cryptos/show";
     }
 
     @PostMapping("/{id}/delete")
     public String deleteCrypto(@PathVariable long id){
         Crypto crypto = cryptosRepo.findOne(id);
         if(isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId()) {
-            cryptosRepo.delete(id);
+            crypto.setActive(false);
+            cryptosRepo.save(crypto);
             return "redirect:/cryptos";
         } else {
             return "redirect:/cryptos/{id}";

@@ -1,5 +1,7 @@
 package com.codeup.auth;
 
+import com.codeup.models.Cryptos;
+import com.codeup.models.UserCryptos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

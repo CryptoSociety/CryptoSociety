@@ -3,6 +3,7 @@ package com.codeup.models;
 import com.codeup.auth.User;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -55,6 +56,9 @@ public class Crypto {
 
     @Column(nullable = false, name = "is_approved")
     private boolean isApproved;
+
+    @Column(nullable = false, name = "active")
+    private boolean active;
 
 
 //    TODO: See about changing from Remove cascade to an on delete set null, so we can have lists of solved cryptos for individual users show a [deleted] when it's null, and still register that the user solved a crypto that used to exist
@@ -172,5 +176,13 @@ public class Crypto {
         isApproved = approved;
     }
 
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
 
