@@ -1,6 +1,7 @@
 package com.codeup.models;
 
 import com.codeup.auth.User;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -12,7 +13,7 @@ public class UserCrypto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     private Crypto crypto;
 
     @ManyToOne

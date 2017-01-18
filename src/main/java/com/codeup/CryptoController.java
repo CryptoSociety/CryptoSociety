@@ -1,6 +1,8 @@
 package com.codeup;
 
 import com.codeup.auth.BaseController;
+import com.codeup.auth.User;
+import com.codeup.auth.Users;
 import com.codeup.models.Crypto;
 import com.codeup.models.Cryptos;
 import com.codeup.models.UserCrypto;
@@ -31,6 +33,9 @@ public class CryptoController {
     @Autowired
     UserCryptos userCryptosRepo;
 
+    @Autowired
+    Users usersRepo;
+
     @GetMapping()
     public String index(Model model){
         List<Crypto> cryptoList = (List<Crypto>) cryptosRepo.findAll();
@@ -56,6 +61,10 @@ public class CryptoController {
             return "/cryptos/create";
         }
         crypto.setUser(BaseController.loggedInUser());
+        crypto.setUsersSolved(0);
+//        TODO: Make these actually matter
+        crypto.setCryptoText("TODO");
+        crypto.setApproved(true);
         cryptosRepo.save(crypto);
         return "redirect:/cryptos";
     }
@@ -83,7 +92,7 @@ public class CryptoController {
     public String updateCryptoGet(@PathVariable long id, Model model){
         Crypto crypto = cryptosRepo.findOne(id);
         if(isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId()) {
-            model.addAttribute("cryptos", crypto);
+            model.addAttribute("crypto", crypto);
             return "/cryptos/edit";
         } else {
             return "redirect:/cryptos/{id}";
@@ -102,6 +111,10 @@ public class CryptoController {
         if(isLoggedIn() && loggedInUser().getId() == oldCrypto.getUser().getId()) {
             oldCrypto.setName(crypto.getName());
             oldCrypto.setSolution(crypto.getSolution());
+            oldCrypto.setPlainText(crypto.getPlainText());
+            oldCrypto.setScheme(crypto.getScheme());
+            oldCrypto.setCryptokey(crypto.getCryptokey());
+            oldCrypto.setPoints(crypto.getPoints());
             cryptosRepo.save(oldCrypto);
             return "redirect:/cryptos/{id}";
         } else {
@@ -115,8 +128,14 @@ public class CryptoController {
 //        TODO: Implement actual check for correct-ness
         boolean cryptoIsCorrect = true;
         if(cryptoIsCorrect){
+            Crypto crypto = cryptosRepo.findOne(id);
+            crypto.setUsersSolved(crypto.getUsersSolved()+1);
+            cryptosRepo.save(crypto);
+            User currentUser = usersRepo.findOne(loggedInUser().getId());
+            currentUser.setPoints(currentUser.getPoints()+crypto.getPoints());
+            usersRepo.save(currentUser);
             UserCrypto userCrypto = new UserCrypto();
-            userCrypto.setCrypto(cryptosRepo.findOne(id));
+            userCrypto.setCrypto(crypto);
             userCrypto.setPlayer(loggedInUser());
             userCryptosRepo.save(userCrypto);
             return "redirect:/success";
