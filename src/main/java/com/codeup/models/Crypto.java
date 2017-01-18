@@ -60,8 +60,6 @@ public class Crypto {
     @Column(nullable = false, name = "active")
     private boolean active;
 
-
-//    TODO: See about changing from Remove cascade to an on delete set null, so we can have lists of solved cryptos for individual users show a [deleted] when it's null, and still register that the user solved a crypto that used to exist
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "crypto")
     private List<UserCrypto> userCryptos;
 

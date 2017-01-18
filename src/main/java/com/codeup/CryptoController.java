@@ -62,9 +62,11 @@ public class CryptoController {
         }
         crypto.setUser(BaseController.loggedInUser());
         crypto.setUsersSolved(0);
-//        TODO: Make these actually matter
+
+//  TODO: Make these actually matter
         crypto.setCryptoText("TODO");
         crypto.setApproved(true);
+//----------------------------------------
         crypto.setActive(true);
         cryptosRepo.save(crypto);
         return "redirect:/cryptos";
@@ -135,8 +137,10 @@ public class CryptoController {
 
     @PostMapping("{id}/solve")
     public String solveCrypto(@PathVariable long id, Model model){
-//        TODO: Implement actual check for correct-ness
+
+// TODO: Implement actual check for correct-ness
         boolean cryptoIsCorrect = true;
+//------------------------------------------------------
         if(cryptoIsCorrect){
             Crypto crypto = cryptosRepo.findOne(id);
             crypto.setUsersSolved(crypto.getUsersSolved()+1);
