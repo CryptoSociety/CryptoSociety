@@ -97,6 +97,41 @@ public class Cryptography {
         return ciphertext.toString();
     }
 
+    public String vigenere(String plaintext, String keyword, boolean punctuation){
+        plaintext = prepare(plaintext, punctuation);
+        keyword = prepare(keyword, punctuation);
+        StringBuilder ciphertext = new StringBuilder(plaintext);
+        int k = 0;
+        for (int i = 0; i < plaintext.length(); i++){
+            if (Character.isLetter(plaintext.charAt(i))) {
+                ciphertext.setCharAt(i, caesar(String.valueOf(plaintext.charAt(i)),
+                        ((int)keyword.charAt(k) - (int)'A'),
+                        true)
+                        .charAt(0));
+                k++;
+                if(k >= keyword.length())
+                    k = 0;
+            }
+        }
+        return ciphertext.toString();
+    }
+
+    public String vigenereDecrypt(String ciphertext, String keyword){
+        keyword = prepare(keyword, true);
+        StringBuilder plaintext = new StringBuilder(ciphertext);
+        int k = 0;
+        for (int i = 0; i < ciphertext.length(); i++){
+            if (Character.isLetter(ciphertext.charAt(i))) {
+                plaintext.setCharAt(i, caesarDecypt(String.valueOf(plaintext.charAt(i)),
+                        ((int)keyword.charAt(k) - (int)'A'))
+                        .charAt(0));
+                k++;
+                if(k >= keyword.length())
+                    k = 0;
+            }
+        }
+        return plaintext.toString();
+    }
     private String prepare(String input, boolean punctuation) {
         input = input.toUpperCase();
         if (punctuation)
