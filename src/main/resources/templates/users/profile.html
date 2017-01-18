@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -88,22 +88,15 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h2 class="text-center">
-                User's Profile
-            </h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-        <h3>User Info</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Challenges Completed</h3>
+            <h1 th:text="'Posts by '+*{user.username}"></h1>
+            <div>
+                <div th:each="crypto : ${user.cryptos}" th:object="${crypto}">
+                    <a th:href="@{'/cryptos/' + *{id}}"><div th:text="*{name}">Title</div></a>
+                    <div th:text="*{scheme}"></div>
+                    <div th:text="*{cryptoText}">Puzzle</div>
+                    <div th:text="*{creationDate}"></div>
+                </div>
             </div>
-        </div>
         <div class="col-md-3">
             <a href="#" class="btn" type="button">Button</a>
         </div>
@@ -117,6 +110,7 @@
             <a href="#" class="btn" type="button">Button</a>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
