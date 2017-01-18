@@ -1,5 +1,7 @@
 package com.codeup;
 
+import java.util.Arrays;
+
 /**
  * Created by Duke on 1/17/17.
  */
@@ -37,6 +39,21 @@ public class Cryptography {
             }
         }
         return result.toString();
+    }
+
+    public String railfence(String plaintext, int numberOfRails, boolean punctuation) {
+        plaintext = prepare(plaintext, punctuation);
+        String[] rails = new String[numberOfRails];
+        Arrays.fill(rails, "");
+        int currentRail = 0;
+        boolean ascending = false;
+        for (int i = 0; i < plaintext.length(); i++) {
+            rails[currentRail] = rails[currentRail] + plaintext.charAt(i);
+            currentRail = ascending ? currentRail - 1 : currentRail + 1;
+            if (currentRail == 0 || currentRail == numberOfRails - 1)
+                ascending = !ascending;
+        }
+        return String.join("", rails);
     }
 
     private String prepare(String input, boolean punctuation) {
