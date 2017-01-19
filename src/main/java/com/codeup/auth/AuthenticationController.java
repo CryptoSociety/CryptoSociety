@@ -44,7 +44,7 @@ public class AuthenticationController {
         }
         userDao.save(user);
         return "redirect:/login";
-        }
+    }
 
     @GetMapping("/users/{id}")
     public String showUser(@PathVariable long id, Model model){
@@ -52,5 +52,14 @@ public class AuthenticationController {
         model.addAttribute("user", user);
         model.addAttribute("showEditControls", isLoggedIn() && loggedInUser().getId() == user.getId());
         return "/users/profile";
+    }
+
+    @GetMapping("/users/profile")
+    public String personalProfile(){
+        if(isLoggedIn()){
+            return ("redirect:/users/"+loggedInUser().getId());
+        } else {
+            return "redirect:/login";
+        }
     }
 }
