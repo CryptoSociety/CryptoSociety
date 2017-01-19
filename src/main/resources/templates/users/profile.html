@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(${'Profile'})"></head>
 <body>
-
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 th:text="'Posts by '+*{user.username}"></h1>
+            <h2 th:text="'Points: '+*{user.points}"></h2>
+            <div>
+                <div th:each="crypto : ${user.cryptos}" th:object="${crypto}">
+                    <a th:href="@{'/cryptos/' + *{id}}"><div th:text="*{name}">Title</div></a>
+                    <div th:text="*{scheme}"></div>
+                    <div th:text="*{cryptoText}">Puzzle</div>
+                    <div th:text="*{creationDate}"></div>
+                </div>
+            </div>
+            <h1>Solved:</h1>
+            <div>
+                <div th:each="userCrypto : ${user.userCryptos}" th:object="${userCrypto}">
+                    <a th:if="*{crypto.active}" th:href="@{'/cryptos/' + *{crypto.id}}"><div th:text="*{crypto.name}">Title</div></a>
+                    <div th:text="*{crypto.scheme}"></div>
+                    <div th:text="*{crypto.cryptoText}">Puzzle</div>
+                    <div th:text="*{crypto.creationDate}"></div>
+                    <div th:text="*{crypto.points}"></div>
+                </div>
+            </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+</div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
 </body>
 </html>

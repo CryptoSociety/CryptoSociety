@@ -1,6 +1,7 @@
 package com.codeup.models;
 
 import com.codeup.auth.User;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 

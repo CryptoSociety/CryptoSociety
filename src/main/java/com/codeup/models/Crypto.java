@@ -3,6 +3,7 @@ package com.codeup.models;
 import com.codeup.auth.User;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -56,7 +57,10 @@ public class Crypto {
     @Column(nullable = false, name = "is_approved")
     private boolean isApproved;
 
-    @OneToMany(mappedBy = "crypto")
+    @Column(nullable = false, name = "active")
+    private boolean active;
+
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "crypto")
     private List<UserCrypto> userCryptos;
 
 
@@ -170,5 +174,13 @@ public class Crypto {
         isApproved = approved;
     }
 
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
 
