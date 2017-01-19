@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div th:fragment="caesar">
+    <label for="plaintextBox">Plaintext:</label>
+    <input type="text" name="plaintextBox" id="plaintextBox" />
+    <button id="encrypt">encrypt</button>
+    <label for="ciphertextBox">Ciphertext:</label>
+    <input type="text" name="ciphertextBox" id="ciphertextBox" />
+    <button id="decrypt">Decrypt</button>
+    <label for="shiftAmount">Shift:</label>
+    <input type="text" name="shiftAmount" id="shiftAmount" value="3"/>
+</div>
+<div th:fragment="atbash">
+    <label for="plaintextBox">Plaintext:</label>
+    <input type="text" name="plaintextBox" id="plaintextBox" />
+    <button id="encrypt">encrypt</button>
+    <label for="ciphertextBox">Ciphertext:</label>
+    <input type="text" name="ciphertextBox" id="ciphertextBox" />
+    <button id="decrypt">Decrypt</button>
+</div>
+<div th:fragment="kamasutra">
+
+</div>
+<div th:fragment="railfence">
+
+</div>
+<div th:fragment="vigenere">
+
+</div>
 </body>
 </html>
