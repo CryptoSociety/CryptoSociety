@@ -7,8 +7,10 @@
 <body>
 <label for="plaintextBox">Plaintext:</label>
 <input type="text" name="plaintextBox" id="plaintextBox" />
+<button id="encrypt">encrypt</button>
 <label for="ciphertextBox">Ciphertext:</label>
 <input type="text" name="ciphertextBox" id="ciphertextBox" />
+<button id="decrypt">Decrypt</button>
 <label for="shiftAmount">Shift:</label>
 <input type="text" name="shiftAmount" id="shiftAmount" value="3"/>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
@@ -19,8 +21,10 @@
     $(document).ready(function() {
         var $plaintext = $('#plaintextBox'),
                 $ciphertext = $('#ciphertextBox'),
+                $encrypt = $('#encrypt'),
+                $decrypt = $('#decrypt'),
                 $shift = $('#shiftAmount');
-        $plaintext.keyup(function () {
+        $encrypt.click(function () {
             $.ajax({url: "/caesartool.json",
                     type: 'GET',
                     dataType: 'text',
@@ -33,7 +37,7 @@
                 console.log(e);
             });
         });
-        $ciphertext.keyup(function () {
+        $decrypt.click(function () {
             $.ajax({url: "/caesartool/decrypt.json",
                 type: 'GET',
                 dataType: 'text',
