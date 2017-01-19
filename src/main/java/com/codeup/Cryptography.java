@@ -19,6 +19,7 @@ public class Cryptography {
     }
 
     public String caesarDecypt(String ciphertext, int shift) {
+        ciphertext = prepare(ciphertext, true);
         StringBuilder plaintext = new StringBuilder(ciphertext);
         for (int i = 0; i < plaintext.length(); i++){
             char letter = plaintext.charAt(i);
@@ -57,6 +58,7 @@ public class Cryptography {
     }
 
     public String railfenceDecrypt(String ciphertext, int numberOfRails) {
+        ciphertext = prepare(ciphertext, true);
         StringBuilder plaintext = new StringBuilder();
         plaintext.setLength(ciphertext.length());
         int i = 0;
@@ -117,6 +119,7 @@ public class Cryptography {
     }
 
     public String vigenereDecrypt(String ciphertext, String keyword){
+        ciphertext = prepare(ciphertext, true);
         keyword = prepare(keyword, true);
         StringBuilder plaintext = new StringBuilder(ciphertext);
         int k = 0;
