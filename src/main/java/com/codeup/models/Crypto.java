@@ -28,15 +28,15 @@ public class Crypto {
     @Column(nullable = false)
     private long points;
 
-    @Column(nullable = false, name = "crypto_text")
+    @Column(nullable = false, name = "crypto_text", columnDefinition="TEXT")
     private String cryptoText;
 
     @NotBlank(message = "Plaintext can't be empty")
-    @Column(nullable = false, name = "plain_text")
+    @Column(nullable = false, name = "plain_text", columnDefinition="TEXT")
     private String plainText;
 
     @NotBlank(message = "Solution can't be empty")
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition="TEXT")
     private String solution;
 
     @NotBlank(message = "A scheme must be selected")

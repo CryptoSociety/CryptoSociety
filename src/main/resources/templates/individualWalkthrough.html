@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
-    Individual walkthrough stuff would go here I guess
+    <div th:object="${currentWalkthrough}">
+        <h1 th:text="*{title}"></h1>
+        <h2 th:text="*{scheme}"></h2>
+        <h2 th:text="*{difficulty}"></h2>
+        <div th:utext="*{parsedBody}"></div>
+    </div>
 </body>
 </html>

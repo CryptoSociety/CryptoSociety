@@ -38,7 +38,7 @@ public class CryptoController {
 
     @GetMapping()
     public String index(Model model){
-        List<Crypto> cryptoList = cryptosRepo.findByActiveEquals(true);
+        List<Crypto> cryptoList = cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, true);
         List<Crypto> orderedCryptoList = new ArrayList<>();
         for (int i = cryptoList.size()-1; i >= 0; i--) {
             orderedCryptoList.add(cryptoList.get(i));
