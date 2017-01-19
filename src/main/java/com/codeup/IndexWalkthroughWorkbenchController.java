@@ -27,8 +27,9 @@ public class IndexWalkthroughWorkbenchController {
         return "individualWalkthrough";
     }
 
-    @GetMapping("/workbench")
-    public String workbench(){
-        return "workbench";
+    @GetMapping("/challenge")
+    public String challenge(){
+        return "challenge";
     }
 }
+
