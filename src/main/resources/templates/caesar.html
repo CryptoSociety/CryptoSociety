@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <title>Title</title>
 </head>
 <body>
-$END$
+<label for="plaintextBox">Plaintext:</label>
+<input type="text" name="plaintextBox" id="plaintextBox" />
+<label for="ciphertextBox">Ciphertext:</label>
+<input type="text" name="ciphertextBox" id="ciphertextBox" />
+<label for="shiftAmount">Shift:</label>
+<input type="text" name="shiftAmount" id="shiftAmount" value="3"/>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    "use strict";
+
+    $(document).ready(function() {
+        var $plaintext = $('#plaintextBox'),
+                $ciphertext = $('#ciphertextBox'),
+                $shift = $('#shiftAmount');
+        $plaintext.keyup(function () {
+            $.ajax({url: "/caesartool.json",
+                    type: 'GET',
+                    dataType: 'text',
+                    data: {plaintext: $plaintext.val(),
+                        shift: $shift.val(),
+                        punctuation: true}
+            }).done(function (r) {
+                $ciphertext.val(r)
+            }).fail(function (e) {
+                console.log(e);
+            });
+        });
+        $ciphertext.keyup(function () {
+            $.ajax({url: "/caesartool/decrypt.json",
+                type: 'GET',
+                dataType: 'text',
+                data: {ciphertext: $ciphertext.val(),
+                    shift: $shift.val(),
+                    punctuation: true}
+            }).done(function (r) {
+                $plaintext.val(r)
+            }).fail(function (e) {
+                console.log(e);
+            });
+        });
+    });
+</script>
 </body>
 </html>
