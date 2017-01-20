@@ -50,6 +50,7 @@ public class AuthenticationController {
             model.addAttribute("user", user);
             return "users/register";
         }
+        user.setAdmin(false);
         userDao.save(user);
         return "redirect:/login";
     }
@@ -58,7 +59,9 @@ public class AuthenticationController {
     public String showUser(@PathVariable long id, Model model){
         User user = userDao.findOne(id);
         model.addAttribute("user", user);
-        model.addAttribute("loggedInUser", loggedUser(loggedInUser()));
+        if(isLoggedIn()) {
+            model.addAttribute("loggedInUser", loggedUser(loggedInUser()));
+        }
         model.addAttribute("isAdmin", isLoggedIn() && loggedUser(loggedInUser()).getAdmin());
         model.addAttribute("showEditControls", isLoggedIn() && loggedUser(loggedInUser()).getId() == user.getId());
         return "/users/profile";
