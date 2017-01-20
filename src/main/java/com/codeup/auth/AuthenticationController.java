@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,13 @@ public class AuthenticationController {
 
     @Autowired
     Users userDao;
+
+    @Autowired
+    Cryptos cryptosRepo;
+
+    private User loggedUser(User loggedInUser){
+        return userDao.findOne(loggedInUser().getId());
+    }
 
     @GetMapping("/login")
     public String showLoginForm() {
@@ -42,6 +50,7 @@ public class AuthenticationController {
             model.addAttribute("user", user);
             return "users/register";
         }
+        user.setAdmin(false);
         userDao.save(user);
         return "redirect:/login";
     }
@@ -50,16 +59,44 @@ public class AuthenticationController {
     public String showUser(@PathVariable long id, Model model){
         User user = userDao.findOne(id);
         model.addAttribute("user", user);
-        model.addAttribute("showEditControls", isLoggedIn() && loggedInUser().getId() == user.getId());
+        if(isLoggedIn()) {
+            model.addAttribute("loggedInUser", loggedUser(loggedInUser()));
+        }
+        model.addAttribute("isAdmin", isLoggedIn() && loggedUser(loggedInUser()).getAdmin());
+        model.addAttribute("showEditControls", isLoggedIn() && loggedUser(loggedInUser()).getId() == user.getId());
         return "/users/profile";
     }
 
     @GetMapping("/users/profile")
     public String personalProfile(){
         if(isLoggedIn()){
-            return ("redirect:/users/"+loggedInUser().getId());
+            return ("redirect:/users/"+loggedUser(loggedInUser()).getId());
         } else {
             return "redirect:/login";
         }
+    }
+
+//  TODO: Doesn't actually send to admin currently - always redirects to /login...
+    @GetMapping("/admin")
+    public String adminPage(Model model){
+        System.out.println(isLoggedIn());
+        System.out.println(loggedUser(loggedInUser()).getAdmin());
+        if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()){
+            model.addAttribute("activeUnapproved",cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, false));
+            return "/admin";
+        } else {
+            return "redirect:/login";
+        }
+    }
+
+    @ResponseBody
+    @GetMapping("/test")
+    public String test() {
+
+        System.out.println(loggedUser(loggedInUser()).getId());
+        System.out.println(loggedUser(loggedInUser()).getEmail());
+        System.out.println(loggedUser(loggedInUser()).getAdmin());
+
+        return "ok";
     }
 }
