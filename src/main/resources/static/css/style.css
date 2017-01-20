@@ -104,7 +104,7 @@ body, html {
     height: 50px;
     width: 200px;
     background-color: tomato;
-    border-radius: 0px;
+    border-radius: 0;
     font-size: 18px;
     color: white;
     border: none !important;
@@ -125,7 +125,7 @@ body, html {
     height: 50px;
     width: 200px;
     background-color: yellowgreen;
-    border-radius: 0px;
+    border-radius: 0;
     font-size: 18px;
     color: white;
     border: none !important;
@@ -151,5 +151,5 @@ body, html {
     margin-bottom: 5px;
     width: 430px;
     height: 40px;
-    border-radius: 0px;
+    border-radius: 0;
 }
