@@ -19,7 +19,7 @@
                 <div th:text="*{cryptokey}">Key</div>
                 <div th:text="*{usersSolved}">Users solved</div>
                 <div th:text="*{creationDate}">Created</div>
-                <div th:if="*{!isApproved}">
+                <div th:if="*{!isApproved}">2`
                     <div th:if="${isAdmin}">
                         <form th:action="@{'/cryptos/'+*{id}+'/approve'}" th:method="post">
                             <button>Approve</button>

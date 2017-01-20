@@ -153,3 +153,32 @@ body, html {
     height: 40px;
     border-radius: 0;
 }
+
+/*Challenge Page*/
+div#layoutObj {
+    position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 1500px;
+    height: 1000px;
+}
+
+div#objId {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.demo#objId {
+    background-color:#616161;
+    font-family: 'Anonymous Pro', monospace;
+    font-weight: 300;
+    color:#1dfc2c;
+    padding:10px;
+    font-size:20px;
+    line-height:30px;
+}
+#textblock#objId {
+    height:140px;
+}
