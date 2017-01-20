@@ -33,13 +33,21 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "users/login";
+        if(isLoggedIn()){
+            return "redirect:/users/profile";
+        } else {
+            return "users/login";
+        }
     }
 
     @GetMapping("/register")
     public String showRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
+        if(isLoggedIn()){
+            return "redirect:/users/profile";
+        } else {
+            model.addAttribute("user", new User());
+            return "users/register";
+        }
     }
 
 //  TODO: Implement automatic login after registration, maybe
@@ -76,7 +84,6 @@ public class AuthenticationController {
         }
     }
 
-//  TODO: Doesn't actually send to admin currently - always redirects to /login...
     @GetMapping("/admin")
     public String adminPage(Model model){
         if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()){
