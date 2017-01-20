@@ -87,12 +87,12 @@ public class CryptoController {
             if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()) {
                 model.addAttribute("isAdmin", true);
             }
-            boolean solvable;
-            User user = loggedUser(loggedInUser());
-            if (isLoggedIn() && !user.getAdmin() && (user.getId() != crypto.getUser().getId()) && userCryptosRepo.findByPlayerIdAndCryptoId(user.getId(), crypto.getId()) == null) {
-                solvable = true;
-            } else {
-                solvable = false;
+            boolean solvable = false;
+            if(isLoggedIn()) {
+                User user = loggedUser(loggedInUser());
+                if (isLoggedIn() && !user.getAdmin() && (user.getId() != crypto.getUser().getId()) && userCryptosRepo.findByPlayerIdAndCryptoId(user.getId(), crypto.getId()) == null) {
+                    solvable = true;
+                }
             }
             model.addAttribute("solvable", solvable);
             return "/cryptos/show";
@@ -116,7 +116,7 @@ public class CryptoController {
     @GetMapping("/{id}/edit")
     public String updateCryptoGet(@PathVariable long id, Model model){
         Crypto crypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && loggedUser(loggedInUser()).getId() == crypto.getUser().getId()) {
+        if(isLoggedIn() && (loggedUser(loggedInUser()).getId() == crypto.getUser().getId() || loggedUser(loggedInUser()).getAdmin())) {
             model.addAttribute("crypto", crypto);
             return "/cryptos/edit";
         } else {
@@ -133,7 +133,7 @@ public class CryptoController {
             return "/cryptos/edit";
         }
         Crypto oldCrypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && loggedUser(loggedInUser()).getId() == oldCrypto.getUser().getId()) {
+        if(isLoggedIn() && loggedUser(loggedInUser()).getId() == oldCrypto.getUser().getId() || loggedUser(loggedInUser()).getAdmin()) {
             oldCrypto.setName(crypto.getName());
             oldCrypto.setSolution(crypto.getSolution());
             oldCrypto.setPlainText(crypto.getPlainText());

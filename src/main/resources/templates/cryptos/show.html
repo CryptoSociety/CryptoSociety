@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div th:if="${showEditControls}">
-                    <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post" th:if="*{!active}">
+                    <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post" th:if="*{active}">
                         <button>Deactivate</button>
                     </form>
                     <form th:action="@{'/cryptos/'+*{id}+'/edit'}" th:method="get">
