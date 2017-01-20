@@ -5,7 +5,7 @@ import com.codeup.models.Crypto;
 /**
  * Created by Duke on 1/20/17.
  */
-public class CryptoTester {
+public class CipherSelector {
     public static String create(Crypto crypto) throws Exception {
         Cryptography c = new Cryptography();
         String ciphertext;
@@ -36,9 +36,5 @@ public class CryptoTester {
             default: return null;
         }
         return ciphertext;
-    }
-
-    public static boolean test(Crypto crypto){
-        return true;
     }
 }

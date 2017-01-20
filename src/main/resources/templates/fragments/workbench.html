@@ -25,58 +25,58 @@
     <button id="decrypt">Decrypt</button>
 </div>
 <div th:fragment="kamasutra">
-    <table>
+    <table id="keyFields">
         <tr>
-            <td><input name="key[]" type="text" value="q"/></td>
-            <td><input name="key[]" type="text" value="w"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="e"/></td>
-            <td><input name="key[]" type="text" value="r"/></td>
+            <td><input name="key[]" type="text" maxlength="1" /></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="t"/></td>
-            <td><input name="key[]" type="text" value="y"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="u"/></td>
-            <td><input name="key[]" type="text" value="i"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="o"/></td>
-            <td><input name="key[]" type="text" value="p"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="a"/></td>
-            <td><input name="key[]" type="text" value="s"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="d"/></td>
-            <td><input name="key[]" type="text" value="f"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="g"/></td>
-            <td><input name="key[]" type="text" value="h"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="j"/></td>
-            <td><input name="key[]" type="text" value="k"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="l"/></td>
-            <td><input name="key[]" type="text" value="z"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="x"/></td>
-            <td><input name="key[]" type="text" value="c"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="v"/></td>
-            <td><input name="key[]" type="text" value="b"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
         <tr>
-            <td><input name="key[]" type="text" value="n"/></td>
-            <td><input name="key[]" type="text" value="m"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
+            <td><input name="key[]" type="text" maxlength="1"/></td>
         </tr>
     </table>
     <label for="plaintextBox">Plaintext:</label>
@@ -85,6 +85,7 @@
     <label for="ciphertextBox">Ciphertext:</label>
     <input type="text" name="ciphertextBox" id="ciphertextBox" />
     <button id="decrypt">Decrypt</button>
+    <p id="lettersList">Letters needed: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
 </div>
 <div th:fragment="railfence">
     <label for="plaintextBox">Plaintext:</label>
