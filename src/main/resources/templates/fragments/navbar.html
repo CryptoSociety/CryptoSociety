@@ -1,39 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 </head>
 <body>
 <div th:fragment="navbar" class="row">
     <div class="col-md-12">
-        <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav sticky-top" role="banner">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </button> <a class="navbar-brand" href="/">CryptoSociety</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+                    <a href="/" class="navbar-brand">CryptoSociety</a>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <nav class="collapse sticky-top navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li>
                         <a href="/../challenge">Challenges</a>
                     </li>
                     <li>
-                        <a href="/../register">Register</a>
+                        <a href="/../walkthrough">Walkthroughs</a>
                     </li>
                     <li>
-                        <a href="/../login">Login</a>
+                        <a href="/../workbench">Decipher Tools</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/../users/profile">Your Profile</a>
+                    <li sec:authorize="isAnonymous()">
+                        <a href="/../register">Register</a>
                     </li>
-                    <li>
-                        <a href="/logout">Logout</a>
+                    <li sec:authorize="isAnonymous()">
+                        <a href="/../login">Login</a>
+                    </li>
+                    <li class="dropdown" sec:authorize="isAuthenticated()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span sec:authentication="name">Username should be here</span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/../users/profile">Your Profile</a></li>
+                            <li><a href="#" id="logoutbutton">Logout</a></li>
+                        </ul>
                     </li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
+    <form th:action="@{'/logout'}" th:method="post" id="logoutform"></form>
 </div>
 </body>
 </html>

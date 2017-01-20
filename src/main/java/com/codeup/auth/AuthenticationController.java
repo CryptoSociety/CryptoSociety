@@ -33,13 +33,21 @@ public class AuthenticationController {
 
     @GetMapping("/login")
     public String showLoginForm() {
-        return "users/login";
+        if(isLoggedIn()){
+            return "redirect:/users/profile";
+        } else {
+            return "users/login";
+        }
     }
 
     @GetMapping("/register")
     public String showRegister(Model model) {
-        model.addAttribute("user", new User());
-        return "users/register";
+        if(isLoggedIn()){
+            return "redirect:/users/profile";
+        } else {
+            model.addAttribute("user", new User());
+            return "users/register";
+        }
     }
 
 //  TODO: Implement automatic login after registration, maybe
@@ -76,27 +84,13 @@ public class AuthenticationController {
         }
     }
 
-//  TODO: Doesn't actually send to admin currently - always redirects to /login...
     @GetMapping("/admin")
     public String adminPage(Model model){
-        System.out.println(isLoggedIn());
-        System.out.println(loggedUser(loggedInUser()).getAdmin());
         if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()){
             model.addAttribute("activeUnapproved",cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, false));
             return "/admin";
         } else {
             return "redirect:/login";
         }
-    }
-
-    @ResponseBody
-    @GetMapping("/test")
-    public String test() {
-
-        System.out.println(loggedUser(loggedInUser()).getId());
-        System.out.println(loggedUser(loggedInUser()).getEmail());
-        System.out.println(loggedUser(loggedInUser()).getAdmin());
-
-        return "ok";
     }
 }
