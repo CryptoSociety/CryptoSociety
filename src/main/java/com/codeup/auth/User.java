@@ -27,8 +27,8 @@ public class User {
     @Column(nullable = false)
     private long points;
 
-    @Column(nullable = false, name = "is_admin")
-    private boolean isAdmin;
+    @Column(nullable = false, name = "admin")
+    private boolean admin;
 
     @OneToMany(mappedBy = "user")
     private List<Crypto> cryptos;
@@ -90,12 +90,12 @@ public class User {
         this.points = points;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public boolean getAdmin() {
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
     public List<UserCrypto> getUserCryptos() {
