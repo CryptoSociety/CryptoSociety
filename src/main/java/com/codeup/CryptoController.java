@@ -73,7 +73,7 @@ public class CryptoController {
         crypto.setIsApproved(false);
         crypto.setActive(true);
         cryptosRepo.save(crypto);
-        return "redirect:/cryptos";
+        return "redirect:/cryptos/" + crypto.getId();
     }
 
     @GetMapping("/{id}")
