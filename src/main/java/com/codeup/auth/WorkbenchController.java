@@ -49,4 +49,20 @@ public class WorkbenchController {
         String output = c.atbash(input, true);
         return output;
     }
+
+    @GetMapping("/kamasutra")
+    public String makeKamaSutraTool(Model m){
+        m.addAttribute("system", "kamasutra");
+        return "tool";
+    }
+
+    @RequestMapping(value = "/kamasutratool.json", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody String encryptKamaSutra(
+            @RequestParam("input") String input,
+            @RequestParam("key") String key) throws Exception {
+        System.out.println(key);
+        String output = c.kamasutra(input, key.toUpperCase().toCharArray(), true);
+        return output;
+    }
+
 }
