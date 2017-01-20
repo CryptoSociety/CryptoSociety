@@ -88,4 +88,28 @@ public class WorkbenchController {
         return output;
     }
 
+    @GetMapping("vigenere")
+    public String makeVigenereTool(Model m){
+        m.addAttribute("system", "vigenere");
+        return "tool";
+    }
+
+
+    @RequestMapping(value = "/vigeneretool.json", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody String encryptVigenere(
+            @RequestParam("plaintext") String plaintext,
+            @RequestParam("keyword") String keyword
+    ){
+        String output = c.vigenere(plaintext, keyword, true);
+        return output;
+    }
+
+    @RequestMapping(value = "/vigeneretool/decrypt.json", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody String decryptVigenere(
+            @RequestParam("ciphertext") String ciphertext,
+            @RequestParam("keyword") String keyword
+    ){
+        String output = c.vigenereDecrypt(ciphertext, keyword);
+        return output;
+    }
 }
