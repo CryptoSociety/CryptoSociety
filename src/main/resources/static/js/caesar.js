@@ -10,17 +10,25 @@ $(document).ready(function() {
         $decrypt = $('#decrypt'),
         $shift = $('#shiftAmount');
     $encrypt.click(function () {
-        $.ajax({url: "/workbench/caesartool.json",
-            type: 'GET',
-            dataType: 'text',
-            data: {plaintext: $plaintext.val(),
-                shift: $shift.val(),
-                punctuation: true}
-        }).done(function (r) {
-            $ciphertext.val(r)
-        }).fail(function (e) {
-            console.log(e);
-        });
+        if(isNaN($shift.val()))
+            $('#error').text("The shift must be a positive whole number.");
+        else {
+            $('#error').text("");
+            $.ajax({
+                url: "/workbench/caesartool.json",
+                type: 'GET',
+                dataType: 'text',
+                data: {
+                    plaintext: $plaintext.val(),
+                    shift: $shift.val(),
+                    punctuation: true
+                }
+            }).done(function (r) {
+                $ciphertext.val(r)
+            }).fail(function (e) {
+                console.log(e);
+            });
+        }
     });
     $decrypt.click(function () {
         $.ajax({url: "/workbench/caesartool/decrypt.json",

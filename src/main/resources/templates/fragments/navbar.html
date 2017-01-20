@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 </head>
 <body>
@@ -23,20 +24,21 @@
                     </li>
                     <li>
                         <a href="/../workbench">Decipher Tools</a>
-                    </li>
-                </ul>
+
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                  <li sec:authorize="isAnonymous()">
                         <a href="/../register">Register</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username<b class="caret"></b></a>
+                  <li sec:authorize="isAnonymous()">
+                        <a href="/../login">Login</a>
+                  </li>
+                    <li class="dropdown" sec:authorize="isAuthenticated()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" sec:authentication="name">Username<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/../users/profile">My Profile</a></li>
-                            <li><a href="/login">Login</a></li>
+                            <li><a href="/../users/profile">Your Profile</a></li>
                             <li><a href="/logout">Logout</a></li>
                         </ul>
-                    </li>
+                      </ul>
                 </ul>
             </nav>
         </div>

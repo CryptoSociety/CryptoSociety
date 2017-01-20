@@ -36,10 +36,15 @@ public class CryptoController {
     @Autowired
     Users usersRepo;
 
+    private User loggedUser(User loggedInUser){
+        return usersRepo.findOne(loggedInUser().getId());
+    }
+
     @GetMapping()
     public String index(Model model){
         List<Crypto> cryptoList = cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, true);
         List<Crypto> orderedCryptoList = new ArrayList<>();
+//        TODO: This for loop simply makes it show from most recent to oldest. Removing/commenting it out will cause it to sort with oldest first
         for (int i = cryptoList.size()-1; i >= 0; i--) {
             orderedCryptoList.add(cryptoList.get(i));
         }
@@ -54,44 +59,52 @@ public class CryptoController {
     }
 
     @PostMapping("/create")
-    public String createCrypto(@Valid Crypto crypto, Errors validation, Model model){
+    public String createCrypto(@Valid Crypto crypto, Errors validation, Model model) throws Exception {
         if(validation.hasErrors()){
             model.addAttribute(validation.getAllErrors());
             model.addAttribute("crypto", crypto);
             return "/cryptos/create";
         }
-        crypto.setUser(BaseController.loggedInUser());
+        crypto.setUser(loggedUser(loggedInUser()));
         crypto.setUsersSolved(0);
 
 //  TODO: Make these actually matter
-        crypto.setCryptoText("TODO");
-        crypto.setApproved(true);
-//----------------------------------------
+        crypto.setCryptoText(CryptoTester.create(crypto));
+        crypto.setIsApproved(false);
         crypto.setActive(true);
         cryptosRepo.save(crypto);
-        return "redirect:/cryptos";
+        return "redirect:/cryptos/" + crypto.getId();
     }
 
     @GetMapping("/{id}")
     public String individualCrypto(@PathVariable long id, Model model){
         Crypto crypto = cryptosRepo.findOne(id);
-        model.addAttribute("crypto", crypto);
-        model.addAttribute("showEditControls", isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId());
-        boolean solvable;
-        User user = loggedInUser();
-        if(isLoggedIn() && (loggedInUser().getId() != crypto.getUser().getId()) && userCryptosRepo.findByPlayerIdAndCryptoId(user.getId(), crypto.getId()) == null){
-            solvable = true;
+        if((crypto.getIsApproved() && crypto.getActive()) || (isLoggedIn() && crypto.getUser().getId() == loggedUser(loggedInUser()).getId()) || (isLoggedIn() && loggedUser(loggedInUser()).getAdmin())) {
+            model.addAttribute("crypto", crypto);
+            if(isLoggedIn() && ((loggedUser(loggedInUser()).getId() == crypto.getUser().getId()) || (isLoggedIn() && loggedUser(loggedInUser()).getAdmin()))) {
+                model.addAttribute("showEditControls", true);
+            }
+            if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()) {
+                model.addAttribute("isAdmin", true);
+            }
+            boolean solvable = false;
+            if(isLoggedIn()) {
+                User user = loggedUser(loggedInUser());
+                if (isLoggedIn() && !user.getAdmin() && (user.getId() != crypto.getUser().getId()) && userCryptosRepo.findByPlayerIdAndCryptoId(user.getId(), crypto.getId()) == null) {
+                    solvable = true;
+                }
+            }
+            model.addAttribute("solvable", solvable);
+            return "/cryptos/show";
         } else {
-            solvable = false;
+            return "redirect:/cryptos";
         }
-        model.addAttribute("solvable", solvable);
-        return "/cryptos/show";
     }
 
     @PostMapping("/{id}/delete")
     public String deleteCrypto(@PathVariable long id){
         Crypto crypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId()) {
+        if(isLoggedIn() && loggedUser(loggedInUser()).getId() == crypto.getUser().getId() || (isLoggedIn() && loggedUser(loggedInUser()).getAdmin())) {
             crypto.setActive(false);
             cryptosRepo.save(crypto);
             return "redirect:/cryptos";
@@ -103,7 +116,7 @@ public class CryptoController {
     @GetMapping("/{id}/edit")
     public String updateCryptoGet(@PathVariable long id, Model model){
         Crypto crypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && loggedInUser().getId() == crypto.getUser().getId()) {
+        if(isLoggedIn() && (loggedUser(loggedInUser()).getId() == crypto.getUser().getId() || loggedUser(loggedInUser()).getAdmin())) {
             model.addAttribute("crypto", crypto);
             return "/cryptos/edit";
         } else {
@@ -120,13 +133,15 @@ public class CryptoController {
             return "/cryptos/edit";
         }
         Crypto oldCrypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && loggedInUser().getId() == oldCrypto.getUser().getId()) {
+        if(isLoggedIn() && loggedUser(loggedInUser()).getId() == oldCrypto.getUser().getId() || loggedUser(loggedInUser()).getAdmin()) {
             oldCrypto.setName(crypto.getName());
             oldCrypto.setSolution(crypto.getSolution());
             oldCrypto.setPlainText(crypto.getPlainText());
             oldCrypto.setScheme(crypto.getScheme());
             oldCrypto.setCryptokey(crypto.getCryptokey());
             oldCrypto.setPoints(crypto.getPoints());
+            oldCrypto.setActive(true);
+            oldCrypto.setIsApproved(false);
             cryptosRepo.save(oldCrypto);
             return "redirect:/cryptos/{id}";
         } else {
@@ -136,7 +151,7 @@ public class CryptoController {
     }
 
     @PostMapping("{id}/solve")
-    public String solveCrypto(@PathVariable long id, Model model){
+    public String solveCrypto(@PathVariable long id){
 
 // TODO: Implement actual check for correct-ness
         boolean cryptoIsCorrect = true;
@@ -145,16 +160,28 @@ public class CryptoController {
             Crypto crypto = cryptosRepo.findOne(id);
             crypto.setUsersSolved(crypto.getUsersSolved()+1);
             cryptosRepo.save(crypto);
-            User currentUser = usersRepo.findOne(loggedInUser().getId());
+            User currentUser = usersRepo.findOne(loggedUser(loggedInUser()).getId());
             currentUser.setPoints(currentUser.getPoints()+crypto.getPoints());
             usersRepo.save(currentUser);
             UserCrypto userCrypto = new UserCrypto();
             userCrypto.setCrypto(crypto);
-            userCrypto.setPlayer(loggedInUser());
+            userCrypto.setPlayer(loggedUser(loggedInUser()));
             userCryptosRepo.save(userCrypto);
             return "redirect:/success";
         } else {
             return "redirect:/cryptos/{id}";
+        }
+    }
+
+    @PostMapping("{id}/approve")
+    public String approveCrypto(@PathVariable long id){
+        if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()){
+            Crypto crypto = cryptosRepo.findOne(id);
+            crypto.setIsApproved(true);
+            cryptosRepo.save(crypto);
+            return "redirect:/admin";
+        } else {
+            return "redirect:/login";
         }
     }
 }
