@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="caesar">
+    <label for="plaintextBox">Plaintext:</label>
+    <input type="text" name="plaintextBox" id="plaintextBox" />
+    <button id="encrypt">encrypt</button>
+    <label for="ciphertextBox">Ciphertext:</label>
+    <input type="text" name="ciphertextBox" id="ciphertextBox" />
+    <button id="decrypt">Decrypt</button>
+    <label for="shiftAmount">Shift:</label>
+    <input type="text" name="shiftAmount" id="shiftAmount" value="3"/>
+</div>
+<div th:fragment="atbash">
+    <label for="plaintextBox">Plaintext:</label>
+    <input type="text" name="plaintextBox" id="plaintextBox" />
+    <button id="encrypt">encrypt</button>
+    <label for="ciphertextBox">Ciphertext:</label>
+    <input type="text" name="ciphertextBox" id="ciphertextBox" />
+    <button id="decrypt">Decrypt</button>
+</div>
+<div th:fragment="kamasutra">
+    <table>
+        <tr>
+            <td><input name="key[]" type="text" value="q"/></td>
+            <td><input name="key[]" type="text" value="w"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="e"/></td>
+            <td><input name="key[]" type="text" value="r"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="t"/></td>
+            <td><input name="key[]" type="text" value="y"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="u"/></td>
+            <td><input name="key[]" type="text" value="i"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="o"/></td>
+            <td><input name="key[]" type="text" value="p"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="a"/></td>
+            <td><input name="key[]" type="text" value="s"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="d"/></td>
+            <td><input name="key[]" type="text" value="f"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="g"/></td>
+            <td><input name="key[]" type="text" value="h"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="j"/></td>
+            <td><input name="key[]" type="text" value="k"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="l"/></td>
+            <td><input name="key[]" type="text" value="z"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="x"/></td>
+            <td><input name="key[]" type="text" value="c"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="v"/></td>
+            <td><input name="key[]" type="text" value="b"/></td>
+        </tr>
+        <tr>
+            <td><input name="key[]" type="text" value="n"/></td>
+            <td><input name="key[]" type="text" value="m"/></td>
+        </tr>
+    </table>
+    <label for="plaintextBox">Plaintext:</label>
+    <input type="text" name="plaintextBox" id="plaintextBox" />
+    <button id="encrypt">encrypt</button>
+    <label for="ciphertextBox">Ciphertext:</label>
+    <input type="text" name="ciphertextBox" id="ciphertextBox" />
+    <button id="decrypt">Decrypt</button>
+</div>
+<div th:fragment="railfence">
+    <label for="plaintextBox">Plaintext:</label>
+    <input type="text" name="plaintextBox" id="plaintextBox" />
+    <button id="encrypt">encrypt</button>
+    <label for="ciphertextBox">Ciphertext:</label>
+    <input type="text" name="ciphertextBox" id="ciphertextBox" />
+    <button id="decrypt">Decrypt</button>
+    <label for="numberOfRails">Number of Rails:</label>
+    <input type="text" name="numberOfRails" id="numberOfRails" />
+</div>
+<div th:fragment="vigenere">
+    <label for="plaintextBox">Plaintext:</label>
+    <input type="text" name="plaintextBox" id="plaintextBox" />
+    <button id="encrypt">encrypt</button>
+    <label for="ciphertextBox">Ciphertext:</label>
+    <input type="text" name="ciphertextBox" id="ciphertextBox" />
+    <button id="decrypt">Decrypt</button>
+    <label for="numberOfRails">Keyword:</label>
+    <input type="text" name="keyword" id="keyword" />
+</div>
+</body>
+</html>
