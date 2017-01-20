@@ -79,24 +79,11 @@ public class AuthenticationController {
 //  TODO: Doesn't actually send to admin currently - always redirects to /login...
     @GetMapping("/admin")
     public String adminPage(Model model){
-        System.out.println(isLoggedIn());
-        System.out.println(loggedUser(loggedInUser()).getAdmin());
         if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()){
             model.addAttribute("activeUnapproved",cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, false));
             return "/admin";
         } else {
             return "redirect:/login";
         }
-    }
-
-    @ResponseBody
-    @GetMapping("/test")
-    public String test() {
-
-        System.out.println(loggedUser(loggedInUser()).getId());
-        System.out.println(loggedUser(loggedInUser()).getEmail());
-        System.out.println(loggedUser(loggedInUser()).getAdmin());
-
-        return "ok";
     }
 }

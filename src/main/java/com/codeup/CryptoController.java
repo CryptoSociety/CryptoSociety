@@ -59,7 +59,7 @@ public class CryptoController {
     }
 
     @PostMapping("/create")
-    public String createCrypto(@Valid Crypto crypto, Errors validation, Model model){
+    public String createCrypto(@Valid Crypto crypto, Errors validation, Model model) throws Exception {
         if(validation.hasErrors()){
             model.addAttribute(validation.getAllErrors());
             model.addAttribute("crypto", crypto);
@@ -69,11 +69,11 @@ public class CryptoController {
         crypto.setUsersSolved(0);
 
 //  TODO: Make these actually matter
-        crypto.setCryptoText("TODO");
+        crypto.setCryptoText(CryptoTester.create(crypto));
         crypto.setIsApproved(false);
         crypto.setActive(true);
         cryptosRepo.save(crypto);
-        return "redirect:/cryptos";
+        return "redirect:/cryptos/" + crypto.getId();
     }
 
     @GetMapping("/{id}")

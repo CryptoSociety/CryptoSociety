@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 </head>
 <body>
@@ -16,19 +17,19 @@
                     <li class="active">
                         <a href="/../challenge">Challenges</a>
                     </li>
-                    <li>
+                    <li sec:authorize="isAnonymous()">
                         <a href="/../register">Register</a>
                     </li>
-                    <li>
+                    <li sec:authorize="isAnonymous()">
                         <a href="/../login">Login</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/../users/profile">Your Profile</a>
+                        <a href="/../users/profile" sec:authorize="isAuthenticated()" sec:authentication="name">Your Profile</a>
                     </li>
                     <li>
-                        <a href="/logout">Logout</a>
+                        <a href="/logout" sec:authorize="isAuthenticated()">Logout</a>
                     </li>
                 </ul>
             </div>
