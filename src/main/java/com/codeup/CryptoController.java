@@ -1,6 +1,5 @@
 package com.codeup;
 
-import com.codeup.auth.BaseController;
 import com.codeup.auth.User;
 import com.codeup.auth.Users;
 import com.codeup.models.Crypto;
@@ -64,9 +63,9 @@ public class CryptoController {
         }
         crypto.setUser(loggedUser(loggedInUser()));
         crypto.setUsersSolved(0);
+        crypto.setCryptoText(CipherSelector.create(crypto));
 
 //  TODO: Make these actually matter
-        crypto.setCryptoText(CryptoTester.create(crypto));
         crypto.setIsApproved(false);
         crypto.setActive(true);
         cryptosRepo.save(crypto);
