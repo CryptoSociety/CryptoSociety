@@ -166,16 +166,15 @@ public class Crypto {
         this.usersSolved = usersSolved;
     }
 
-    public boolean isApproved() {
+    public boolean getIsApproved() {
         return isApproved;
     }
 
-    public void setApproved(boolean approved) {
+    public void setIsApproved(boolean approved) {
         isApproved = approved;
     }
 
-
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
 
