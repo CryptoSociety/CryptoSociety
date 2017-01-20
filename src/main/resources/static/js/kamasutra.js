@@ -6,12 +6,16 @@ var $plaintext = $('#plaintextBox'),
     $ciphertext = $('#ciphertextBox'),
     $encrypt = $('#encrypt'),
     $decrypt = $('#decrypt'),
-    $key = $('[name="key[]"').map(function(){return this.value}).toArray();
+    $key = $('[name="key[]"').map(function(){return this.value}).toArray(),
+    $list = $('#lettersList');
+var $array = $("[name='key[]']");
+$('#keyFields').find('input').on("keyup", function () {
+    for(var i=0;i<$array.length;i++) {
+    var value =  $array.eq(i).val();
+    
+}
+});
 $encrypt.click(function () {
-    // var key = $key.map(function () {
-    //     return this.value;
-    // });
-    console.log($key);
     $.ajax({url: "/workbench/kamasutratool.json",
         type: 'GET',
         dataType: 'text',
