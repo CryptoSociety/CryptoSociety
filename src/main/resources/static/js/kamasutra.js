@@ -29,7 +29,7 @@ $decrypt.click(function () {
         type: 'GET',
         dataType: 'text',
         data: {input: $ciphertext.val(),
-            key: $key,
+            key: $key.join(""),
             punctuation: true}
     }).done(function (r) {
         $plaintext.val(r)
