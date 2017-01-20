@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header(${'Admin Page'})">
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <h1>Welcome to the admin page.</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div th:each="crypto : ${activeUnapproved}" th:object="${crypto}">
+                <a th:href="@{'/cryptos/' + *{id}}">
+                    <div th:text="*{name}">Title</div>
+                </a>
+                <div th:text="*{scheme}"></div>
+                <div th:text="*{cryptoText}">Puzzle</div>
+                <div th:text="*{creationDate}"></div>
+                <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
+</body>
+</html>
