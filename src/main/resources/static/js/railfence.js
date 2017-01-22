@@ -8,12 +8,13 @@ $(document).ready(function() {
         $ciphertext = $('#ciphertextBox'),
         $encrypt = $('#encrypt'),
         $decrypt = $('#decrypt'),
-        $rails = $('#numberOfRails');
+        $rails = $('#numberOfRails'),
+        $error = $('#error');
     $encrypt.click(function () {
         if (isNaN($rails.val()))
-            $('#error').text("The number of rails must be a positive whole number.");
+            $error.text("The number of rails must be a positive whole number.");
         else {
-            $('#error').text("");
+            $error.text("");
             $.ajax({
                 url: "/workbench/railfencetool.json",
                 type: 'GET',
@@ -30,18 +31,23 @@ $(document).ready(function() {
         }
     });
     $decrypt.click(function () {
-        $.ajax({
-            url: "/workbench/railfencetool/decrypt.json",
-            type: 'GET',
-            dataType: 'text',
-            data: {
-                ciphertext: $ciphertext.val(),
-                rails: $rails.val()
-            }
-        }).done(function (r) {
-            $plaintext.val(r)
-        }).fail(function (e) {
-            console.log(e);
-        });
+        if (isNaN($rails.val()))
+            $error.text("The number of rails must be a positive whole number.");
+        else {
+            $error.text("");
+            $.ajax({
+                url: "/workbench/railfencetool/decrypt.json",
+                type: 'GET',
+                dataType: 'text',
+                data: {
+                    ciphertext: $ciphertext.val(),
+                    rails: $rails.val()
+                }
+            }).done(function (r) {
+                $plaintext.val(r)
+            }).fail(function (e) {
+                console.log(e);
+            });
+        }
     });
 })
