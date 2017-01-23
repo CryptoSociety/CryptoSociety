@@ -8,18 +8,19 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
         <div class="col-md-12">
+            <h2 th:if="${param.incorrect}">Incorrect answer.</h2>
             <div th:object="${crypto}">
                 <div th:text="*{name}">Name</div>
                 <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
                 <div>Points: <span th:text="*{points}"></span></div>
                 <div th:text="*{cryptoText}">Crypto</div>
-                <div th:text="*{plainText}">Plaintext</div>
-                <div th:text="*{solution}">Solution</div>
+                <div th:if="${showExtendedInfo}" th:text="*{plainText}">Plaintext</div>
+                <div th:if="${showExtendedInfo}" th:text="*{solution}">Solution</div>
                 <div th:text="*{scheme}">Scheme</div>
-                <div th:text="*{cryptokey}">Key</div>
+                <div th:if="${showExtendedInfo}" th:text="*{cryptokey}">Key</div>
                 <div th:text="*{usersSolved}">Users solved</div>
                 <div th:text="*{creationDate}">Created</div>
-                <div th:if="*{!isApproved}">2`
+                <div th:if="*{!isApproved}">
                     <div th:if="${isAdmin}">
                         <form th:action="@{'/cryptos/'+*{id}+'/approve'}" th:method="post">
                             <button>Approve</button>
