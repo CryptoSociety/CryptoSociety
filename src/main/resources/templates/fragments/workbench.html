@@ -85,7 +85,8 @@
     <label for="ciphertextBox">Ciphertext:</label>
     <input type="text" name="ciphertextBox" id="ciphertextBox" />
     <button id="decrypt">Decrypt</button>
-    <p id="lettersList">Letters needed: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+    <p>Letters needed: <span id="lettersList">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span></p>
+    <p id="error"></p>
 </div>
 <div th:fragment="railfence">
     <label for="plaintextBox">Plaintext:</label>
@@ -96,6 +97,7 @@
     <button id="decrypt">Decrypt</button>
     <label for="numberOfRails">Number of Rails:</label>
     <input type="text" name="numberOfRails" id="numberOfRails" />
+    <p id="error"></p>
 </div>
 <div th:fragment="vigenere">
     <label for="plaintextBox">Plaintext:</label>
@@ -106,6 +108,7 @@
     <button id="decrypt">Decrypt</button>
     <label for="numberOfRails">Keyword:</label>
     <input type="text" name="keyword" id="keyword" />
+    <p id="error"></p>
 </div>
 </body>
 </html>

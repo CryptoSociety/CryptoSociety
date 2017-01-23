@@ -6,27 +6,37 @@ var $plaintext = $('#plaintextBox'),
     $ciphertext = $('#ciphertextBox'),
     $encrypt = $('#encrypt'),
     $decrypt = $('#decrypt'),
-    $key = $('[name="key[]"').map(function(){return this.value}).toArray(),
-    $list = $('#lettersList');
-var $array = $("[name='key[]']");
+    $list = $('#lettersList'),
+    $array = $("[name='key[]']"),
+    $error = $('#error');
 $('#keyFields').find('input').on("keyup", function () {
+    var alphabet = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
     for(var i=0;i<$array.length;i++) {
-    var value =  $array.eq(i).val();
-    
-}
+        var value =  $array.eq(i).val();
+        alphabet = alphabet.replace(value.toUpperCase(), "");
+    }
+    $list.html(alphabet);
 });
 $encrypt.click(function () {
-    $.ajax({url: "/workbench/kamasutratool.json",
-        type: 'GET',
-        dataType: 'text',
-        data: {input: $plaintext.val(),
-            key: $key.join(""),
-            punctuation: true}
-    }).done(function (r) {
-        $ciphertext.val(r)
-    }).fail(function (e) {
-        console.log(e)
-    })
+    if ($list.html().toString().trim() != "")
+        $error.text("You need to use all letters of the alphabet");
+    else {
+        $error.text("");
+        $.ajax({
+            url: "/workbench/kamasutratool.json",
+            type: 'GET',
+            dataType: 'text',
+            data: {
+                input: $plaintext.val(),
+                key: $('[name="key[]"').map(function(){return this.value}).toArray().join(""),
+                punctuation: true
+            }
+        }).done(function (r) {
+            $ciphertext.val(r)
+        }).fail(function (e) {
+            console.log(e)
+        })
+    }
 });
 $decrypt.click(function () {
     $.ajax({url: "/workbench/kamasutratool.json",
