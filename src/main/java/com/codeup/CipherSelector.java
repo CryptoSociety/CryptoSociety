@@ -12,7 +12,7 @@ public class CipherSelector {
         switch (crypto.getScheme()){
             case "caesar" :
                 ciphertext = c.caesar(crypto.getPlainText(),
-                        Integer.parseInt(crypto.getCryptokey()),
+                        crypto.getCryptokey(),
                         true);
                 break;
             case "atbash" :
@@ -20,12 +20,12 @@ public class CipherSelector {
                 break;
             case "kamasutra" :
                 ciphertext = c.kamasutra(crypto.getPlainText(),
-                        crypto.getCryptokey().toCharArray(),
+                        crypto.getCryptokey(),
                         true);
                 break;
             case "railfence" :
                 ciphertext = c.railfence(crypto.getPlainText(),
-                        Integer.parseInt(crypto.getCryptokey()),
+                        crypto.getCryptokey(),
                         true);
                 break;
             case "vigenere" :

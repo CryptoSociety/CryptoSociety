@@ -26,7 +26,7 @@ public class WorkbenchController {
             @RequestParam("plaintext") String plaintext,
             @RequestParam("shift") int shift,
             @RequestParam("punctuation") boolean punctuation){
-        String output =  c.caesar(plaintext, shift, punctuation);
+        String output =  c.caesar(plaintext, Integer.toString(shift), punctuation);
         return output;
     }
     @RequestMapping(value = "/caesartool/decrypt.json", method = RequestMethod.GET, produces = "application/json")
@@ -34,7 +34,7 @@ public class WorkbenchController {
     String getCaesardecrypt(
             @RequestParam("ciphertext") String ciphertext,
             @RequestParam("shift") int shift){
-        String output =  c.caesarDecypt(ciphertext, shift);
+        String output =  c.caesarDecypt(ciphertext, Integer.toString(shift));
         return output;
     }
 
@@ -60,7 +60,7 @@ public class WorkbenchController {
     public @ResponseBody String encryptKamaSutra(
             @RequestParam("input") String input,
             @RequestParam("key") String key) throws Exception {
-        String output = c.kamasutra(input, key.toUpperCase().toCharArray(), true);
+        String output = c.kamasutra(input, key.toUpperCase(), true);
         return output;
     }
 
@@ -75,7 +75,7 @@ public class WorkbenchController {
             @RequestParam("plaintext") String plaintext,
             @RequestParam("rails") int rails
     ){
-        String output = c.railfence(plaintext, rails, true);
+        String output = c.railfence(plaintext, Integer.toString(rails), true);
         return output;
     }
 
@@ -84,7 +84,7 @@ public class WorkbenchController {
             @RequestParam("ciphertext") String ciphertext,
             @RequestParam("rails") String rails
     ){
-        String output = c.railfenceDecrypt(ciphertext, Integer.parseInt(rails));
+        String output = c.railfenceDecrypt(ciphertext, rails);
         return output;
     }
 
