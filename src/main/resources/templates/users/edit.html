@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head th:replace="fragments/header :: header(${'Edit Challenge'})">
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <form th:action="@{'/users/' + *{id} + '/settings'}" th:method="POST" th:object="${user}">
+                <label for="username">Change username</label>
+                <input type="text" id="username" th:value="*{username}" th:field="*{username}" name="username"/>
+                <label for="email">Change email</label>
+                <input type="text" id="email" th:value="*{email}" th:field="*{email}" name="email"/>
+                <label for="currentpassword">Current password</label>
+                <input type="password" id="currentpassword" name="currentpassword"/>
+                <label for="newpassword">New password</label>
+                <input type="password" id="newpassword" name="newpassword"/>
+                <label for="confirmpassword">Confirm new password</label>
+                <input type="password" id="confirmpassword" name="confirmpassword"/>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.codeup.auth;
 import com.codeup.models.Cryptos;
 import com.codeup.models.UserCryptos;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -81,6 +82,66 @@ public class AuthenticationController {
             return ("redirect:/users/"+loggedUser().getId());
         } else {
             return "redirect:/login";
+        }
+    }
+
+    @GetMapping("/users/{id}/settings")
+    public String userSettingsGet(@PathVariable long id, Model model){
+        if(isLoggedIn() && loggedUser().getId() == id) {
+            model.addAttribute("user", userDao.findOne(id));
+            return "/users/edit";
+        } else {
+            return "redirect:/users/" + id;
+        }
+    }
+
+    @PostMapping("/users/{id}/settings")
+    public String userSettingsPost(@PathVariable long id, @Valid User updatedUser, Model model, Errors errors, HttpServletRequest request){
+        if(isLoggedIn() && loggedUser().getId() == id) {
+            User user = userDao.findOne(id);
+            if (!request.getParameter("currentpassword").isEmpty() && !request.getParameter("newpassword").isEmpty() && !request.getParameter("confirmpassword").isEmpty()) {
+                if (BCrypt.checkpw(request.getParameter("currentpassword"), user.getPassword())) {
+                    if (request.getParameter("newpassword").equals(request.getParameter("confirmpassword"))) {
+                        user.setPassword(request.getParameter("newpassword"));
+                    } else {
+                        model.addAttribute("PasswordError", "New password and confirm password did not match!");
+                        return "/users/edit";
+                    }
+                } else {
+                    model.addAttribute("PasswordError", "Incorrect password");
+                    return "/users/edit";
+                }
+            }
+            if (!request.getParameter("username").isEmpty()) {
+                String username = request.getParameter("username");
+                if (userDao.findByUsername(username) == null || userDao.findByUsername(username).getId() == user.getId()) {
+                    user.setUsername(username);
+                } else {
+                    model.addAttribute("usernameError", "Username is already taken");
+                    return "/users/edit";
+                }
+                if (errors.hasErrors()) {
+                    model.addAttribute("errors", errors);
+                    return "/users/edit";
+                }
+            }
+            if (!request.getParameter("email").isEmpty()) {
+                String email = request.getParameter("email");
+                if (userDao.findByEmail(email) == null || userDao.findByEmail(email).getId() == user.getId()) {
+                    user.setEmail(email);
+                } else {
+                    model.addAttribute("emailError", "Email is already taken");
+                    return "/users/edit";
+                }
+                if (errors.hasErrors()) {
+                    model.addAttribute("errors", errors);
+                    return "/users/edit";
+                }
+            }
+            userDao.save(user);
+            return "redirect:/users/profile";
+        } else {
+            return "redirect:/users/"+id;
         }
     }
 
