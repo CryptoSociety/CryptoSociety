@@ -8,7 +8,7 @@
     <div class="jumbotron">
     <div class="row">
         <div class="col-md-12">
-            <h1 th:text="'Welcome to your profile '+${user.username}+'!'"></h1>
+            <h1 th:text="${user.username}+'&#8217;s profile page'"></h1>
             <h4 th:if="${isAdmin} and ${user.admin}"><a th:href="@{'/admin'}">Admin</a></h4>
             <h3><a th:if="${showEditControls}" th:href="@{'/users/'+*{id}+'/settings'}" >Change settings</a></h3>
             <h2 th:text="'Points: '+${user.points}"></h2>
