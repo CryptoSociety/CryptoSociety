@@ -2,9 +2,12 @@ package com.codeup.auth;
 
 import com.codeup.models.Crypto;
 import com.codeup.models.UserCrypto;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +18,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "Must not be blank")
+    @Size(min = 5, max = 40, message = "Must be 5-40 characters")
     @Column(nullable = false, unique = true)
     private String username;
 
+    @Email(message = "Must be a valid email")
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -104,5 +110,10 @@ public class User {
 
     public void setUserCryptos(List<UserCrypto> userCryptos) {
         this.userCryptos = userCryptos;
+    }
+
+    @Override
+    public String toString(){
+        return "Username " + getUsername() + " Email " + getEmail() + " Admin " + getAdmin() + " Points " + getPoints();
     }
 }

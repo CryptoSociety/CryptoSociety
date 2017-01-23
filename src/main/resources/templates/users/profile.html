@@ -8,10 +8,10 @@
     <div class="row">
         <div class="col-md-12">
             <h1 th:text="'Welcome to your profile '+${user.username}+'!'"></h1>
+            <h4 th:if="${isAdmin} and ${user.admin}"><a th:href="@{'/admin'}">Admin</a></h4>
+            <h3><a th:if="${showEditControls}" th:href="@{'/users/'+*{id}+'/settings'}" >Change settings</a></h3>
             <h2 th:text="'Points: '+${user.points}"></h2>
-            <h3 th:if="${user.admin}">Admin</h3>
             <div>
-
                 <!--TODO: Maybe implement this check in the controller, using a fori on the list of cryptos that is being passed.-->
                 <div th:each="crypto : ${user.cryptos}" th:object="${crypto}">
                     <div th:with="activeAndApproved=*{active} and *{isApproved},userIsOwner=${showEditControls},isAdmin=${isAdmin}">

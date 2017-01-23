@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface Cryptos extends CrudRepository<Crypto, Long> {
-    public List<Crypto> findByActiveEqualsAndIsApprovedEquals(boolean active, boolean approved);
-    public List<Crypto> findFirst3ByActiveEqualsAndIsApprovedEqualsOrderByCreationDateDesc(boolean active, boolean approved);
+    List<Crypto> findByActiveEqualsAndIsApprovedEquals(boolean active, boolean approved);
+    List<Crypto> findFirst3ByActiveEqualsAndIsApprovedEqualsOrderByCreationDateDesc(boolean active, boolean approved);
 }

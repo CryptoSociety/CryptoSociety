@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface Walkthroughs extends CrudRepository<Walkthrough, Long> {
-    public List<Walkthrough> findAllByOrderByDifficultyAsc();
-    public Walkthrough findFirstByScheme(String scheme);
+    List<Walkthrough> findAllByOrderByDifficultyAsc();
+    Walkthrough findFirstByScheme(String scheme);
 }

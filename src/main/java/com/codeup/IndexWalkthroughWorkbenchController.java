@@ -33,7 +33,6 @@ public class IndexWalkthroughWorkbenchController {
     public String walkthroughIndex(Model model){
         List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
         model.addAttribute("allWalkthroughs", allWalkthroughs);
-//  TODO: Implement proper linking in view
        return "walkthrough";
     }
 
@@ -43,7 +42,6 @@ public class IndexWalkthroughWorkbenchController {
         Walkthrough current = walkthroughsRepo.findFirstByScheme(scheme);
         model.addAttribute("allWalkthroughs", allWalkthroughs);
         model.addAttribute("currentWalkthrough", current);
-//      TODO: implement in view
         return "individualWalkthrough";
     }
 
