@@ -22,7 +22,7 @@ public class IndexWalkthroughWorkbenchController {
     Walkthroughs walkthroughsRepo;
 
     @GetMapping("")
-    public String landingPage(Model model){
+    public String landingPage(Model model) {
         List<Crypto> mostRecentCryptos = cryptosRepo.findFirst3ByActiveEqualsAndIsApprovedEqualsOrderByCreationDateDesc(true, true);
 //        TODO: implement most recent in view, and check if ordering is right or needs to be reversed
         model.addAttribute("mostRecentCryptos", mostRecentCryptos);
@@ -30,15 +30,15 @@ public class IndexWalkthroughWorkbenchController {
     }
 
     @GetMapping("/walkthrough")
-    public String walkthroughIndex(Model model){
+    public String walkthroughIndex(Model model) {
         List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
         model.addAttribute("allWalkthroughs", allWalkthroughs);
 //  TODO: Implement proper linking in view
-       return "walkthrough";
+        return "walkthrough";
     }
 
     @GetMapping("/walkthrough/{scheme}")
-    public String walkthroughPage(@PathVariable String scheme, Model model){
+    public String walkthroughPage(@PathVariable String scheme, Model model) {
         List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
         Walkthrough current = walkthroughsRepo.findFirstByScheme(scheme);
         model.addAttribute("allWalkthroughs", allWalkthroughs);
@@ -48,8 +48,22 @@ public class IndexWalkthroughWorkbenchController {
     }
 
     @GetMapping("/challenge")
-    public String challenge(){
+    public String challenge() {
         return "challenge";
     }
+
+
+    @GetMapping("/toolindex")
+    public String toolIndex() {
+        return "toolindex";
+    }
+
+    @GetMapping("/tool")
+    public String tool() {
+        return "tool";
+    }
+
 }
+
+
 
