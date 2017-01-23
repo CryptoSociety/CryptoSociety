@@ -49,5 +49,17 @@ public class IndexWalkthroughWorkbenchController {
     public String challenge(){
         return "challenge";
     }
+
+
+    @GetMapping("/toolindex")
+    public String toolIndex() {
+        return "toolindex";
+    }
+
+    @GetMapping("/tool")
+    public String tool() {
+        return "tool";
+    }
+
 }
 
