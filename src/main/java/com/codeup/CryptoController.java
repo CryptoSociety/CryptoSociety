@@ -156,7 +156,7 @@ public class CryptoController {
     @PostMapping("{id}/solve")
     public String solveCrypto(@PathVariable long id, @RequestParam("solution") String solution){
 
-        boolean cryptoIsCorrect = (cryptosRepo.findOne(id).getSolution().equals(solution));
+        boolean cryptoIsCorrect = (cryptosRepo.findOne(id).getSolution().equalsIgnoreCase(solution));
         if(cryptoIsCorrect){
             Crypto crypto = cryptosRepo.findOne(id);
             crypto.setUsersSolved(crypto.getUsersSolved()+1);
@@ -184,5 +184,10 @@ public class CryptoController {
         } else {
             return "redirect:/login";
         }
+    }
+
+    @GetMapping("/challenge")
+    public String challenge(){
+        return "/cryptos/challenge";
     }
 }

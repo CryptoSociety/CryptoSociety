@@ -6,25 +6,27 @@ import java.util.Arrays;
  * Created by Duke on 1/17/17.
  */
 public class Cryptography {
-    public String caesar(String plaintext, int shift, boolean punctuation) {
+    public String caesar(String plaintext, String shift, boolean punctuation) {
+        int key = Integer.valueOf(shift);
         plaintext = prepare(plaintext, punctuation);
         StringBuilder ciphertext = new StringBuilder(plaintext);
         for (int i = 0; i < ciphertext.length(); i++){
             char letter = ciphertext.charAt(i);
             if (Character.isLetter(letter)){
-                ciphertext.setCharAt(i, (char)((letter + shift - (int)'A') % 26 + (int)'A'));
+                ciphertext.setCharAt(i, (char)((letter + key - (int)'A') % 26 + (int)'A'));
             }
         }
         return ciphertext.toString();
     }
 
-    public String caesarDecypt(String ciphertext, int shift) {
+    public String caesarDecypt(String ciphertext, String shift) {
+        int key = Integer.valueOf(shift);
         ciphertext = prepare(ciphertext, true);
         StringBuilder plaintext = new StringBuilder(ciphertext);
         for (int i = 0; i < plaintext.length(); i++){
             char letter = plaintext.charAt(i);
             if (Character.isLetter(letter)){
-                plaintext.setCharAt(i, (char)((letter - shift + (int)'A') % 26 + (int)'A'));
+                plaintext.setCharAt(i, (char)((letter - key + (int)'A') % 26 + (int)'A'));
             }
         }
         return plaintext.toString();
@@ -42,27 +44,29 @@ public class Cryptography {
         return result.toString();
     }
 
-    public String railfence(String plaintext, int numberOfRails, boolean punctuation) {
+    public String railfence(String plaintext, String numberOfRails, boolean punctuation) {
+        int railInt = Integer.valueOf(numberOfRails);
         plaintext = prepare(plaintext, punctuation);
-        String[] rails = new String[numberOfRails];
+        String[] rails = new String[railInt];
         Arrays.fill(rails, "");
         int currentRail = 0;
         boolean ascending = false;
         for (int i = 0; i < plaintext.length(); i++) {
             rails[currentRail] = rails[currentRail] + plaintext.charAt(i);
             currentRail = ascending ? currentRail - 1 : currentRail + 1;
-            if (currentRail == 0 || currentRail == numberOfRails - 1)
+            if (currentRail == 0 || currentRail == railInt - 1)
                 ascending = !ascending;
         }
         return String.join("", rails);
     }
 
-    public String railfenceDecrypt(String ciphertext, int numberOfRails) {
+    public String railfenceDecrypt(String ciphertext, String numberOfRails) {
+        int railInt = Integer.valueOf(numberOfRails);
         ciphertext = prepare(ciphertext, true);
         StringBuilder plaintext = new StringBuilder();
         plaintext.setLength(ciphertext.length());
         int i = 0;
-        int jumpOne = numberOfRails*2-2;
+        int jumpOne = railInt*2-2;
         int jumpTwo = 0;
         boolean useFirstJump = true;
         int insertLocation = 0;
@@ -87,8 +91,9 @@ public class Cryptography {
         return plaintext.toString();
     }
 
-    public String kamasutra(String plaintext, char[] key, boolean punctuation) throws Exception {
-        AlphabetKey alphabetKey = new AlphabetKey(key);
+    public String kamasutra(String plaintext, String key, boolean punctuation) throws Exception {
+        char[] charArray= key.toCharArray();
+        AlphabetKey alphabetKey = new AlphabetKey(charArray);
         plaintext = prepare(plaintext, punctuation);
         StringBuilder ciphertext = new StringBuilder(plaintext);
         for (int i = 0; i < plaintext.length(); i++) {
@@ -107,7 +112,7 @@ public class Cryptography {
         for (int i = 0; i < plaintext.length(); i++){
             if (Character.isLetter(plaintext.charAt(i))) {
                 ciphertext.setCharAt(i, caesar(String.valueOf(plaintext.charAt(i)),
-                        ((int)keyword.charAt(k) - (int)'A'),
+                        Integer.toString(((int)keyword.charAt(k) - (int)'A')),
                         true)
                         .charAt(0));
                 k++;
@@ -126,7 +131,7 @@ public class Cryptography {
         for (int i = 0; i < ciphertext.length(); i++){
             if (Character.isLetter(ciphertext.charAt(i))) {
                 plaintext.setCharAt(i, caesarDecypt(String.valueOf(plaintext.charAt(i)),
-                        ((int)keyword.charAt(k) - (int)'A'))
+                        Integer.toString(((int)keyword.charAt(k) - (int)'A')))
                         .charAt(0));
                 k++;
                 if(k >= keyword.length())
