@@ -7,6 +7,7 @@
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
+        <h2 th:if="${param.success}">Success!</h2>
         <div class="col-md-12">
             <div th:each="crypto : ${cryptoList}" th:object="${crypto}">
                 <a th:href="@{'/cryptos/' + *{id}}">
