@@ -6,8 +6,11 @@
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="jumbotron">
     <div class="row">
         <div class="col-md-12">
+            <h1>Create a Challenge!</h1>
+            <h2>Test your fellow Society Members</h2>
             <form th:action="@{'/cryptos/create'}" method="post" th:object="${crypto}">
                 <label>Name:</label>
                 <input th:value="*{name}" th:field="*{name}"/>
@@ -30,6 +33,7 @@
             </form>
         </div>
     </div>
+</div>
     <div th:replace="fragments/footer :: footer" class="row footer">
     </div>
 </div>

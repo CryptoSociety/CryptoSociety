@@ -7,6 +7,21 @@
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
+        <div class="col-md-6">
+            <div class="jumbotron">
+                <h2>Challenge Yourself!</h2>
+            <a href="/../challenge">Challenges</a>
+            </div>
+        </div>
+            <div class="col-md-6">
+                <div class="jumbotron">
+                    <h2>Create and Edit Your Challenges</h2>
+            <a href="/../cryptos/create">Create a Challenge</a>
+            <a href="/../cryptos/edit">Edit Your Challenge</a>
+        </div>
+            </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div th:each="crypto : ${cryptoList}" th:object="${crypto}">
                 <a th:href="@{'/cryptos/' + *{id}}">
