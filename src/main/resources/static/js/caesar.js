@@ -8,12 +8,13 @@ $(document).ready(function() {
         $ciphertext = $('#ciphertextBox'),
         $encrypt = $('#encrypt'),
         $decrypt = $('#decrypt'),
-        $shift = $('#shiftAmount');
+        $shift = $('#shiftAmount'),
+        $error = $('#error');
     $encrypt.click(function () {
         if(isNaN($shift.val()))
-            $('#error').text("The shift must be a positive whole number.");
+            $error.text("The shift must be a positive whole number.");
         else {
-            $('#error').text("");
+            $error.text("");
             $.ajax({
                 url: "/workbench/caesartool.json",
                 type: 'GET',
@@ -31,16 +32,24 @@ $(document).ready(function() {
         }
     });
     $decrypt.click(function () {
-        $.ajax({url: "/workbench/caesartool/decrypt.json",
-            type: 'GET',
-            dataType: 'text',
-            data: {ciphertext: $ciphertext.val(),
-                shift: $shift.val(),
-                punctuation: true}
-        }).done(function (r) {
-            $plaintext.val(r)
-        }).fail(function (e) {
-            console.log(e);
-        });
+        if(isNaN($shift.val()))
+            $error.text("The shift must be a positive whole number.");
+        else {
+            $error.text("");
+            $.ajax({
+                url: "/workbench/caesartool/decrypt.json",
+                type: 'GET',
+                dataType: 'text',
+                data: {
+                    ciphertext: $ciphertext.val(),
+                    shift: $shift.val(),
+                    punctuation: true
+                }
+            }).done(function (r) {
+                $plaintext.val(r)
+            }).fail(function (e) {
+                console.log(e);
+            });
+        }
     });
 });
