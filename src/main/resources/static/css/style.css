@@ -182,3 +182,7 @@ div#objId {
 #textblock#objId {
     height:140px;
 }
+
+.container-fluid{
+    margin-top: 50px;
+}
