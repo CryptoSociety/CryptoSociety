@@ -27,7 +27,7 @@ public class AuthenticationController {
     @Autowired
     Cryptos cryptosRepo;
 
-    private User loggedUser(User loggedInUser){
+    private User loggedUser(){
         return userDao.findOne(loggedInUser().getId());
     }
 
@@ -68,17 +68,17 @@ public class AuthenticationController {
         User user = userDao.findOne(id);
         model.addAttribute("user", user);
         if(isLoggedIn()) {
-            model.addAttribute("loggedInUser", loggedUser(loggedInUser()));
+            model.addAttribute("loggedInUser", loggedUser());
         }
-        model.addAttribute("isAdmin", isLoggedIn() && loggedUser(loggedInUser()).getAdmin());
-        model.addAttribute("showEditControls", isLoggedIn() && loggedUser(loggedInUser()).getId() == user.getId());
+        model.addAttribute("isAdmin", isLoggedIn() && loggedUser().getAdmin());
+        model.addAttribute("showEditControls", isLoggedIn() && loggedUser().getId() == user.getId());
         return "/users/profile";
     }
 
     @GetMapping("/users/profile")
     public String personalProfile(){
         if(isLoggedIn()){
-            return ("redirect:/users/"+loggedUser(loggedInUser()).getId());
+            return ("redirect:/users/"+loggedUser().getId());
         } else {
             return "redirect:/login";
         }
@@ -86,7 +86,7 @@ public class AuthenticationController {
 
     @GetMapping("/admin")
     public String adminPage(Model model){
-        if(isLoggedIn() && loggedUser(loggedInUser()).getAdmin()){
+        if(isLoggedIn() && loggedUser().getAdmin()){
             model.addAttribute("activeUnapproved",cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, false));
             return "/admin";
         } else {
