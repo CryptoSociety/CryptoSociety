@@ -7,7 +7,7 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
         <div class="col-md-12">
-            <h1 th:text="'Posts by '+${user.username}"></h1>
+            <h1 th:text="'Welcome to your profile '+${user.username}+'!'"></h1>
             <h2 th:text="'Points: '+${user.points}"></h2>
             <h3 th:if="${user.admin}">Admin</h3>
             <div>
