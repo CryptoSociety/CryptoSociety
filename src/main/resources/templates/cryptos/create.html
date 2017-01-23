@@ -8,6 +8,7 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="jumbotron">
     <div class="row">
+        <h2 th:if="${param.success}">Success!</h2>
         <div class="col-md-12">
             <h1>Create a Challenge!</h1>
             <h2>Test your fellow Society Members</h2>
