@@ -185,4 +185,9 @@ public class CryptoController {
             return "redirect:/login";
         }
     }
+
+    @GetMapping("/challenge")
+    public String challenge(){
+        return "/cryptos/challenge";
+    }
 }

@@ -29,14 +29,14 @@ public class IndexWalkthroughWorkbenchController {
         return "index";
     }
 
-    @GetMapping("/walkthrough")
+    @GetMapping("/walkthroughs")
     public String walkthroughIndex(Model model){
         List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
         model.addAttribute("allWalkthroughs", allWalkthroughs);
        return "walkthrough";
     }
 
-    @GetMapping("/walkthrough/{scheme}")
+    @GetMapping("/walkthroughs/{scheme}")
     public String walkthroughPage(@PathVariable String scheme, Model model){
         List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
         Walkthrough current = walkthroughsRepo.findFirstByScheme(scheme);
@@ -45,21 +45,15 @@ public class IndexWalkthroughWorkbenchController {
         return "individualWalkthrough";
     }
 
-    @GetMapping("/challenge")
-    public String challenge(){
-        return "challenge";
-    }
-
-
-    @GetMapping("/toolindex")
+    @GetMapping("/workbench")
     public String toolIndex() {
         return "toolindex";
     }
 
-    @GetMapping("/tool")
-    public String tool() {
-        return "tool";
-    }
+//    @GetMapping("/tool")
+//    public String tool() {
+//        return "tool";
+//    }
 
 }
 
