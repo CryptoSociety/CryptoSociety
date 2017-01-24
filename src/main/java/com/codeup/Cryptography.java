@@ -93,6 +93,9 @@ public class Cryptography {
 
     public String kamasutra(String plaintext, String key, boolean punctuation) throws Exception {
         char[] charArray= key.toCharArray();
+        if (!check26(charArray)){
+            throw new Exception("Input does not contain all 26 letters of the alphabet");
+        }
         AlphabetKey alphabetKey = new AlphabetKey(charArray);
         plaintext = prepare(plaintext, punctuation);
         StringBuilder ciphertext = new StringBuilder(plaintext);
@@ -149,5 +152,16 @@ public class Cryptography {
 
     private boolean isAlphnumeric(char c){
         return (Character.isLetter(c) || Character.isDigit(c));
+    }
+
+    public static boolean check26(char[] input) {
+        int i=0;
+        for(char c : input) {
+            int x = Character.toUpperCase(c);
+            if (x >= 'A' && x <= 'Z') {
+                i |= 1 << (x - 'A');
+            }
+        }
+        return  (i == (i | ((1 << (1 + 'Z' - 'A')) - 1)));
     }
 }
