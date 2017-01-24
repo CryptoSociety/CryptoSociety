@@ -23,7 +23,8 @@
                 <textarea class="form-control" th:value="*{solution}" th:field="*{solution}"></textarea>
                 <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
                 <label>scheme</label>
-                <select name="scheme" id="scheme" th:value="*{scheme}" th:field="*{scheme}">
+                <select name="scheme" required="required" id="scheme" value="" th:field="*{scheme}">
+                    <option value="" selected="true" hidden="true">Choose a scheme.</option>
                     <option value="caesar">Caesar shift</option>
                     <option value="atbash">Atbash</option>
                     <option value="kamasutra">Kama Sutra</option>
@@ -31,8 +32,7 @@
                     <option value="vigenere">Vigenere</option>
                 </select>
                 <div id="key">
-                    <label>Shift (Positive integer)</label>
-                    <input th:value="*{cryptokey}" th:field="*{cryptokey}"/>
+                    <div>Select a key.</div>
                 </div>
                 <label>points</label>
                 <input type="number" th:value="*{points}" th:field="*{points}"/>

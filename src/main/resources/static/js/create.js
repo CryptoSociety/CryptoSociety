@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    $("#scheme").change(function () {
-        var val = $(this).val();
+    $("#scheme").change(function() {
+        var val = $("#scheme").val();
         if (val == "caesar") {
-            $("#key").html("<label for='key'>Shift (Positive integer)</label><input name='cryptokey' th:value='*{cryptokey}' th:field='*{cryptokey}'/>");
+            $("#key").html("<label for='key'>Shift (Positive integer)</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
         } else if (val == "atbash") {
-            $("#key").html("<label for='key'>Atbash doesn't use a key.</label><input name='cryptokey' hidden th:value='*{cryptokey}' th:field='*{cryptokey}'></input>");
+            $("#key").html("<label for='key'>Atbash doesn't use a key.</label><input name='cryptokey' hidden th:value='atbash' th:field='*{cryptokey}'></input>");
         } else if (val == "kamasutra") {
             $("#key").html("<label for='key'>Key</label>" +
                 "<ul style='list-style:none'>" +
@@ -22,7 +22,7 @@ $(document).ready(function () {
                 "<li><input id='in23' class='ksin' maxlength='1'><span> = </span><input id='in24' class='ksin' maxlength='1'></li>" +
                 "<li><input id='in25' class='ksin' maxlength='1'><span> = </span><input id='in26' class='ksin' maxlength='1'></li>" +
                 "</ul>" +
-                "<input name='cryptokey' id='finalKey' hidden  th:value='*{cryptokey}' th:field='*{cryptokey}'>");
+                "<input name='cryptokey' id='finalKey' hidden  th:value='' th:field='*{cryptokey}'>");
             $(".ksin").change(kamasutraInputManipulation);
             function kamasutraInputManipulation() {
                 var final = $("#finalKey");
@@ -55,9 +55,9 @@ $(document).ready(function () {
                 final.val(one.val() + two.val() + three.val() + four.val() + five.val() + six.val() + seven.val() + eight.val() + nine.val() + ten.val() + eleven.val() + twelve.val() + thirteen.val() + fourteen.val() + fifteen.val() + sixteen.val() + seventeen.val() + eighteen.val() + nineteen.val() + twenty.val() + twentyone.val() + twentytwo.val() + twentythree.val() + twentyfour.val() + twentyfive.val() + twentysix.val());
             }
         } else if (val == "railfence"){
-            $("#key").html("<label for='key'>Number of Rails (Positive integer)</label><input name='cryptokey' th:value='*{cryptokey}' th:field='*{cryptokey}'/>");
+            $("#key").html("<label for='key'>Number of Rails (Positive integer)</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
         } else if (val == "vigenere"){
-            $("#key").html("<label for='key'>Keyword</label><input name='cryptokey' th:value='*{cryptokey}' th:field='*{cryptokey}'/>");
+            $("#key").html("<label for='key'>Keyword</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
         }
-    });
+    })
 });
