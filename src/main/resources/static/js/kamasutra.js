@@ -39,15 +39,23 @@ $encrypt.click(function () {
     }
 });
 $decrypt.click(function () {
-    $.ajax({url: "/workbench/kamasutratool.json",
-        type: 'GET',
-        dataType: 'text',
-        data: {input: $ciphertext.val(),
-            key: $key.join(""),
-            punctuation: true}
-    }).done(function (r) {
-        $plaintext.val(r)
-    }).fail(function (e) {
-        console.log(e)
-    })
+    if ($list.html().toString().trim() != "")
+        $error.text("You need to use all letters of the alphabet");
+    else {
+        $error.text("");
+        $.ajax({
+            url: "/workbench/kamasutratool.json",
+            type: 'GET',
+            dataType: 'text',
+            data: {
+                input: $ciphertext.val(),
+                key: $('[name="key[]"').map(function(){return this.value}).toArray().join(""),
+                punctuation: true
+            }
+        }).done(function (r) {
+            $plaintext.val(r)
+        }).fail(function (e) {
+            console.log(e)
+        })
+    }
 });
