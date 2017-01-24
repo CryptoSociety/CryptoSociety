@@ -92,6 +92,7 @@ public class Cryptography {
     }
 
     public String kamasutra(String plaintext, String key, boolean punctuation) throws Exception {
+        key = prepare(key, true);
         char[] charArray= key.toCharArray();
         AlphabetKey alphabetKey = new AlphabetKey(charArray);
         plaintext = prepare(plaintext, punctuation);
