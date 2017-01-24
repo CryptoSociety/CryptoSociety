@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
-<head th:replace="fragments/header :: header(${'Edit Challenge'})">
+<head th:replace="fragments/header :: header(${'User Settings'})">
 </head>
 <body>
 <div class="container-fluid">
@@ -9,16 +9,29 @@
     <div class="row">
         <div class="col-md-12">
             <form th:action="@{'/users/' + *{id} + '/settings'}" th:method="POST" th:object="${user}">
-                <label for="username">Change username</label>
-                <input type="text" id="username" th:value="*{username}" th:field="*{username}" name="username"/>
-                <label for="email">Change email</label>
-                <input type="text" id="email" th:value="*{email}" th:field="*{email}" name="email"/>
-                <label for="currentpassword">Current password</label>
-                <input type="password" id="currentpassword" name="currentpassword"/>
-                <label for="newpassword">New password</label>
-                <input type="password" id="newpassword" name="newpassword"/>
-                <label for="confirmpassword">Confirm new password</label>
-                <input type="password" id="confirmpassword" name="confirmpassword"/>
+                <div>
+                    <label for="username">Change username</label>
+                    <input type="text" id="username" th:value="*{username}" th:field="*{username}" name="username"/>
+                </div>
+                <div th:if="${usernameError}" class="alert alert-danger" th:text="${usernameError}"></div>
+                <div>
+                    <label for="email">Change email</label>
+                    <input type="text" id="email" th:value="*{email}" th:field="*{email}" name="email"/>
+                </div>
+                <div th:if="${emailError}" class="alert alert-danger" th:text="${emailError}"></div>
+                <div>
+                    <label for="currentpassword">Current password</label>
+                    <input type="password" id="currentpassword" name="currentpassword"/>
+                </div>
+                <div>
+                    <label for="newpassword">New password</label>
+                    <input type="password" id="newpassword" name="newpassword"/>
+                </div>
+                <div>
+                    <label for="confirmpassword">Confirm new password</label>
+                    <input type="password" id="confirmpassword" name="confirmpassword"/>
+                </div>
+                <div th:if="${passwordError}" class="alert alert-danger" th:text="${passwordError}"></div>
                 <button>Submit</button>
             </form>
         </div>

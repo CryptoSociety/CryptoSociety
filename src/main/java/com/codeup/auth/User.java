@@ -23,10 +23,12 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
+    @NotBlank(message = "Must not be blank")
     @Email(message = "Must be a valid email")
     @Column(nullable = false, unique = true)
     private String email;
 
+    @NotBlank(message = "Must not be blank")
     @Column(nullable = false)
     private String password;
 
@@ -85,7 +87,11 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+        if(password.trim().isEmpty() || password.trim().length() < 5 || password.trim().length() > 40){
+            this.password = "Invalid entry";
+        } else {
+            this.password = BCrypt.hashpw(password, BCrypt.gensalt());
+        }
     }
 
     public long getPoints() {
