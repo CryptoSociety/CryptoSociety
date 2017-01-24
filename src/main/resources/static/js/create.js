@@ -5,6 +5,7 @@ $(document).ready(function () {
             $("#key").html("<label for='key'>Shift (Positive integer)</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
         } else if (val == "atbash") {
             $("#key").html("<label for='key'>Atbash doesn't use a key.</label><input name='cryptokey' hidden th:value='atbash' th:field='*{cryptokey}'></input>");
+
         } else if (val == "kamasutra") {
             $("#key").html("<label for='key'>Key</label>" +
                 "<ul style='list-style:none'>" +
@@ -60,4 +61,5 @@ $(document).ready(function () {
             $("#key").html("<label for='key'>Keyword</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
         }
     })
+
 });
