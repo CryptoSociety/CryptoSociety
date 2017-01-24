@@ -12,10 +12,6 @@
                 Walkthrough Page
             </h3>
 
-            <div th:each="walkthrough : ${allWalkthroughs}" th:object="${walkthrough}">
-                <div th:text="*{title}"></div>
-            </div>
-
             <p class="text-center">
                 Whether you are brand new to cryptography, or an old hand looking to pick up
                 a few new tricks, you are in the right spot.  Here, you will find pages on
@@ -118,16 +114,25 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
+            <a href="/walkthroughs/caesar" class="btn" type="button">Caesar shift</a>
         </div>
         <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
+            <a href="/walkthroughs/atbash" class="btn" type="button">atbash</a>
         </div>
         <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
+            <a href="/walkthroughs/railfence" class="btn" type="button">railfence</a>
         </div>
         <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
+            <a href="/walkthroughs/kamasutra" class="btn" type="button">kamasutra</a>
+        </div>
+        <div class="col-md-3">
+            <a href="/walkthroughs/vigenere" class="btn" type="button">vigenere</a>
+        </div>
+        <div class="col-md-3">
+            <a href="/walkthroughs/vigenereDecrypt" class="btn" type="button">Decrypting the vigenere</a>
+        </div>
+        <div class="col-md-3">
+            <a href="/walkthroughs/cryptanalysis" class="btn" type="button">general cryptanalysis</a>
         </div>
     </div>
     <div th:replace="fragments/footer :: footer" class="row footer">

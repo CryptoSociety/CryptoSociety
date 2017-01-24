@@ -1,10 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header(${'Kamasutra'})">
 </head>
 <body>
-$END$
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Kama Sutra Cipher
+            </h3>
+
+            <p class="text-center">
+            It may now be most famous as a book of "activities" for married couples,
+            but when it was originally written, the Kama Sutra contained guides on a
+            multitude of aspects of love, married life, and philosophy.  Included in this
+            was a chapter on the art of secret writing.  Several techniques were listed, but
+            we will only be discussing one here today.
+
+            </p>
+            <p class="text-center">
+            The Kama Sutra cipher is, in a way, a more advanced version of the Atbash
+            cipher discussed in a previous section.  Both operate on the principal of
+            swapping pairs of letters.  However, while the Atbash cipher produces a perfect
+            mirror of the alphabet, the Kama Sutra cipher allows the cryptographer to
+            choose the letter pairs at will.  One possible permutation might be: <br />
+
+            <code>
+                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <br />
+
+                L G F Z M C B K Y W H A E R T S U N P O Q X J V I D
+            </code>
+
+        </p>
+            <p class="text-center">
+            That is only one possible permutation, chosen randomly.  This cipher
+            actually has a total of 7,905,853,580,625 possible permutations, or keys.  In
+            order to employ this, two people would have to meet first to enchange keys, so
+            that both know the proper alphabet to use to decrypt the message.  This
+            makes it the first cipher we have covered that truly makes using brute force
+            infeasible, at least by hand.  Modern computers can handle that many
+            calculations without too much trouble, and despite the imposing number, this
+            cipher is not secure against modern crytanalysis by any means.  However, for our
+            purposes, this cipher requires some real thought to solve.  Study the sections
+            on frequency analysis and cribs carefully to break it!
+</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
 </body>
 </html>

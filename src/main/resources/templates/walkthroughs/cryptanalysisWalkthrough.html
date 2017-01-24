@@ -1,10 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header(${'Cryptanalysis'})">
 </head>
 <body>
-$END$
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                General Cryptanalysis techniques
+            </h3>
+
+            <p class="text-center">
+            Cryptanalysis techniques are nearly as old as cryptography itself, and their
+            histories are completely intertwined, each spurring the other forward.  As one
+            cipher system falls to analysis, another, stronger one takes it's place, only to
+            be defeated by deeper analysis.  We will describe 2 of the most basic techniques
+            here, but there are more out there for the dedicated cryptanalist.  Our first
+            technique is frequency analysis.
+
+            </p>
+            <p class="text-center">
+            In every language, the frequency with which individual letters appear varies
+            from letter to letter, creating a fingerprint or signature that can be mapped.
+            In english, the most common letters are traditionally taken to be <br />
+            <code>
+                E T A O I N S H R D L U <br />
+            </code>
+            though this can change depending on the texts used for the sample.
+            The full table of letter frequencies is approximately <br />
+
+            <code>
+                E 12.702%<br />
+                T 9.056%<br />
+                A 8.167%<br />
+                O 7.507%<br />
+                I 6.966%<br />
+                N 6.749%<br />
+                S 6.327%<br />
+                H 6.094%<br />
+                R 5.987%<br />
+                D 4.253%<br />
+                L 4.025%<br />
+                C 2.782%<br />
+                U 2.758%<br />
+                M 2.406%<br />
+                W 2.360%<br />
+                F 2.228%<br />
+                G 2.015%<br />
+                Y 1.974%<br />
+                P 1.929%<br />
+                B 1.492%<br />
+                V 0.978%<br />
+                K 0.772%<br />
+                J 0.153%<br />
+                X 0.150%<br />
+                Q 0.095%<br />
+                Z 0.074%
+            </code>
+
+        </p>
+            <p class="text-center">
+            Though again, these numbers can change depending on what sample is analyzed.
+            They are generally close enough to begin analysis though.
+
+        </p>
+            <p class="text-center">
+            Begin by counting the number of times each letter appears in the ciphertext
+            in question.  In a monoalphabeti cipher, the most common is most likely to be E,
+            the second most common T, and so on.  This is not an absolute, and some amount
+            of guessing and testing is necessary.  It also depends on the text in question.
+            The novel La Disparition, written in French by Georges Perec, is completely
+            devoid of the letter E, the most common letter in french.  It was later
+            translated into english, and the translation managed to keep the same restraint,
+            utterly lacking the most common letter in the english language.  A frequency
+            analysis of this novel would be heavily distorted, so it serves as a perfect
+            example of why frequency analysis is not a hard and fast rule.
+
+        </p>
+            <p class="text-center">
+            The next technique we will look at is a Known Plaitext Attack, also know as
+            searching for cribs.  A crib is a piece of the plaintext an attacker knows, or
+            can reasonably guess, in advance.  This is easiest if the original spacing, line
+            breaks, and punctuation of the plaintext has been preserved, but it is not
+            necessary.  Take a look at the structure of the following
+            piece of ciphertext: <br />
+
+            <code>
+                VWSJ XSLZWJ, <br />
+                A SE OJALAFY LG UZWUC MH GF QGM.  A CFGO QGMJ ZWSDLZ ZSK TWWF XSADAFY AF LZWKW <br />
+                DSKL XWO EGFLZK, SFV A ZGHW QGM SJW ESCAFY S JWUGNWJQ. <br />
+<br />
+                -QGMJ DGNAFY KGF <br />
+                BGZF
+            </code>
+
+        </p>
+            <p class="text-center">
+            Does that look like a familiar style of writing?  Some very common format
+            that gets used over and over again?  It's almost definitely a letter.  If it is
+            a letter, that first word, "VWSJ", is almostly certainly the English word
+            "Dear", the traditional start of a letter.  We can reasonably guess that in this
+            cipher, D enciphers to V, E enciphers to W, A enciphers to S, and R enciphers to
+            J.  That's four letters we can guess, and possibly fill in the meaning of.  Now,
+            we extend our guess by checking how far each of those shift actually is.  If
+            they are the same, we know the whole message is likely a Caesar shift, and we
+            have it decrypted.
+
+        </p>
+            <p class="text-center">
+            Cribs can be anything that can be reasonably guessed.  The letter previously
+            demonstrated is a fairly blatant example, but others are possible.  A famous
+            example was used by the English during World War II during the decryption of the
+            German enigma cipher.  The Germans were known to always send a weather report
+            promptly at 6:00 AM every day.  The english would scan this, and guess that the
+            first words of the report were the German words for "Weather Report", giving
+            them a valuable clue to decipher the rest of the message.
+
+        </p>
+            <p class="text-center">
+            Cribs can also apply to keywords, instead of messages.  If you are attacking
+            a Vigenere cipher, and have worked out some of the shifts used in the cipher,
+            but not all of them, you make have a partially constructed keyword, with the
+            shifts you have guessed corresponding to letters in the word.  If you have
+            "crXptX" as a keyword, but frequency analysis is failing for the last two
+            shifts, it would be a very reasonable guess to try "crypto" as a keyword, and
+            see if the whole message can be deciphered.
+
+        </p>
+            <p class="text-center">
+            Keep searching for new tools to attack the challenges on this site.
+            Mathematics, literature, and history are all full of lessons for the would-be
+            cryptanalyst, if you know where to find them!
+
+</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
 </body>
 </html>
