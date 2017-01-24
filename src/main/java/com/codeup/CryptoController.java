@@ -62,8 +62,8 @@ public class CryptoController {
 
     @PostMapping("/create")
     public String createCrypto(@Valid Crypto crypto, Errors validation, Model model) throws Exception {
-        if(crypto.getScheme().equals("caesar") && crypto.getCryptokey().equals("3")){
-            validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must not be three for now");
+        if(crypto.getScheme().equals("caesar") && !crypto.getCryptokey().matches("\\d+")) {
+            validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
         }
         if(crypto.getScheme().equals("railfence") && !crypto.getCryptokey().matches("\\d+")){
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
