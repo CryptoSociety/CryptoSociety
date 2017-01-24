@@ -68,8 +68,8 @@ public class CryptoController {
         if(crypto.getScheme().equals("railfence") && !crypto.getCryptokey().matches("\\d+")){
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
         }
-        if(crypto.getScheme().equals("kamasutra") && (crypto.getCryptokey().length() < 26) || !Cryptography.check26
-                (crypto.getCryptokey().toCharArray())){
+        if(crypto.getScheme().equals("kamasutra") && ((crypto.getCryptokey().length() < 26) || !Cryptography.check26
+                (crypto.getCryptokey().toCharArray()))){
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must contain all 26 letters exactly once");
         }
         if(crypto.getScheme().equals("vigenere") && !crypto.getCryptokey().matches("[a-zA-Z]+")) {

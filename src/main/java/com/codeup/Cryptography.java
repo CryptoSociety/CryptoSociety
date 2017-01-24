@@ -92,6 +92,7 @@ public class Cryptography {
     }
 
     public String kamasutra(String plaintext, String key, boolean punctuation) throws Exception {
+        key = prepare(key, true);
         char[] charArray= key.toCharArray();
         if (!check26(charArray)){
             throw new Exception("Input does not contain all 26 letters of the alphabet");
