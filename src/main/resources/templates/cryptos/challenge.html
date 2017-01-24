@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="fragments/header :: header(${'Challenge!'})">
 </head>
-<body onload="doOnLoad();">
+<body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
@@ -12,13 +12,22 @@
                 Challenge Page
             </h3>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="layoutObj"></div>
-            </div>
-        </div>
-        <div th:replace="fragments/footer :: footer" class="row footer"></div>
     </div>
+<div class="row">
+    <div class="col-lg-12 col-md-12" id="layoutObj"></div>
 </div>
+    <div th:replace="fragments/footer :: footer" class="row footer"></div>
+</div>
+    <div id="formContent">
+        <form id="">
+            <textarea></textarea>
+        </form>
+    </div>
+
+    <div id="challenge">
+        <form>
+            <textarea disabled="disabled"></textarea>
+        </form>
+    </div>
 </body>
 </html>

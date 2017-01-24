@@ -28,10 +28,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="isAnonymous()">
-                        <a href="/../register">Register</a>
+                        <a href="/../register" class="rightnav">Register</a>
                     </li>
                     <li sec:authorize="isAnonymous()">
-                        <a href="/../login">Login</a>
+                        <a href="/../login" class="rightnav">Login</a>
                     </li>
                     <li class="dropdown" sec:authorize="isAuthenticated()">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span sec:authentication="name">Username should be here</span><b class="caret"></b></a>

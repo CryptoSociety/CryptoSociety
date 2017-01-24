@@ -7,16 +7,32 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
         <div class="col-md-12">
-            <h1>Tools Index</h1>
+            <h1>Our Cipher Tools</h1>
             <ul>
-                <li><a href="/workbench/caesar">Caesar cipher</a></li>
-                <li><a href="/workbench/atbash">Atbash cipher</a></li>
-                <li><a href="/workbench/kamasutra">Kama Sutra cipher</a></li>
-                <li><a href="/workbench/railfence">Rail Fence cipher</a></li>
-                <li><a href="/workbench/vigenere">Vigenere cipher</a></li>
+                <li><a href="/workbench/caesar">Caesar Cipher</a></li>
+                <li><a href="/workbench/atbash">Atbash Cipher</a></li>
+                <li><a href="/workbench/kamasutra">Kama Sutra Cipher</a></li>
+                <li><a href="/workbench/railfence">Rail Fence Cipher</a></li>
+                <li><a href="/workbench/vigenere">Vigenere Cipher</a></li>
             </ul>
         </div>
     </div>
+    <div id="modal-container">
+        <div class="modal-background">
+            <div class="modal">
+                <h2>I'm a Modal</h2>
+                <p>Hear me roar.</p>
+                <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                    <rect x="0" y="0" fill="none" width="226" height="162" rx="3" ry="3"></rect>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Modal Animations</h1>
+        <div class="buttons">
+            <div id="one" class="button">Unfolding</div>
+        </div></div>
 
     <div th:replace="fragments/footer :: footer" class="row footer">
     </div>
