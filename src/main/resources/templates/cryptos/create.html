@@ -25,6 +25,10 @@
                 <label>scheme</label>
                 <select name="scheme" id="scheme" th:value="*{scheme}" th:field="*{scheme}">
                     <option value="caesar">Caesar shift</option>
+                    <option value="atbash">Atbash</option>
+                    <option value="kamasutra">Kama Sutra</option>
+                    <option value="railfence">Rail Fence</option>
+                    <option value="vigenere">Vigenere</option>
                 </select>
                 <label>key</label>
                 <input th:value="*{cryptokey}" th:field="*{cryptokey}"/>

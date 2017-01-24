@@ -16,6 +16,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static com.codeup.auth.BaseController.isLoggedIn;
 import static com.codeup.auth.BaseController.loggedInUser;
 
@@ -59,9 +62,43 @@ public class AuthenticationController {
             model.addAttribute("user", user);
             return "users/register";
         }
-        user.setAdmin(false);
-        userDao.save(user);
-        return "redirect:/login";
+        String username = user.getUsername();
+        boolean hasError = false;
+        if (userDao.findByUsername(username) != null) {
+            model.addAttribute("usernameError", "Username is already taken");
+            hasError = true;
+        } else if (username.trim().isEmpty() || username.trim().length() < 5 || username.trim().length() > 40) {
+            model.addAttribute("usernameError", "Username must be between 5 and 40 characters long");
+            hasError = true;
+        } else if (username.contains(" ")) {
+            model.addAttribute("Username cannot contain spaces. Underscores and hyphens are okay, though.");
+            hasError = true;
+        } else {
+            String email = user.getEmail();
+            Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+            Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
+            if (userDao.findByEmail(email) != null) {
+                model.addAttribute("emailError", "Email is already taken");
+                hasError = true;
+            } else if (!matcher.find()) {
+                model.addAttribute("emailError", "Please enter a valid email address.");
+                hasError = true;
+            } else {
+                String password = user.getPassword();
+                if(password.equalsIgnoreCase("Invalid entry")){
+                    model.addAttribute("passwordError", "Password cannot be blank and must be between 5 and 40 characters");
+                    hasError = true;
+                }
+            }
+        }
+        if(hasError){
+            model.addAttribute("user", user);
+            return "users/register";
+        } else {
+            user.setAdmin(false);
+            userDao.save(user);
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/users/{id}")
@@ -70,9 +107,9 @@ public class AuthenticationController {
         model.addAttribute("user", user);
         if(isLoggedIn()) {
             model.addAttribute("loggedInUser", loggedUser());
+            model.addAttribute("isAdmin", isLoggedIn() && loggedUser().getAdmin());
+            model.addAttribute("showEditControls", isLoggedIn() && loggedUser().getId() == user.getId());
         }
-        model.addAttribute("isAdmin", isLoggedIn() && loggedUser().getAdmin());
-        model.addAttribute("showEditControls", isLoggedIn() && loggedUser().getId() == user.getId());
         return "/users/profile";
     }
 
@@ -96,52 +133,71 @@ public class AuthenticationController {
     }
 
     @PostMapping("/users/{id}/settings")
-    public String userSettingsPost(@PathVariable long id, @Valid User updatedUser, Model model, Errors errors, HttpServletRequest request){
+    public String userSettingsPost(@PathVariable long id, User updatedUser, Model model, Errors errors, HttpServletRequest request) throws Exception{
         if(isLoggedIn() && loggedUser().getId() == id) {
+            boolean hasError = false;
             User user = userDao.findOne(id);
-            if (!request.getParameter("currentpassword").isEmpty() && !request.getParameter("newpassword").isEmpty() && !request.getParameter("confirmpassword").isEmpty()) {
+
+            if (!request.getParameter("currentpassword").isEmpty() && !request.getParameter("newpassword").trim().isEmpty() && !request.getParameter("confirmpassword").trim().isEmpty()) {
                 if (BCrypt.checkpw(request.getParameter("currentpassword"), user.getPassword())) {
                     if (request.getParameter("newpassword").equals(request.getParameter("confirmpassword"))) {
-                        user.setPassword(request.getParameter("newpassword"));
+                        if(request.getParameter("newpassword").trim().length() < 5 || request.getParameter("newpassword").trim().length() > 40){
+                            model.addAttribute("passwordError", "Password must be 5-40 characters");
+                            hasError = true;
+                        } else {
+                            user.setPassword(request.getParameter("newpassword"));
+                        }
                     } else {
-                        model.addAttribute("PasswordError", "New password and confirm password did not match!");
-                        return "/users/edit";
+                        model.addAttribute("passwordError", "New password and confirm password did not match!");
+                        hasError = true;
                     }
                 } else {
-                    model.addAttribute("PasswordError", "Incorrect password");
-                    return "/users/edit";
+                    model.addAttribute("passwordError", "Incorrect password");
+                    hasError = true;
                 }
             }
+
             if (!request.getParameter("username").isEmpty()) {
                 String username = request.getParameter("username");
                 if (userDao.findByUsername(username) == null || userDao.findByUsername(username).getId() == user.getId()) {
                     user.setUsername(username);
                 } else {
                     model.addAttribute("usernameError", "Username is already taken");
-                    return "/users/edit";
+                    hasError = true;
                 }
-                if (errors.hasErrors()) {
-                    model.addAttribute("errors", errors);
-                    return "/users/edit";
+                if (username.trim().isEmpty() || username.trim().length() < 5 || username.trim().length() > 40) {
+                    model.addAttribute("usernameError", "Username must be between 5 and 40 characters long");
+                    hasError = true;
+                } else if (username.contains(" ")) {
+                    model.addAttribute("Username cannot contain spaces. Underscores and hyphens are okay, though.");
                 }
             }
+
             if (!request.getParameter("email").isEmpty()) {
                 String email = request.getParameter("email");
                 if (userDao.findByEmail(email) == null || userDao.findByEmail(email).getId() == user.getId()) {
                     user.setEmail(email);
                 } else {
                     model.addAttribute("emailError", "Email is already taken");
-                    return "/users/edit";
+                    hasError = true;
                 }
-                if (errors.hasErrors()) {
-                    model.addAttribute("errors", errors);
-                    return "/users/edit";
+                Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+                Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(email);
+                if (!matcher.find()) {
+                    model.addAttribute("emailError", "Please enter a valid email address.");
+                    hasError = true;
                 }
             }
-            userDao.save(user);
-            return "redirect:/users/profile";
+
+            if(hasError){
+                model.addAttribute("user", user);
+                return "/users/edit";
+            } else {
+                userDao.save(user);
+                return "redirect:/users/profile";
+            }
         } else {
-            return "redirect:/users/"+id;
+            return "redirect:/users/profile";
         }
     }
 
