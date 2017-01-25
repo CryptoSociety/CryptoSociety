@@ -217,6 +217,11 @@ public class CryptoController {
 
     @GetMapping("/challenge")
     public String challenge(){
-        return "/cryptos/challenge";
+        long id = 0;
+//        boolean valid = false;
+//        do{
+//            long Math.ceil(Math.random()*200)
+//        } while (!valid);
+        return "/cryptos/"+ id;
     }
 }
