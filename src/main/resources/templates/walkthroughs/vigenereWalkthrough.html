@@ -6,8 +6,14 @@
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div th:replace="fragments/wikinav :: wikinav" class="row"></div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6 col-md-offset-3">
+            <a class="backbutton btn btn-default" href="/walkthroughs">Back to Walkthrough Main Page</a>
+        </div>
+    </div>
+    <div class="row walkthrough-text">
+        <div class="col-md-6 col-md-offset-3">
             <h3 class="text-center">
                 Vigenere Cipher
             </h3>
@@ -109,20 +115,6 @@
             Cracking the Vigenere Cipher is a complex process that took hundreds of
             years to accomplish.  It will be covered in it's own article in this guide.
 </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
-        </div>
-        <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
-        </div>
-        <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
-        </div>
-        <div class="col-md-3">
-            <a href="#" class="btn" type="button">Button</a>
         </div>
     </div>
     <div th:replace="fragments/footer :: footer" class="row footer">

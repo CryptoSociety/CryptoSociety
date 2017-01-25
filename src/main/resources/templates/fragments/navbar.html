@@ -34,7 +34,7 @@
                         <a href="/../login" class="rightnav">Login</a>
                     </li>
                     <li class="dropdown" sec:authorize="isAuthenticated()">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span sec:authentication="name">Username should be here</span><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle rightnav" data-toggle="dropdown"><span sec:authentication="name">Username should be here</span><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/../users/profile">Your Profile</a></li>
                             <li><a href="#" id="logoutbutton">Logout</a></li>
