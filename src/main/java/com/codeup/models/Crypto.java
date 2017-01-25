@@ -46,6 +46,9 @@ public class Crypto {
     @Column(nullable = false)
     private String cryptokey;
 
+    @Column(nullable = false, name = "keep_punctuation")
+    private boolean keepPunctuation = false;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="created")
@@ -64,7 +67,8 @@ public class Crypto {
     private List<UserCrypto> userCryptos;
 
 
-    public Crypto(String name, long points, String cryptoText, String plainText, String solution, String scheme, String cryptokey, boolean isApproved){
+    public Crypto(String name, long points, String cryptoText, String plainText, String solution, String scheme,
+                  String cryptokey, boolean keepPunctuation, boolean isApproved){
         this.name = name;
         this.points = points;
         this.cryptoText = cryptoText;
@@ -72,6 +76,7 @@ public class Crypto {
         this.solution = solution;
         this.scheme = scheme;
         this.cryptokey = cryptokey;
+        this.keepPunctuation = keepPunctuation;
         this.usersSolved = 0;
         this.isApproved = isApproved;
     }
@@ -148,6 +153,14 @@ public class Crypto {
 
     public void setCryptokey(String cryptokey) {
         this.cryptokey = cryptokey;
+    }
+
+    public boolean isKeepPunctuation() {
+        return keepPunctuation;
+    }
+
+    public void setKeepPunctuation(boolean keepPunctuation) {
+        this.keepPunctuation = keepPunctuation;
     }
 
     public Date getCreationDate() {
