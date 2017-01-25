@@ -1,29 +1,30 @@
-$(document).ready(function () {
+console.log("Test");
+// $(document).ready(function () {
     $("#scheme").change(function() {
         var val = $("#scheme").val();
         if (val == "caesar") {
             $("#key").html("<label for='key'>Shift (Positive integer)</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
         } else if (val == "atbash") {
-            $("#key").html("<label for='key'>Atbash doesn't use a key.</label><input name='cryptokey' hidden th:value='atbash' th:field='*{cryptokey}'></input>");
+            $("#key").html("<label for='key'>Atbash doesn't use a key.</label><input name='cryptokey' hidden th:value='atbash' th:field='*{cryptokey}'/>");
 
         } else if (val == "kamasutra") {
             $("#key").html("<label for='key'>Key</label>" +
                 "<ul style='list-style:none'>" +
-                "<li><input id='in1' class='ksin' maxlength='1'><span> = </span><input id='in2' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in3' class='ksin' maxlength='1'><span> = </span><input id='in4' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in5' class='ksin' maxlength='1'><span> = </span><input id='in6' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in7' class='ksin' maxlength='1'><span> = </span><input id='in8' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in9' class='ksin' maxlength='1'><span> = </span><input id='in10' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in11' class='ksin' maxlength='1'><span> = </span><input id='in12' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in13' class='ksin' maxlength='1'><span> = </span><input id='in14' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in15' class='ksin' maxlength='1'><span> = </span><input id='in16' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in17' class='ksin' maxlength='1'><span> = </span><input id='in18' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in19' class='ksin' maxlength='1'><span> = </span><input id='in20' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in21' class='ksin' maxlength='1'><span> = </span><input id='in22' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in23' class='ksin' maxlength='1'><span> = </span><input id='in24' class='ksin' maxlength='1'></li>" +
-                "<li><input id='in25' class='ksin' maxlength='1'><span> = </span><input id='in26' class='ksin' maxlength='1'></li>" +
+                "<li><input id='in1' class='ksin' maxlength='1'/><span> = </span><input id='in2' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in3' class='ksin' maxlength='1'/><span> = </span><input id='in4' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in5' class='ksin' maxlength='1'/><span> = </span><input id='in6' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in7' class='ksin' maxlength='1'/><span> = </span><input id='in8' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in9' class='ksin' maxlength='1'/><span> = </span><input id='in10' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in11' class='ksin' maxlength='1'/><span> = </span><input id='in12' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in13' class='ksin' maxlength='1'/><span> = </span><input id='in14' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in15' class='ksin' maxlength='1'/><span> = </span><input id='in16' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in17' class='ksin' maxlength='1'/><span> = </span><input id='in18' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in19' class='ksin' maxlength='1'/><span> = </span><input id='in20' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in21' class='ksin' maxlength='1'/><span> = </span><input id='in22' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in23' class='ksin' maxlength='1'/><span> = </span><input id='in24' class='ksin' maxlength='1'/></li>" +
+                "<li><input id='in25' class='ksin' maxlength='1'/><span> = </span><input id='in26' class='ksin' maxlength='1'/></li>" +
                 "</ul>" +
-                "<input name='cryptokey' id='finalKey' hidden  th:value='' th:field='*{cryptokey}'>");
+                "<input name='cryptokey' id='finalKey' hidden  th:value='' th:field='*{cryptokey}'/>");
             $(".ksin").change(kamasutraInputManipulation);
             function kamasutraInputManipulation() {
                 var final = $("#finalKey");
@@ -60,6 +61,6 @@ $(document).ready(function () {
         } else if (val == "vigenere"){
             $("#key").html("<label for='key'>Keyword</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
         }
-    })
+    });
 
-});
+// });

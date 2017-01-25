@@ -22,7 +22,7 @@
                 <label>solution</label>
                 <textarea class="form-control" th:value="*{solution}" th:field="*{solution}"></textarea>
                 <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
-                <label>scheme</label>
+                <label for="scheme">Scheme</label>
                 <select name="scheme" required="required" id="scheme" value="">
                     <option value="" selected="true" hidden="true">Choose a scheme.</option>
                     <option value="caesar">Caesar shift</option>
@@ -32,7 +32,7 @@
                     <option value="vigenere">Vigenere</option>
                 </select>
                 <div id="key">
-                    <div>Select a key.</div>
+                    <div>Select a scheme.</div>
                 </div>
                 <label for="keepPunctuation">Keep punctuation?</label>
                 <input type="checkbox" th:value="*{keepPunctuation}" th:field="*{keepPunctuation}"
@@ -45,8 +45,7 @@
     </div>
 </div>
     <div th:replace="fragments/footer :: footer" class="row footer"></div>
-    <script src="/js/create.js"></script>
-
+    <script src="/../js/create.js"></script>
 </div>
 </body>
 </html>
