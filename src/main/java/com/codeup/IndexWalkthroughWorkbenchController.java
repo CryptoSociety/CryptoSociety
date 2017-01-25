@@ -36,15 +36,44 @@ public class IndexWalkthroughWorkbenchController {
        return "walkthrough";
     }
 
-    @GetMapping("/walkthroughs/{scheme}")
-    public String walkthroughPage(@PathVariable String scheme, Model model){
-        List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
-        Walkthrough current = walkthroughsRepo.findFirstByScheme(scheme);
-        model.addAttribute("allWalkthroughs", allWalkthroughs);
-        model.addAttribute("currentWalkthrough", current);
-        return "individualWalkthrough";
+//    @GetMapping("/walkthroughs/{scheme}")
+//    public String walkthroughPage(@PathVariable String scheme, Model model){
+//        List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
+//        Walkthrough current = walkthroughsRepo.findFirstByScheme(scheme);
+//        model.addAttribute("allWalkthroughs", allWalkthroughs);
+//        model.addAttribute("currentWalkthrough", current);
+//        return "individualWalkthrough";
+//    }
+
+    @GetMapping("/walkthroughs/caesar")
+    public String caesarWalkthrough(){
+        return "walkthroughs/caesarWalkthrough";
     }
 
+    @GetMapping("/walkthroughs/railfence")
+    public String railfenceWalkthrough(){
+        return "walkthroughs/railfenceWalkthrough";
+    }
+    @GetMapping("/walkthroughs/atbash")
+    public String atbashWalkthrough(){
+        return "walkthroughs/atbashWalkthrough";
+    }
+    @GetMapping("/walkthroughs/kamasutra")
+    public String kamasutraWalkthrough(){
+        return "walkthroughs/kamasutraWalkthrough";
+    }
+    @GetMapping("/walkthroughs/vigenere")
+    public String vigenereWalkthrough(){
+        return "walkthroughs/vigenereWalkthrough";
+    }
+    @GetMapping("/walkthroughs/vigenereDecrypt")
+    public String vigenereDecryptWalkthrough(){
+        return "walkthroughs/vigeneredecryptWalkthrough";
+    }
+    @GetMapping("/walkthroughs/cryptanalysis")
+    public String cryptanalysisWalkthrough(){
+        return "walkthroughs/cryptanalysisWalkthrough";
+    }
     @GetMapping("/workbench")
     public String toolIndex() {
         return "toolindex";

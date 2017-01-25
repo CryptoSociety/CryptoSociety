@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header(${'Caesar Shift'})">
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Caesar Shift
+            </h3>
+
+            <p class="text-center">
+                The Caesar shift is one of the earliest ciphers we have on record, dating
+                back to the first century B.C.E.  It is named for Julius Caesar, who used it
+                when communicating with his generals.  At the time, if was perfectly sufficient
+                to keep military secrets safe, as cryptanalysis was not a developed science, and
+                most of his foes were illiterate anyway.  Now, however, this cipher is
+                thoroughly defeated, and unsuitable for protection from anyone but the most
+                casual snooper.
+
+            </p>
+            <p class="text-center">
+                The method of encyption is extremely simple.  Write the alphabet twice, on
+                two rows, as such:
+                <br />
+                <code>
+                    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                    <br />
+                    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                </code>
+
+            </p>
+            <p class="text-center">
+                Cut your paper in between the rows, and slide the lower row a number of spaces
+                to the right.  Caesar used 3 spaces, but the cipher could be used with any
+                number from 1 to 25.  We'll demonstrate with 3 though.
+                <br />
+                <code>
+                    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+                    <br />
+                    D E F G H I J K L M N O P Q R S T U V W X Y Z A B C
+                </code>
+
+            </p>
+            <p class="text-center">
+                So, using a Caesar shift of 3, A becomes D, B becomes E, and so on.
+                The message <br />
+                <code>
+                    Beware the ides of March <br />
+                </code>
+                becomes <br />
+                <code>
+                    EHZDUH WKH LGHV RI PDUFK
+                </code>
+
+            </p>
+            <p class="text-center">
+                The weakness of the Caesar shift is it's simplicity.  The english alphabet
+                can only be shifted by 25 spaces.  At 26 spaces, the alphabet would wrap around,
+                and A would become A again.  At 27 spaces, the shift is exactly the same as
+                shifting by one space.  So, we say that the Caesar cipher has 25 keys, that is,
+                25 potential values to decrypt the ciphertext.  25 is a phenominally low number
+                of keys for a cipher to have, and can be brute forced by hand in a very short amount of time.  Modern
+                computers make the task completely trivial.
+            </p>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
+</body>
+</html>
