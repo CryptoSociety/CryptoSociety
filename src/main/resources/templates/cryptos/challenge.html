@@ -51,7 +51,7 @@
 
 <div id="formContent">
     <form th:if="${solvable}" th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
-        <textarea type="text" name="solution"></textarea>
+        <textarea title="workbench" type="text" name="solution"></textarea>
         <button>Solve</button>
     </form>
 </div>

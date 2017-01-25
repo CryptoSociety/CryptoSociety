@@ -74,7 +74,7 @@ public class IndexWalkthroughWorkbenchController {
     public String cryptanalysisWalkthrough(){
         return "walkthroughs/cryptanalysisWalkthrough";
     }
-    @GetMapping("/workbench")
+    @GetMapping("/toolbox")
     public String toolIndex() {
         return "toolindex";
     }
