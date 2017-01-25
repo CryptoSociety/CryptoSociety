@@ -85,7 +85,7 @@
 
 /*----------------------------------------GENERAL THEME-------------------------------------------------*/
 body, html {
-    background-color: #616161;
+    background-color: grey;
     font-family: 'Anonymous Pro', monospace;
     font-size: 18px;
 }
@@ -95,9 +95,51 @@ body, html {
     color: #00DE00;
 }
 .indexlink{
-    color: red;
+    color: white;
 }
 
+.contentDiv{
+    position: fixed;
+    text-shadow: 0.1em 0.1em 0.2em #000;
+    background-color: #000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    margin-top: -150px;
+    width: 1200px;
+    color: rgb(126, 219, 82);
+    cursor: default;
+    border-color: #00DE00;;
+    border-style: solid;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 20px;
+    overflow: auto;
+}
+.walkthrough-text{
+    text-shadow: 0.1em 0.1em 0.2em #000;
+    background-color: #000;
+    text-align: center;
+    width:75%;
+    font-size: 16px;
+    padding: 20px;
+    color: rgb(126, 219, 82);
+    cursor: default;
+    border-color: #00DE00;;
+    border-style: solid;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 20px;
+    overflow: auto;
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+.backbutton{
+margin-right:20px;
+}
 /*-------------------------------------Register/Login Page----------------------------------------------*/
 .submitbutton {
     height: 50px;
@@ -137,7 +179,7 @@ body, html {
 div#layoutObj {
     position: relative;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 55px;
     width: 1500px;
     height: 1000px;
 }
@@ -181,6 +223,7 @@ div.dhx_cell_hdr{
 #formContent{
     overflow-y: scroll;
 }
+
 /*------------------------------------------Sidebar---------------------------------------------*/
 #wrapper {
     padding-left: 0;
