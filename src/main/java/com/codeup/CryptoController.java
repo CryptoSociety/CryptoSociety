@@ -142,17 +142,32 @@ public class CryptoController {
     }
 
     @PostMapping("/{id}/edit")
-    public String updateCrypto(@PathVariable long id, @Valid Crypto crypto, Errors validation, Model model){
+    public String updateCrypto(@PathVariable long id, @Valid Crypto crypto, Errors validation, Model model) throws Exception{
+        if(crypto.getScheme().equals("caesar") && !crypto.getCryptokey().matches("\\d+")) {
+            validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
+        }
+        if(crypto.getScheme().equals("railfence") && !crypto.getCryptokey().matches("\\d+")){
+            validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
+        }
+        if(crypto.getScheme().equals("kamasutra") && ((crypto.getCryptokey().length() < 26) || !Cryptography.check26
+                (crypto.getCryptokey().toCharArray()))){
+            validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must contain all 26 letters exactly once");
+        }
+        if(crypto.getScheme().equals("vigenere") && !crypto.getCryptokey().matches("[a-zA-Z]+")) {
+            validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must contain only letters");
+        }
         if(validation.hasErrors()){
             model.addAttribute(validation.getAllErrors());
             model.addAttribute("crypto", crypto);
             return "/cryptos/edit";
         }
+        crypto.setCryptoText(CipherSelector.create(crypto));
         Crypto oldCrypto = cryptosRepo.findOne(id);
         if(isLoggedIn() && loggedUser().getId() == oldCrypto.getUser().getId() || loggedUser().getAdmin()) {
             oldCrypto.setName(crypto.getName());
             oldCrypto.setSolution(crypto.getSolution());
             oldCrypto.setPlainText(crypto.getPlainText());
+            oldCrypto.setCryptoText(crypto.getCryptoText());
             oldCrypto.setScheme(crypto.getScheme());
             oldCrypto.setCryptokey(crypto.getCryptokey());
             oldCrypto.setPoints(crypto.getPoints());
