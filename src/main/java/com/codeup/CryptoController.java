@@ -155,6 +155,7 @@ public class CryptoController {
             oldCrypto.setPlainText(crypto.getPlainText());
             oldCrypto.setScheme(crypto.getScheme());
             oldCrypto.setCryptokey(crypto.getCryptokey());
+            oldCrypto.setKeepPunctuation(crypto.isKeepPunctuation());
             oldCrypto.setPoints(crypto.getPoints());
             oldCrypto.setActive(true);
             oldCrypto.setIsApproved(false);

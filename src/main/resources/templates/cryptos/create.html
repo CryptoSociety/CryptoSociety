@@ -34,6 +34,9 @@
                 <div id="key">
                     <div>Select a key.</div>
                 </div>
+                <label for="keepPunctuation">Keep punctuation?</label>
+                <input type="checkbox" th:value="*{keepPunctuation}" th:field="*{keepPunctuation}"
+                       id="keepPunctuation" value="true" />
                 <label>points</label>
                 <input type="number" th:value="*{points}" th:field="*{points}"/>
                 <input class="button btn-default" type="submit"/>
