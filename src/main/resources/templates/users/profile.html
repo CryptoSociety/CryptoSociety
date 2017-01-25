@@ -14,7 +14,7 @@
             <h2 th:text="'Points: '+${user.points}"></h2>
             <div>
                 <!--TODO: Maybe implement this check in the controller, using a fori on the list of cryptos that is being passed.-->
-                <div th:each="crypto : ${user.cryptos}" th:object="${crypto}">
+                <div th:each="crypto : ${user.getOrderedCryptos()}" th:object="${crypto}">
                     <div th:with="activeAndApproved=*{active} and *{isApproved},userIsOwner=${showEditControls},isAdmin=${isAdmin}">
                         <div th:if="${activeAndApproved} or ${userIsOwner} or ${isAdmin}">
                             <div><a th:href="@{'/cryptos/' + *{id}}" th:text="*{name}"></a></div>
@@ -30,7 +30,7 @@
             </div>
             <h1>Solved:</h1>
             <div>
-                <div th:each="userCrypto : ${user.userCryptos}" th:object="${userCrypto}">
+                <div th:each="userCrypto : ${user.getOrderedUserCryptos()}" th:object="${userCrypto}">
                     <div><a th:if="*{crypto.active} and *{crypto.isApproved}" th:href="@{'/cryptos/' + *{crypto.id}}" th:text="*{crypto.name}"></a></div>
                     <div th:unless="*{crypto.active} and *{crypto.isApproved}" th:text="*{crypto.name}">Title</div>
                     <div th:text="*{crypto.scheme}"></div>

@@ -66,6 +66,14 @@ public class User {
         return orderedCryptoList;
     }
 
+    public List<UserCrypto> getOrderedUserCryptos(){
+        List<UserCrypto> orderedUserCryptoList = new ArrayList<>();
+        for (int i = userCryptos.size()-1; i >= 0; i--) {
+            orderedUserCryptoList.add(userCryptos.get(i));
+        }
+        return orderedUserCryptoList;
+    }
+
     public long getId(){ return id;}
 
     public String getUsername() {
