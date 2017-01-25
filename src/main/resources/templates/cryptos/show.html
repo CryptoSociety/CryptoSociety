@@ -20,27 +20,11 @@
                 <div th:if="${showExtendedInfo}" th:text="*{cryptokey}">Key</div>
                 <div th:text="*{usersSolved}">Users solved</div>
                 <div th:text="*{creationDate}">Created</div>
-                <div th:if="*{!isApproved}">
-                    <div th:if="${isAdmin}">
-                        <form th:action="@{'/cryptos/'+*{id}+'/approve'}" th:method="post">
-                            <button>Approve</button>
-                        </form>
-                    </div>
-                </div>
-                <div th:if="${showEditControls}">
-                    <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post" th:if="*{active}">
-                        <button>Deactivate</button>
-                    </form>
-                    <form th:action="@{'/cryptos/'+*{id}+'/edit'}" th:method="get">
-                        <button>Edit</button>
-                    </form>
-                </div>
-                <div th:if="${solvable}">
-                <form th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
-                    <input type="text" name="solution" />
-                    <button>Solve</button>
-                </form>
-              </div>
+
+
+
+
+
             </div>
         </div>
     </div>
