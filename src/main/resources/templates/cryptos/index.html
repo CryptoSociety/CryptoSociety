@@ -8,16 +8,16 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
         <div class="col-md-6">
-            <div class="jumbotron">
+            <div class="contentDiv">
                 <h2>Challenge Yourself!</h2>
             <a href="/../cryptos/challenge">Challenges</a>
             </div>
         </div>
             <div class="col-md-6">
-                <div class="jumbotron">
+                <div class="contentDiv">
                     <h2>Create and Edit Your Challenges</h2>
-            <a href="/../cryptos/create">Create a Challenge</a>
-            <a href="/../users/profile">Edit Your Challenges</a>
+            <a class="indexlink" href="/../cryptos/create">Create a Challenge</a>
+            <a class="indexlink" href="/../users/profile">Edit Your Challenges</a>
         </div>
             </div>
     </div>
@@ -28,7 +28,7 @@
                 <div th:text="*{scheme}"></div>
                 <div th:text="*{cryptoText}">Puzzle</div>
                 <div th:text="*{creationDate}"></div>
-                <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+                <div><a class="indexlink" th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
             </div>
         </div>
     </div>
