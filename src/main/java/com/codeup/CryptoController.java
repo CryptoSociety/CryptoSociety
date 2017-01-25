@@ -111,7 +111,7 @@ public class CryptoController {
             if(!solvable && isLoggedIn()){
                 model.addAttribute("showExtendedInfo", true);
             }
-            return "/cryptos/show";
+            return "/cryptos/challenge";
         } else {
             return "redirect:/cryptos";
         }
