@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header(${'Rail fence'})">
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Rail fence Cipher
+            </h3>
+
+            <p class="text-center">
+                The rail fence cipher is one of the earliest examples of a transposition
+                cipher, as opposed to a substitution cipher, which we have been covered so far.
+                In a transposition cipher, the letters remain the same, but the order is
+                scarmbled according to some predetermined pattern, rendering the message
+                unreadable.  Let's see this in action.
+            </p>
+            <p class="text-center">
+                We'll begin with the message "Fences keep good secrets".  Write the message
+                on alternating lines, with the first letter on the top line, the second on the
+                bottom line, third on the top line, and so on.
+                <br />
+                <code>
+                    F N E K E G O S C E S<br />
+                    E C S E P O D E R T
+                </code>
+            </p>
+            <p class="text-center">
+                Now we simply read the message across to gain the ciphertext, which in this
+                case is <br />
+                <code>
+                    F N E K E G O S C E S E C S E P O D E R T
+                </code>
+            </p>
+            <p class="text-center">
+                Notice that the ciphertext is made up of the same letters as the plaintext.
+                This is the key difference between a substitution cipher and a transposition
+                cipher.  It also means the letter frequency does not change from regular
+                english.  If you are ever trying to crack a cipher, and your frequency analysis
+                very closely matches natural english, there is a decent chance you are looking
+                at a transposition cipher.
+            </p>
+            <p class="text-center">
+                If we wanted to, we could use 3 lines, instead of 2, as seen here: <br />
+
+                <code>
+                    F   E   E   O   C   S <br />
+                    E C S E P O D E R T <br />
+                    N   K   G   S   E <br />
+                </code>
+
+                which leads to a new ciphertext of <br />
+
+                <code>
+                    F E E O C S E C S E P O D E R T N K G S E
+                </code>
+            </p>
+            <p class="text-center">
+                As long as the message is long enough, we can use as many lines as we want.
+                Unfortunately, no method leads to very strong security, as there are few enough
+                possibilities that an attacker can try them all by hand, or write a very simple
+                computer program to test all possible options.
+            </p>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
+</body>
+</html>

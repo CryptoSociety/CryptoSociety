@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header(${'Atbash'})">
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Atbash Cipher
+            </h3>
+
+            <p class="text-center">
+            The Atbash cipher was originally used to encrypt the Hebrew alphabet, and
+            appears several times in the Old Testament.  Whether this was to hide messages
+            from the Romans or due the to the supposedly mystic qualities of language at the
+            time will be left to the reader to decide.  In modern times, it is easy enough
+            to apply to the english alphabet.
+
+            </p>
+            <p class="text-center">
+            The name of the cipher is, in itself, the description of the how it works.
+            Atbash is derived from the first, last, second, and second to last letters of
+            the Hebrew alpbabet (Aleph Tav Beth Shin).  This alludes to the enciphement
+            scheme, in which the first letter switches with the last, the second switches
+            with the second to last, the third with the third to last, and so on.  So, for
+            the english alphbet, the system can be written out as: <br />
+
+            <code>
+                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <br />
+
+                Z Y X W V U T S R Q P O N M L K J I H G F E D C B A
+            </code>
+
+        </p>
+            <p class="text-center">
+            Or, in a shorter version: <br />
+
+            <code>
+                A B C D E F G H I J K L M <br />
+
+                Z Y X W V U T S R Q P O N
+            </code>
+
+        </p>
+            <p class="text-center">
+            So, in this cipher, A becomes Z, B becomes Y, and so on until the halfway
+            point.  From the reverse side, Z becomes A, Y becomes B, and so on.  The
+            alphabet is perfectly mirrored.  Due to pecularities of the language in
+            question, some interesting results can arise.  Try running the word "wizard"
+            through the Atbash cipher for a fun surprise!
+
+        </p>
+            <p class="text-center">
+            This system was enough to keep secret the messages of the ancient Hebrews as
+            they communicated with their brethren, but is woefully inadequate in the modern
+            world.  There is only one permutation of the cipher, so it lacks any kind of key
+            system.  As soon as an attacker determines Atbash is in play, all
+            security is immediately gone, without even the need for a brute force attack.
+
+</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
+</body>
+</html>

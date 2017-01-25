@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header(${'Cracking the Vigenere Cipher'})">
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Cracking the Vigenere Cipher
+            </h3>
+
+            <p class="text-center">
+            The first reliable method to crack the Vigenere cipher was developed in the
+            1800s, and relies on mathematical analysis and old-fashioned frequency analysis.
+            It relies on the repetition of the keyword as it cycles through the message.  In
+            a long message, the same letters of the keyword will likely be used to encipher the
+            same letters of the plaintext at some point.  This will lead to a repetition in
+            the ciphertext, because the letters will be enciphered the same way both times.
+            This pattern is the entry point for cryptanalysis.
+
+            </p>
+            <p class="text-center">
+            To begin, one scans the text for repeated patterns of characters.  This is
+            easier with longer samples of ciphertext.  Once repeats are found, count the
+            letters between the start of the first and the start of the next.  In the
+            example ciphertext <br />
+            <code>
+                A V Q I H F F L A V Q W R M F L L G G R A V Q Q V C Z <br />
+            </code>
+            the letter string "AVQ" repeats itself, with a distance of 8 spaces between
+            the first and second repetition, and 12 spaces between the second and third
+            repetition.
+
+        </p>
+            <p class="text-center">
+            While it is possible that this is a coincidence in the encipherment process,
+            we will hazard a guess that it is due to a repeated keyword encrypting matching
+            parts of the plaintext.  For the keyword to repeat in 8 spaces, the length of
+            the keyword must be a factor of 8, giving 1, 2, 4, and 8 as possible
+            lengths.  To repeat in 12 spaces, the keyword length must again be a factor of
+            12, giving 1, 2, 3, 4, 6, and 12 as possible lengths.  1 and 2 can be
+            discounted, as they are too short to be used as viable keywords.  Thus, the only
+            number that satisfies both lists is 4.  The keyword must be 4 letters long.
+
+        </p>
+            <p class="text-center">
+            At this point, we are confident in our 4 letter long keyword.  This means
+            the first letter of the ciphertext is encypted used a using shift of (L1), the
+            second using a shift of (L2), the third (L3), the fourth (L4), and the fifth
+            back to (L1).  Four Caesar shift ciphers, which we know how to break.  We can
+            simply divide the ciphertext into 4 sections, and break each individually.
+
+        </p>
+            <p class="text-center">
+            To use our example, the first batch of letters, encrypted with (L1) is <br />
+            <code>
+                A H A R L A V <br />
+            </code>
+            The second batch is <br />
+            <code>
+                V F V M G V C <br />
+            </code>
+            The third batch is <br />
+            <code>
+                Q F Q F G Q Z <br />
+            </code>
+            And the fourth batch is <br />
+            <code>
+                I L W L R Q
+            </code>
+
+        </p>
+            <p class="text-center">
+            Each of those batches are a single Caesar shift.  While the ones in this
+            example are a little short to be able to apply frequency analysis to, a long
+            ciphertext could be broken using standard cryptanalysis techniques.
+
+</p>
+           
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="fragments/header :: header(${'Vigenere Cipher'})">
+</head>
+<body>
+<div class="container-fluid">
+    <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">
+                Vigenere Cipher
+            </h3>
+
+            <p class="text-center">
+            The Vigenere Cipher, or as it is known sometimes by the tool employed to
+            construct it, the Vigenere Square, represents a massive leap forward in
+            cryptographic science from anything covered on this site up until now.  Every
+            cipher we have covered so far has been a form of monoalphabetic cipher, meaning
+            there is one cipher alphabet employed throughout the creation of the ciphertext.
+            The Vigenere Cipher is a polyalphabetic cipher.  That means it employs multiple
+            shifting alphabets throughout it's creation.
+
+            </p>
+            <p class="text-center">
+            In it's simplest form, the Vigenere Cipher is a series of Caeser shifts,
+            with each letter of the plaintext being encrypted by a different shift,
+            determined via a keyword.  We start by drawing the aforementioned Vigenere
+            Square: <br />
+            <code>
+                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br />
+                B C D E F G H I J K L M N O P Q R S T U V W X Y Z A<br />
+                C D E F G H I J K L M N O P Q R S T U V W X Y Z A B<br />
+                D E F G H I J K L M N O P Q R S T U V W X Y Z A B C<br />
+                E F G H I J K L M N O P Q R S T U V W X Y Z A B C D<br />
+                F G H I J K L M N O P Q R S T U V W X Y Z A B C D E<br />
+                G H I J K L M N O P Q R S T U V W X Y Z A B C D E F<br />
+                H I J K L M N O P Q R S T U V W X Y Z A B C D E F G<br />
+                I J K L M N O P Q R S T U V W X Y Z A B C D E F G H<br />
+                J K L M N O P Q R S T U V W X Y Z A B C D E F G H I<br />
+                K L M N O P Q R S T U V W X Y Z A B C D E F G H I J<br />
+                L M N O P Q R S T U V W X Y Z A B C D E F G H I J K<br />
+                M N O P Q R S T U V W X Y Z A B C D E F G H I J K L<br />
+                N O P Q R S T U V W X Y Z A B C D E F G H I J K L M<br />
+                O P Q R S T U V W X Y Z A B C D E F G H I J K L M N<br />
+                P Q R S T U V W X Y Z A B C D E F G H I J K L M N O<br />
+                Q R S T U V W X Y Z A B C D E F G H I J K L M N O P<br />
+                R S T U V W X Y Z A B C D E F G H I J K L M N O P Q<br />
+                S T U V W X Y Z A B C D E F G H I J K L M N O P Q R<br />
+                T U V W X Y Z A B C D E F G H I J K L M N O P Q R S<br />
+                U V W X Y Z A B C D E F G H I J K L M N O P Q R S T<br />
+                V W X Y Z A B C D E F G H I J K L M N O P Q R S T U<br />
+                W X Y Z A B C D E F G H I J K L M N O P Q R S T U V<br />
+                X Y Z A B C D E F G H I J K L M N O P Q R S T U V W<br />
+                Y Z A B C D E F G H I J K L M N O P Q R S T U V W X<br />
+                Z A B C D E F G H I J K L M N O P Q R S T U V W X Y
+            </code>
+
+        </p>
+            <p class="text-center">
+            The first line is simply the alphabet, with no shift applied.  The following
+            lines are each shifted by one position.  To begin using the cipher, first you select a keyword, which must be known by both the sender and the receiver
+            of the message.  For our demonstration, let's choose the keyword "Black".  Our
+            test message will be "I have a secret message for you."
+
+        </p>
+            <p class="text-center">
+            To encipher the first letter of the message, find the letter to encrypt in
+            the first row.  Mark the column it is at the top of, in this case, the 9th
+            column.  Then, take the first letter of the keyword, and find the row that
+            begins with it.  In this case, "B" begins the second row.  Go across that row to
+            the column we marked earlier, the one with "I" at the top.  The letter in that
+            position will be the first letter of the ciphertext, in this case "J".
+
+        </p>
+            <p class="text-center">
+            For the second letter of the message, repeat the process, but use the column
+            topped by the second letter of the keyword.  Find the row that starts with "H"
+            and the column that starts with "L".  They meet at "S", the second letter of the
+            cipher text.
+
+        </p>
+            <p class="text-center">
+            Repeat this process until the end of your keyword.  Our keyword has 5
+            letters, so what happens for the sixth letter of the plaintext? Simply repeat
+            the keyword!  Begin with "B" again.  Drawing the whole process out, we have: <br />
+
+            <code>
+                I H A V E A S E C R E T M E S S A G E F O R Y O U <br />
+
+                B L A C K B L A C K C L A C K B L A C K B L A C K <br />
+
+                J S A X O B D E E B F E M G C T L G G P P C Y Q E
+            </code>
+
+        </p>
+            <p class="text-center">
+            There are couple interesting things to note using this cipher.  First, look
+            at the two "S"'s in "message".  One was encrypted into "C", but the other was
+            encrypted into "T".  Then, count up the "E"'s in the ciphertext.  There are 4 of
+            them, but none correspond to the same letter in the plaintext.  The 4
+            respectively came from "E", "C", "T", and "U".  This demonstrates the strength
+            of the Vigenere Cipher, and polyalphabetic ciphers in general: conventional
+            frequency analysis, the primary tool of the cryptanalyst up until this point, is
+            useless.
+
+        </p>
+            <p class="text-center">
+            Cracking the Vigenere Cipher is a complex process that took hundreds of
+            years to accomplish.  It will be covered in it's own article in this guide.
+</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="btn" type="button">Button</a>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
+</div>
+</body>
+</html>
