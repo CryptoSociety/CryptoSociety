@@ -13,25 +13,25 @@ public class CipherSelector {
             case "caesar" :
                 ciphertext = c.caesar(crypto.getPlainText(),
                         crypto.getCryptokey(),
-                        true);
+                        crypto.isKeepPunctuation());
                 break;
             case "atbash" :
-                ciphertext = c.atbash(crypto.getPlainText(), true);
+                ciphertext = c.atbash(crypto.getPlainText(), crypto.isKeepPunctuation());
                 break;
             case "kamasutra" :
                 ciphertext = c.kamasutra(crypto.getPlainText(),
                         crypto.getCryptokey(),
-                        true);
+                        crypto.isKeepPunctuation());
                 break;
             case "railfence" :
                 ciphertext = c.railfence(crypto.getPlainText(),
                         crypto.getCryptokey(),
-                        true);
+                        crypto.isKeepPunctuation());
                 break;
             case "vigenere" :
                 ciphertext = c.vigenere(crypto.getPlainText(),
                         crypto.getCryptokey(),
-                        true);
+                        crypto.isKeepPunctuation());
                 break;
             default: return null;
         }
