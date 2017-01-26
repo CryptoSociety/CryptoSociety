@@ -7,11 +7,6 @@
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div th:replace="fragments/wikinav :: wikinav" class="row"></div>
-    <div class="row ">
-        <div class="col-md-6 col-md-offset-3">
-            <a class="backbutton btn btn-default" href="/walkthroughs">Back to Walkthrough Main Page</a>
-        </div>
-    </div>
     <div class="row walkthrough-text">
         <div class="col-md-6 col-md-offset-3">
             <h3 class="text-center">
@@ -23,7 +18,7 @@
             histories are completely intertwined, each spurring the other forward.  As one
             cipher system falls to analysis, another, stronger one takes it's place, only to
             be defeated by deeper analysis.  We will describe 2 of the most basic techniques
-            here, but there are more out there for the dedicated cryptanalist.  Our first
+                here, but there are more out there for the dedicated cryptanalyst. Our first
             technique is frequency analysis.
 
             </p>
@@ -74,7 +69,7 @@
         </p>
             <p class="text-center">
             Begin by counting the number of times each letter appears in the ciphertext
-            in question.  In a monoalphabeti cipher, the most common is most likely to be E,
+                in question. In a monoalphabetic cipher, the most common is most likely to be E,
             the second most common T, and so on.  This is not an absolute, and some amount
             of guessing and testing is necessary.  It also depends on the text in question.
             The novel La Disparition, written in French by Georges Perec, is completely
@@ -86,7 +81,7 @@
 
         </p>
             <p class="text-center">
-            The next technique we will look at is a Known Plaitext Attack, also know as
+                The next technique we will look at is a Known Plaintext Attack, also know as
             searching for cribs.  A crib is a piece of the plaintext an attacker knows, or
             can reasonably guess, in advance.  This is easiest if the original spacing, line
             breaks, and punctuation of the plaintext has been preserved, but it is not
@@ -106,7 +101,7 @@
             <p class="text-center">
             Does that look like a familiar style of writing?  Some very common format
             that gets used over and over again?  It's almost definitely a letter.  If it is
-            a letter, that first word, "VWSJ", is almostly certainly the English word
+                a letter, that first word, "VWSJ", is almost certainly the English word
             "Dear", the traditional start of a letter.  We can reasonably guess that in this
             cipher, D enciphers to V, E enciphers to W, A enciphers to S, and R enciphers to
             J.  That's four letters we can guess, and possibly fill in the meaning of.  Now,
@@ -127,7 +122,7 @@
         </p>
             <p class="text-center">
             Cribs can also apply to keywords, instead of messages.  If you are attacking
-            a Vigenere cipher, and have worked out some of the shifts used in the cipher,
+                a Vigenère cipher, and have worked out some of the shifts used in the cipher,
             but not all of them, you make have a partially constructed keyword, with the
             shifts you have guessed corresponding to letters in the word.  If you have
             "crXptX" as a keyword, but frequency analysis is failing for the last two

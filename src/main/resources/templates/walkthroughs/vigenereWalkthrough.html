@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="fragments/header :: header(${'Vigenere Cipher'})">
+<head th:replace="fragments/header :: header(${'Vigenère Cipher'})">
 </head>
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div th:replace="fragments/wikinav :: wikinav" class="row"></div>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <a class="backbutton btn btn-default" href="/walkthroughs">Back to Walkthrough Main Page</a>
-        </div>
-    </div>
     <div class="row walkthrough-text">
         <div class="col-md-6 col-md-offset-3">
             <h3 class="text-center">
-                Vigenere Cipher
+                Vigenère Cipher
             </h3>
 
             <p class="text-center">
-            The Vigenere Cipher, or as it is known sometimes by the tool employed to
+                The Vigenère Cipher, or as it is known sometimes by the tool employed to
             construct it, the Vigenere Square, represents a massive leap forward in
             cryptographic science from anything covered on this site up until now.  Every
             cipher we have covered so far has been a form of monoalphabetic cipher, meaning
             there is one cipher alphabet employed throughout the creation of the ciphertext.
-            The Vigenere Cipher is a polyalphabetic cipher.  That means it employs multiple
+                The Vigenère Cipher is a polyalphabetic cipher. That means it employs multiple
             shifting alphabets throughout it's creation.
 
             </p>
             <p class="text-center">
-            In it's simplest form, the Vigenere Cipher is a series of Caeser shifts,
+                In it's simplest form, the Vigenère Cipher is a series of Caesar shifts,
             with each letter of the plaintext being encrypted by a different shift,
-            determined via a keyword.  We start by drawing the aforementioned Vigenere
+                determined via a keyword. We start by drawing the aforementioned Vigenère
             Square: <br />
             <code>
                 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br />
@@ -106,13 +101,13 @@
             encrypted into "T".  Then, count up the "E"'s in the ciphertext.  There are 4 of
             them, but none correspond to the same letter in the plaintext.  The 4
             respectively came from "E", "C", "T", and "U".  This demonstrates the strength
-            of the Vigenere Cipher, and polyalphabetic ciphers in general: conventional
+                of the Vigenère Cipher, and polyalphabetic ciphers in general: conventional
             frequency analysis, the primary tool of the cryptanalyst up until this point, is
             useless.
 
         </p>
             <p class="text-center">
-            Cracking the Vigenere Cipher is a complex process that took hundreds of
+                Cracking the Vigenère Cipher is a complex process that took hundreds of
             years to accomplish.  It will be covered in it's own article in this guide.
 </p>
         </div>

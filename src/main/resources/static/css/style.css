@@ -142,7 +142,7 @@ body, html {
     border-top-width: 20px;
     overflow: auto;
     margin-left: 300px;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .challengesDiv1{
@@ -241,12 +241,16 @@ margin-right:20px;
 /*----------------------------------------Challenge Page----------------------------------------------*/
 div#layoutObj {
     position: relative;
-    margin-top: 10px;
-    margin-left: 55px;
-    width: 1500px;
-    height: 1000px;
+    margin-top: 1%;
+    margin-left: 5%;
+    width: 90%;
+    height: 900px;
 }
 
+.challenge-title {
+    color: #00DE00;
+    text-decoration: underline;
+}
 .container-fluid{
     margin-top: 50px;
     margin-bottom:50px;
