@@ -210,8 +210,9 @@ public class AuthenticationController {
             return "redirect:/login";
         }
     }
+
     @GetMapping("/leaderboard")
-    public String leaderboard(Model model){
+    public String leaderboard(Model model) {
         model.addAttribute("leaderboardUserList", userDao.findTop10ByOrderByPointsDesc());
         return "/users/leaderboard";
     }

@@ -6,42 +6,55 @@
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
-    <div class="jumbotron">
+    <div class="editprofileDiv">
         <div class="row">
             <h2 th:if="${param.success}">Success!</h2>
             <div class="col-md-12">
                 <h1>Create a Challenge!</h1>
-                <h2>Test your fellow Society Members</h2>
+                <h3>Test your fellow Society Members</h3>
                 <form th:action="@{'/cryptos/create'}" method="post" th:object="${crypto}">
-                    <label for="name">Name:</label>
-                    <input id="name" th:value="*{name}" th:field="*{name}"/>
-                    <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-                    <label for="plaintext">PlainText</label>
-                    <textarea id="plaintext" class="form-control" th:value="*{plainText}"
-                              th:field="*{plainText}"></textarea>
-                    <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}"
-                       th:errors="*{plainText}"></p>
-                    <label for="solution">Solution</label>
-                    <textarea id="solution" class="form-control" th:value="*{solution}"
-                              th:field="*{solution}"></textarea>
-                    <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
-                    <label for="scheme">Scheme</label>
-                    <select name="scheme" required="required" id="scheme" value="">
-                        <option value="" selected="true" hidden="true">Choose a Scheme:</option>
-                        <option value="caesar">Caesar Shift</option>
-                        <option value="atbash">Atbash</option>
-                        <option value="kamasutra">Kama Sutra</option>
-                        <option value="railfence">Rail Fence</option>
-                        <option value="vigenere">Vigenere</option>
-                    </select>
+                    <div>
+                        <label for="name">Challenge Name:</label>
+                        <input id="name" th:value="*{name}" th:field="*{name}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    </div>
+                    <div>
+                        <label for="plaintext">PlainText:</label>
+                        <textarea id="plaintext" class="form-control" th:value="*{plainText}"
+                                  th:field="*{plainText}"></textarea>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}"
+                           th:errors="*{plainText}"></p>
+                    </div>
+                    <div>
+                        <label for="solution">Solution:</label>
+                        <textarea id="solution" class="form-control" th:value="*{solution}"
+                                  th:field="*{solution}"></textarea>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}"
+                           th:errors="*{solution}"></p>
+                    </div>
+                    <div>
+                        <label for="scheme">Scheme:</label>
+                        <select name="scheme" required="required" id="scheme" value="">
+                            <option value="" selected="true" hidden="true">Choose a Scheme:</option>
+                            <option value="caesar">Caesar Shift</option>
+                            <option value="atbash">Atbash Cipher</option>
+                            <option value="kamasutra">Kama Sutra Cipher</option>
+                            <option value="railfence">Rail Fence Cipher</option>
+                            <option value="vigenere">Vigenère Cipher</option>
+                        </select>
+                    </div>
                     <div id="key">
                         <div>Select a key</div>
                     </div>
-                    <label for="keepPunctuation">Keep Punctuation?</label>
-                    <input type="checkbox" th:value="*{keepPunctuation}" th:field="*{keepPunctuation}"
-                           id="keepPunctuation" value="true"/>
-                    <label for="points">Points</label>
-                    <input id="points" type="number" th:value="*{points}" th:field="*{points}"/>
+                    <div>
+                        <label for="keepPunctuation">Keep Punctuation?</label>
+                        <input type="checkbox" th:value="*{keepPunctuation}" th:field="*{keepPunctuation}"
+                               id="keepPunctuation" value="true"/>
+                    </div>
+                    <div>
+                        <label for="points">Points</label>
+                        <input id="points" type="number" th:value="*{points}" th:field="*{points}"/>
+                    </div>
                     <input class="button btn-default" type="submit" value="Create Challenge"/>
                 </form>
             </div>

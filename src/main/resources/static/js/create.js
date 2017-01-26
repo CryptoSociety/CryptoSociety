@@ -3,7 +3,7 @@ console.log("Test");
 $("#scheme").change(function () {
     var val = $("#scheme").val();
     if (val == "caesar") {
-        $("#key").html("<label for='key'>Shift (Positive integer)</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
+        $("#key").html("<label for='key'>Shift (Positive integer)</label><input class='rails' name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
     } else if (val == "atbash") {
         $("#key").html("<label for='key'>Atbash doesn't use a key.</label><input name='cryptokey' hidden th:value='atbash' th:field='*{cryptokey}'/>");
 
@@ -57,9 +57,9 @@ $("#scheme").change(function () {
             final.val(one.val() + two.val() + three.val() + four.val() + five.val() + six.val() + seven.val() + eight.val() + nine.val() + ten.val() + eleven.val() + twelve.val() + thirteen.val() + fourteen.val() + fifteen.val() + sixteen.val() + seventeen.val() + eighteen.val() + nineteen.val() + twenty.val() + twentyone.val() + twentytwo.val() + twentythree.val() + twentyfour.val() + twentyfive.val() + twentysix.val());
         }
     } else if (val == "railfence") {
-        $("#key").html("<label for='key'>Number of Rails (Positive integer)</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
+        $("#key").html("<label for='key'>Number of Rails (Positive integer)</label><input class='rails' name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
     } else if (val == "vigenere") {
-        $("#key").html("<label for='key'>Keyword</label><input name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
+        $("#key").html("<label for='key'>Keyword</label><input class='rails' name='cryptokey' th:value='' th:field='*{cryptokey}'/>");
     }
 });
 
