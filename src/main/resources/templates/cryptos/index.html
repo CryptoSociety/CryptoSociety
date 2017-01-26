@@ -22,6 +22,11 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12">
+            <h1 class="challenge.title text-center">CHALLENGES</h1>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6" th:each="crypto : ${cryptoList}" th:object="${crypto}">
             <div class="panel panel-default">
                 <div class="panel-heading"><a class="panel-title" th:href="@{'/cryptos/' + *{id}}"

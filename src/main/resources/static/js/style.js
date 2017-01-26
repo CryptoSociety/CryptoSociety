@@ -6,6 +6,7 @@ $(document).ready(function () {
     var pattern = "3L";
     var formContent = document.getElementById("formContent");
     var challengeContent = document.getElementById("challenge");
+    var scratchpad = document.getElementById("scratchpad");
     var currentPattern;
 
     function loadLayout() {
@@ -33,11 +34,12 @@ $(document).ready(function () {
 
         });
 
-        myLayout.cells("a").setWidth(300);
+        myLayout.cells("a").setWidth(400);
+        myLayout.cells("a").attachObject(scratchpad);
         // myLayout.cells("c").attachHTMLString('<form><textarea cols="100" rows="17">Fer</textarea></form>');
         myLayout.cells("c").attachObject(formContent);
         myLayout.cells("b").attachObject(challengeContent);
-        myLayout.cells("a").setText("Hints");
+        myLayout.cells("a").setText("Scratchpad");
         myLayout.cells("b").setText("Challenge");
         myLayout.cells("c").setText("Workbench");
 

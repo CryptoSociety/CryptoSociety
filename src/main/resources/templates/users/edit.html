@@ -9,33 +9,33 @@
     <div class="row editprofileDiv">
         <div class="col-md-12">
             <h2>Edit User Settings</h2>
-            <form th:action="@{'/users/' + *{id} + '/settings'}" th:method="POST" th:object="${user}">
-                <div>
-                    <label for="username">Update Username:</label>
+            <form class="editform" th:action="@{'/users/' + *{id} + '/settings'}" th:method="POST" th:object="${user}">
+                <div class="fieldEditDiv">
+                    <label class="editlabel" for="username">Update Username:</label>
                     <input class="editinput" type="text" id="username" th:value="*{username}" th:field="*{username}"
                            name="username"/>
                 </div>
                 <div th:if="${usernameError}" class="alert alert-danger" th:text="${usernameError}"></div>
-                <div>
-                    <label for="email">Update Email:</label>
+                <div class="fieldEditDiv">
+                    <label class="editlabel" for="email">Update Email:</label>
                     <input class="editinput" type="text" id="email" th:value="*{email}" th:field="*{email}"
                            name="email"/>
                 </div>
                 <div th:if="${emailError}" class="alert alert-danger" th:text="${emailError}"></div>
-                <div>
-                    <label for="currentpassword">Current Password:</label>
+                <div class="fieldEditDiv">
+                    <label class="editlabel" for="currentpassword">Current Password:</label>
                     <input class="editinput" type="password" id="currentpassword" name="currentpassword"/>
                 </div>
-                <div>
-                    <label for="newpassword">New Password:</label>
+                <div class="fieldEditDiv">
+                    <label class="editlabel" for="newpassword">New Password:</label>
                     <input class="editinput" type="password" id="newpassword" name="newpassword"/>
                 </div>
-                <div>
-                    <label for="confirmpassword">Confirm New Password:</label>
+                <div class="fieldEditDiv">
+                    <label class="editlabel" for="confirmpassword">Confirm New Password:</label>
                     <input class="editinput" type="password" id="confirmpassword" name="confirmpassword"/>
                 </div>
                 <div th:if="${passwordError}" class="alert alert-danger" th:text="${passwordError}"></div>
-                <input class="btn btn-lg btn-block submitbutton" type="submit"/>
+                <input class="btn btn-lg btn-block submitbutton editbutton" type="submit"/>
             </form>
         </div>
     </div>
