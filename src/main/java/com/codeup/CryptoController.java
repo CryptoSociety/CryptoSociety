@@ -244,7 +244,7 @@ public class CryptoController {
                 }
             }
         } while (!valid && i < 500);
-        if(!valid){
+        if (!valid) {
             return "redirect:/cryptos?noneFound";
         } else {
             return "redirect:/cryptos/" + id;

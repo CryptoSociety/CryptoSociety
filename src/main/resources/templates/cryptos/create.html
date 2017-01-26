@@ -29,7 +29,8 @@
                         <label for="solution">Solution:</label>
                         <textarea id="solution" class="form-control" th:value="*{solution}"
                                   th:field="*{solution}"></textarea>
-                        <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}"
+                           th:errors="*{solution}"></p>
                     </div>
                     <div>
                         <label for="scheme">Scheme:</label>
