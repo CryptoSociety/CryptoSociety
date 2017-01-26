@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="fragments/header :: header(${'Cracking the Vigenere Cipher'})">
+<head th:replace="fragments/header :: header(${'Cracking the Vigenère Cipher'})">
 </head>
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div th:replace="fragments/wikinav :: wikinav" class="row"></div>
-    <div class="row ">
-        <div class="col-md-6 col-md-offset-3">
-            <a class="backbutton btn btn-default" href="/walkthroughs">Back to Walkthrough Main Page</a>
-        </div>
-    </div>
     <div class="row walkthrough-text">
         <div class="col-md-6 col-md-offset-3">
             <h3 class="text-center">
-                Cracking the Vigenere Cipher
+                Cracking the Vigenère Cipher
             </h3>
 
             <p class="text-center">
-            The first reliable method to crack the Vigenere cipher was developed in the
+                The first reliable method to crack the Vigenère cipher was developed in the
             1800s, and relies on mathematical analysis and old-fashioned frequency analysis.
             It relies on the repetition of the keyword as it cycles through the message.  In
             a long message, the same letters of the keyword will likely be used to encipher the
