@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
@@ -38,57 +38,70 @@
 <div th:fragment="kamasutra">
     <div id="keyFields" class="col-md-6">
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <div>
-            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text"
+                                                                              maxlength="1"/>
         </div>
         <p>Letters needed: <span id="lettersList">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span></p>
     </div>
     <div class="col-md-6">
-    <div>
-        <div><label for="kamasutraplaintextBox">Plaintext:</label></div>
-        <textarea type="text" name="plaintextBox" id="kamasutraplaintextBox"></textarea>
-        <button id="kamasutraencrypt">Encrypt</button>
-    </div>
-    <div>
-        <div><label for="kamasutraciphertextBox">Ciphertext:</label></div>
-        <textarea type="text" name="ciphertextBox" id="kamasutraciphertextBox"></textarea>
-        <button id="kamasutradecrypt">Decrypt</button>
-    </div>
+        <div>
+            <div><label for="kamasutraplaintextBox">Plaintext:</label></div>
+            <textarea type="text" name="plaintextBox" id="kamasutraplaintextBox"></textarea>
+            <button id="kamasutraencrypt">Encrypt</button>
+        </div>
+        <div>
+            <div><label for="kamasutraciphertextBox">Ciphertext:</label></div>
+            <textarea type="text" name="ciphertextBox" id="kamasutraciphertextBox"></textarea>
+            <button id="kamasutradecrypt">Decrypt</button>
+        </div>
     </div>
     <p id="kamasutraerror"></p>
 </div>
@@ -105,7 +118,7 @@
     </div>
     <div class="col-md-6">
         <label for="numberOfRails">Number of Rails:</label>
-        <input type="text" name="numberOfRails" id="numberOfRails" />
+        <input type="text" name="numberOfRails" id="numberOfRails"/>
     </div>
     <p id="railfenceerror"></p>
 </div>
@@ -122,7 +135,7 @@
     </div>
     <div class="col-md-6">
         <label for="keyword">Keyword:</label>
-        <input type="text" name="keyword" id="keyword" />
+        <input type="text" name="keyword" id="keyword"/>
     </div>
     <p id="vigenereerror"></p>
 </div>
