@@ -22,13 +22,15 @@
             </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div th:each="crypto : ${cryptoList}" th:object="${crypto}">
-                <div><a th:href="@{'/cryptos/' + *{id}}" th:text="*{name}"></a></div>
-                <div th:text="*{scheme}"></div>
-                <div th:text="*{cryptoText}">Puzzle</div>
-                <div th:text="*{creationDate}"></div>
-                <div><a class="indexlink" th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+        <div class="col-md-6" th:each="crypto : ${cryptoList}" th:object="${crypto}">
+            <div class="panel panel-default">
+                <div class="panel-heading"><a class="panel-title" th:href="@{'/cryptos/' + *{id}}" th:text="*{name}"></a></div>
+                <div class="panel-body">
+                    <div th:text="*{scheme}"></div>
+                    <div th:text="*{cryptoText}">Puzzle</div>
+                    <div th:text="*{creationDate}"></div>
+                    <div><a class="indexlink" th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+                </div>
             </div>
         </div>
     </div>

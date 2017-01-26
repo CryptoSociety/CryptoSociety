@@ -218,10 +218,28 @@ public class CryptoController {
     @GetMapping("/challenge")
     public String challenge(){
         long id = 0;
-//        boolean valid = false;
-//        do{
-//            long Math.ceil(Math.random()*200)
-//        } while (!valid);
-        return "/cryptos/"+ id;
+        boolean valid = false;
+        do{
+            id = (long) Math.ceil(Math.random()*1000);
+            Crypto crypto = cryptosRepo.findOne(id);
+            if(!isLoggedIn()) {
+                if (crypto != null && crypto.getIsApproved() && crypto.getActive()) {
+                    valid = true;
+                } else {
+                    valid = false;
+                }
+            } else {
+                if(crypto != null && crypto.getIsApproved() && crypto.getActive()){
+                    if(userCryptosRepo.findByPlayerIdAndCryptoId(loggedUser().getId(), crypto.getId()) == null){
+                        valid = true;
+                    } else {
+                        valid = false;
+                    }
+                } else {
+                    valid = false;
+                }
+            }
+        } while (!valid);
+        return "redirect:/cryptos/"+ id;
     }
 }
