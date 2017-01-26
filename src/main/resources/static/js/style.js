@@ -1,7 +1,6 @@
 "use strict";
 
 $(document).ready(function () {
-
     var myLayout;
     var pattern = "3L";
     var formContent = document.getElementById("formContent");
