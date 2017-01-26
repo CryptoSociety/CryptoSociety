@@ -3,13 +3,13 @@
  */
 'use strict';
 
-$(document).ready(function () {
-    var $plaintext = $('#plaintextBox'),
-        $ciphertext = $('#ciphertextBox'),
-        $encrypt = $('#encrypt'),
-        $decrypt = $('#decrypt'),
+$(document).ready(function() {
+    var $plaintext = $('#railfenceplaintextBox'),
+        $ciphertext = $('#railfenceciphertextBox'),
+        $encrypt = $('#railfenceencrypt'),
+        $decrypt = $('#railfencedecrypt'),
         $rails = $('#numberOfRails'),
-        $error = $('#error');
+        $error = $('#railfenceerror');
     $encrypt.click(function () {
         if (isNaN($rails.val()))
             $error.text("The number of rails must be a positive whole number.");

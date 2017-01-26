@@ -1,129 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>Title</title>
 </head>
 <body>
 <div th:fragment="caesar">
     <div class="col-md-6">
-        <div><label for="plaintextBox">Plaintext:</label></div>
-        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
-        <button id="encrypt">Encrypt</button>
+        <div><label for="caesarplaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="caesarplaintextBox"></textarea>
+        <button id="caesarencrypt">Encrypt</button>
     </div>
     <div class="col-md-6">
-        <div><label for="ciphertextBox">Ciphertext:</label></div>
-        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
-        <button id="decrypt">Decrypt</button>
+        <div><label for="caesarciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="caesarciphertextBox"></textarea>
+        <button id="caesardecrypt">Decrypt</button>
     </div>
     <div class="col-md-6">
-        <label for="shiftAmount">Shift:</label>
-        <input type="text" name="shiftAmount" id="shiftAmount" value="3"/>
+        <label for="caesarshiftAmount">Shift:</label>
+        <input type="text" name="shiftAmount" id="caesarshiftAmount" value="3"/>
     </div>
-    <p id="error"></p>
+    <p id="caesarerror"></p>
 </div>
 <div th:fragment="atbash">
     <div class="col-md-6">
-        <div><label for="plaintextBox">Plaintext:</label></div>
-        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
-        <button id="encrypt">Encrypt</button>
+        <div><label for="atbashplaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="atbashplaintextBox"></textarea>
+        <button id="atbashencrypt">Encrypt</button>
     </div>
     <div class="col-md-6">
         <div><label for="ciphertextBox">Ciphertext:</label></div>
-        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
-        <button id="decrypt">Decrypt</button>
+        <textarea type="text" name="ciphertextBox" id="atbashciphertextBox"></textarea>
+        <button id="atbashdecrypt">Decrypt</button>
+
     </div>
 </div>
 <div th:fragment="kamasutra">
     <div id="keyFields" class="col-md-6">
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <div>
-            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+            <input size="2" name="key[]" type="text" maxlength="1"/> = <input size="2" name="key[]" type="text" maxlength="1"/>
         </div>
         <p>Letters needed: <span id="lettersList">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span></p>
     </div>
     <div class="col-md-6">
-        <div>
-            <div><label for="plaintextBox">Plaintext:</label></div>
-            <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
-            <button id="encrypt">Encrypt</button>
-        </div>
-        <div>
-            <div><label for="ciphertextBox">Ciphertext:</label></div>
-            <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
-            <button id="decrypt">Decrypt</button>
-        </div>
+    <div>
+        <div><label for="kamasutraplaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="kamasutraplaintextBox"></textarea>
+        <button id="kamasutraencrypt">Encrypt</button>
     </div>
-    <p id="error"></p>
+    <div>
+        <div><label for="kamasutraciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="kamasutraciphertextBox"></textarea>
+        <button id="kamasutradecrypt">Decrypt</button>
+    </div>
+    </div>
+    <p id="kamasutraerror"></p>
 </div>
 <div th:fragment="railfence">
     <div class="col-md-6">
-        <div><label for="plaintextBox">Plaintext:</label></div>
-        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
-        <button id="encrypt">Encrypt</button>
+        <div><label for="railfenceplaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="railfenceplaintextBox"></textarea>
+        <button id="railfenceencrypt">Encrypt</button>
     </div>
     <div class="col-md-6">
-        <div><label for="ciphertextBox">Ciphertext:</label></div>
-        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
-        <button id="decrypt">Decrypt</button>
+        <div><label for="railfenceciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="railfenceciphertextBox"></textarea>
+        <button id="railfencedecrypt">Decrypt</button>
     </div>
     <div class="col-md-6">
         <label for="numberOfRails">Number of Rails:</label>
-        <input type="text" name="numberOfRails" id="numberOfRails"/>
+        <input type="text" name="numberOfRails" id="numberOfRails" />
     </div>
-    <p id="error"></p>
+    <p id="railfenceerror"></p>
 </div>
 <div th:fragment="vigenere">
     <div class="col-md-6">
-        <div><label for="plaintextBox">Plaintext:</label></div>
-        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
-        <button id="encrypt">Encrypt</button>
+        <div><label for="vigenereplaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="vigenereplaintextBox"></textarea>
+        <button id="vigenereencrypt">Encrypt</button>
     </div>
     <div class="col-md-6">
-        <div><label for="ciphertextBox">Ciphertext:</label></div>
-        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
-        <button id="decrypt">Decrypt</button>
+        <div><label for="vigenereciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="vigenereciphertextBox"></textarea>
+        <button id="vigeneredecrypt">Decrypt</button>
     </div>
     <div class="col-md-6">
         <label for="keyword">Keyword:</label>
-        <input type="text" name="keyword" id="keyword"/>
+        <input type="text" name="keyword" id="keyword" />
     </div>
-    <p id="error"></p>
+    <p id="vigenereerror"></p>
 </div>
 </body>
 </html>

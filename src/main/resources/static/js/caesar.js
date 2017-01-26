@@ -3,15 +3,15 @@
  */
 'use strict';
 
-$(document).ready(function () {
-    var $plaintext = $('#plaintextBox'),
-        $ciphertext = $('#ciphertextBox'),
-        $encrypt = $('#encrypt'),
-        $decrypt = $('#decrypt'),
-        $shift = $('#shiftAmount'),
-        $error = $('#error');
+$(document).ready(function() {
+    var $plaintext = $('#caesarplaintextBox'),
+        $ciphertext = $('#caesarciphertextBox'),
+        $encrypt = $('#caesarencrypt'),
+        $decrypt = $('#caesardecrypt'),
+        $shift = $('#caesarshiftAmount'),
+        $error = $('#caesarerror');
     $encrypt.click(function () {
-        if (isNaN($shift.val()))
+        if(isNaN($shift.val()))
             $error.text("The shift must be a positive whole number.");
         else {
             $error.text("");
@@ -32,7 +32,7 @@ $(document).ready(function () {
         }
     });
     $decrypt.click(function () {
-        if (isNaN($shift.val()))
+        if(isNaN($shift.val()))
             $error.text("The shift must be a positive whole number.");
         else {
             $error.text("");
