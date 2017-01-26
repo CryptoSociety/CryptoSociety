@@ -4,12 +4,12 @@
 'use strict';
 
 $(document).ready(function() {
-    var $plaintext = $('#caesarplaintextBox'),
-        $ciphertext = $('#caesarciphertextBox'),
-        $encrypt = $('#caesarencrypt'),
-        $decrypt = $('#caesardecrypt'),
-        $shift = $('#caesarshiftAmount'),
-        $error = $('#caesarerror');
+    var $plaintext = $('#plaintextBox'),
+        $ciphertext = $('#ciphertextBox'),
+        $encrypt = $('#encrypt'),
+        $decrypt = $('#decrypt'),
+        $shift = $('#shiftAmount'),
+        $error = $('#error');
     $encrypt.click(function () {
         if(isNaN($shift.val()))
             $error.text("The shift must be a positive whole number.");

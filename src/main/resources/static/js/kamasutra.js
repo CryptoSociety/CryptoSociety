@@ -2,13 +2,13 @@
  * Created by Duke on 1/19/17.
  */
 'use strict';
-var $plaintext = $('#kamasutraplaintextBox'),
-    $ciphertext = $('#kamasutraciphertextBox'),
-    $encrypt = $('#kamasutraencrypt'),
-    $decrypt = $('#kamasutradecrypt'),
+var $plaintext = $('#plaintextBox'),
+    $ciphertext = $('#ciphertextBox'),
+    $encrypt = $('#encrypt'),
+    $decrypt = $('#decrypt'),
     $list = $('#lettersList'),
     $array = $("[name='key[]']"),
-    $error = $('#kamasutraerror');
+    $error = $('#error');
 $('#keyFields').find('input').on("keyup", function () {
     var alphabet = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
     for(var i=0;i<$array.length;i++) {
