@@ -15,32 +15,32 @@
                 <form th:action="@{'/cryptos/create'}" method="post" th:object="${crypto}">
                     <div>
                         <label for="name">Challenge Name:</label>
-                    <input id="name" th:value="*{name}" th:field="*{name}"/>
-                    <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                        <input id="name" th:value="*{name}" th:field="*{name}"/>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                     </div>
                     <div>
                         <label for="plaintext">PlainText:</label>
-                    <textarea id="plaintext" class="form-control" th:value="*{plainText}"
-                              th:field="*{plainText}"></textarea>
-                    <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}"
-                       th:errors="*{plainText}"></p>
+                        <textarea id="plaintext" class="form-control" th:value="*{plainText}"
+                                  th:field="*{plainText}"></textarea>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}"
+                           th:errors="*{plainText}"></p>
                     </div>
                     <div>
                         <label for="solution">Solution:</label>
-                    <textarea id="solution" class="form-control" th:value="*{solution}"
-                              th:field="*{solution}"></textarea>
-                    <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
+                        <textarea id="solution" class="form-control" th:value="*{solution}"
+                                  th:field="*{solution}"></textarea>
+                        <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
                     </div>
                     <div>
                         <label for="scheme">Scheme:</label>
-                    <select name="scheme" required="required" id="scheme" value="">
-                        <option value="" selected="true" hidden="true">Choose a Scheme:</option>
-                        <option value="caesar">Caesar Shift</option>
-                        <option value="atbash">Atbash Cipher</option>
-                        <option value="kamasutra">Kama Sutra Cipher</option>
-                        <option value="railfence">Rail Fence Cipher</option>
-                        <option value="vigenere">Vigenère Cipher</option>
-                    </select>
+                        <select name="scheme" required="required" id="scheme" value="">
+                            <option value="" selected="true" hidden="true">Choose a Scheme:</option>
+                            <option value="caesar">Caesar Shift</option>
+                            <option value="atbash">Atbash Cipher</option>
+                            <option value="kamasutra">Kama Sutra Cipher</option>
+                            <option value="railfence">Rail Fence Cipher</option>
+                            <option value="vigenere">Vigenère Cipher</option>
+                        </select>
                     </div>
                     <div id="key">
                         <div>Select a key</div>
@@ -54,7 +54,7 @@
                         <label for="points">Points</label>
                         <input id="points" type="number" th:value="*{points}" th:field="*{points}"/>
                     </div>
-                    <input class="button btn-default" type="submit"/>
+                    <input class="button btn-default" type="submit" value="Create Challenge"/>
                 </form>
             </div>
         </div>

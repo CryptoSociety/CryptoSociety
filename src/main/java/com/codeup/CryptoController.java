@@ -219,6 +219,7 @@ public class CryptoController {
     public String challenge() {
         long id = 0;
         boolean valid = false;
+        int i = 0;
         do {
             id = (long) Math.ceil(Math.random() * 1000);
             Crypto crypto = cryptosRepo.findOne(id);
@@ -227,19 +228,26 @@ public class CryptoController {
                     valid = true;
                 } else {
                     valid = false;
+                    i++;
                 }
             } else {
                 if (crypto != null && crypto.getIsApproved() && crypto.getActive()) {
-                    if (userCryptosRepo.findByPlayerIdAndCryptoId(loggedUser().getId(), crypto.getId()) == null) {
+                    if (userCryptosRepo.findByPlayerIdAndCryptoId(loggedUser().getId(), crypto.getId()) == null && crypto.getUser().getId() != loggedUser().getId()) {
                         valid = true;
                     } else {
                         valid = false;
+                        i++;
                     }
                 } else {
                     valid = false;
+                    i++;
                 }
             }
-        } while (!valid);
-        return "redirect:/cryptos/" + id;
+        } while (!valid && i < 500);
+        if(!valid){
+            return "redirect:/cryptos?noneFound";
+        } else {
+            return "redirect:/cryptos/" + id;
+        }
     }
 }
