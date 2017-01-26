@@ -11,15 +11,15 @@ public class AlphabetKey {
     private char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     public AlphabetKey(char[] input) throws Exception {
-        if(input.length != 26)
+        if (input.length != 26)
             throw new Exception("Expecting 26 letters, got " + input.length);
-        for (int i = 0; i < alphabet.length; i = i+2){
-            key.put(input[i], input[i+1]);
-            key.put(input[i+1], input[i]);
+        for (int i = 0; i < alphabet.length; i = i + 2) {
+            key.put(input[i], input[i + 1]);
+            key.put(input[i + 1], input[i]);
         }
     }
 
-    public char getLetter(char c){
+    public char getLetter(char c) {
         return (char) key.get(c);
     }
 }

@@ -10,10 +10,10 @@ public class Cryptography {
         int key = Integer.valueOf(shift);
         plaintext = prepare(plaintext, punctuation);
         StringBuilder ciphertext = new StringBuilder(plaintext);
-        for (int i = 0; i < ciphertext.length(); i++){
+        for (int i = 0; i < ciphertext.length(); i++) {
             char letter = ciphertext.charAt(i);
-            if (Character.isLetter(letter)){
-                ciphertext.setCharAt(i, (char)((letter + key - (int)'A') % 26 + (int)'A'));
+            if (Character.isLetter(letter)) {
+                ciphertext.setCharAt(i, (char) ((letter + key - (int) 'A') % 26 + (int) 'A'));
             }
         }
         return ciphertext.toString();
@@ -23,22 +23,22 @@ public class Cryptography {
         int key = Integer.valueOf(shift);
         ciphertext = prepare(ciphertext, true);
         StringBuilder plaintext = new StringBuilder(ciphertext);
-        for (int i = 0; i < plaintext.length(); i++){
+        for (int i = 0; i < plaintext.length(); i++) {
             char letter = plaintext.charAt(i);
-            if (Character.isLetter(letter)){
-                plaintext.setCharAt(i, (char)((letter - key + (int)'A') % 26 + (int)'A'));
+            if (Character.isLetter(letter)) {
+                plaintext.setCharAt(i, (char) ((letter - key + (int) 'A') % 26 + (int) 'A'));
             }
         }
         return plaintext.toString();
     }
 
-    public String atbash(String input, boolean punctuation){
+    public String atbash(String input, boolean punctuation) {
         input = prepare(input, punctuation);
         StringBuilder result = new StringBuilder(input);
-        for (int i = 0; i < result.length(); i++){
+        for (int i = 0; i < result.length(); i++) {
             char letter = result.charAt(i);
-            if(Character.isLetter(letter)){
-                result.setCharAt(i, ((char)((((int)'Z') - (int)letter)+(int)'A')));
+            if (Character.isLetter(letter)) {
+                result.setCharAt(i, ((char) ((((int) 'Z') - (int) letter) + (int) 'A')));
             }
         }
         return result.toString();
@@ -66,7 +66,7 @@ public class Cryptography {
         StringBuilder plaintext = new StringBuilder();
         plaintext.setLength(ciphertext.length());
         int i = 0;
-        int jumpOne = railInt*2-2;
+        int jumpOne = railInt * 2 - 2;
         int jumpTwo = 0;
         boolean useFirstJump = true;
         int insertLocation = 0;
@@ -93,8 +93,8 @@ public class Cryptography {
 
     public String kamasutra(String plaintext, String key, boolean punctuation) throws Exception {
         key = prepare(key, true);
-        char[] charArray= key.toCharArray();
-        if (!check26(charArray)){
+        char[] charArray = key.toCharArray();
+        if (!check26(charArray)) {
             throw new Exception("Input does not contain all 26 letters of the alphabet");
         }
         AlphabetKey alphabetKey = new AlphabetKey(charArray);
@@ -108,42 +108,43 @@ public class Cryptography {
         return ciphertext.toString();
     }
 
-    public String vigenere(String plaintext, String keyword, boolean punctuation){
+    public String vigenere(String plaintext, String keyword, boolean punctuation) {
         plaintext = prepare(plaintext, punctuation);
         keyword = prepare(keyword, punctuation);
         StringBuilder ciphertext = new StringBuilder(plaintext);
         int k = 0;
-        for (int i = 0; i < plaintext.length(); i++){
+        for (int i = 0; i < plaintext.length(); i++) {
             if (Character.isLetter(plaintext.charAt(i))) {
                 ciphertext.setCharAt(i, caesar(String.valueOf(plaintext.charAt(i)),
-                        Integer.toString(((int)keyword.charAt(k) - (int)'A')),
+                        Integer.toString(((int) keyword.charAt(k) - (int) 'A')),
                         true)
                         .charAt(0));
                 k++;
-                if(k >= keyword.length())
+                if (k >= keyword.length())
                     k = 0;
             }
         }
         return ciphertext.toString();
     }
 
-    public String vigenereDecrypt(String ciphertext, String keyword){
+    public String vigenereDecrypt(String ciphertext, String keyword) {
         ciphertext = prepare(ciphertext, true);
         keyword = prepare(keyword, true);
         StringBuilder plaintext = new StringBuilder(ciphertext);
         int k = 0;
-        for (int i = 0; i < ciphertext.length(); i++){
+        for (int i = 0; i < ciphertext.length(); i++) {
             if (Character.isLetter(ciphertext.charAt(i))) {
                 plaintext.setCharAt(i, caesarDecypt(String.valueOf(plaintext.charAt(i)),
-                        Integer.toString(((int)keyword.charAt(k) - (int)'A')))
+                        Integer.toString(((int) keyword.charAt(k) - (int) 'A')))
                         .charAt(0));
                 k++;
-                if(k >= keyword.length())
+                if (k >= keyword.length())
                     k = 0;
             }
         }
         return plaintext.toString();
     }
+
     private String prepare(String input, boolean punctuation) {
         input = input.toUpperCase();
         if (punctuation)
@@ -151,18 +152,18 @@ public class Cryptography {
         return input.replaceAll("[^A-Z0-9]", "");
     }
 
-    private boolean isAlphnumeric(char c){
+    private boolean isAlphnumeric(char c) {
         return (Character.isLetter(c) || Character.isDigit(c));
     }
 
     public static boolean check26(char[] input) {
-        int i=0;
-        for(char c : input) {
+        int i = 0;
+        for (char c : input) {
             int x = Character.toUpperCase(c);
             if (x >= 'A' && x <= 'Z') {
                 i |= 1 << (x - 'A');
             }
         }
-        return  (i == (i | ((1 << (1 + 'Z' - 'A')) - 1)));
+        return (i == (i | ((1 << (1 + 'Z' - 'A')) - 1)));
     }
 }

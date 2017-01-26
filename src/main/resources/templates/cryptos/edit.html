@@ -14,10 +14,12 @@
                 <input id="name" name="name" th:value="*{name}" th:field="*{name}"/>
                 <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                 <label for="plainText">plainText</label>
-                <textarea id="plainText" name="plainText" class="form-control" th:value="*{plainText}" th:field="*{plainText}"></textarea>
+                <textarea id="plainText" name="plainText" class="form-control" th:value="*{plainText}"
+                          th:field="*{plainText}"></textarea>
                 <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}" th:errors="*{plainText}"></p>
                 <label for="solution">solution</label>
-                <textarea id="solution" name="solution" class="form-control" th:value="*{solution}" th:field="*{solution}"></textarea>
+                <textarea id="solution" name="solution" class="form-control" th:value="*{solution}"
+                          th:field="*{solution}"></textarea>
                 <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}"></p>
                 <label for="scheme">Scheme</label>
                 <select name="scheme" required="required" id="scheme" value="">
@@ -33,7 +35,7 @@
                 </div>
                 <label for="keepPunctuation">Keep punctuation?</label>
                 <input type="checkbox" th:value="*{keepPunctuation}" th:field="*{keepPunctuation}"
-                       id="keepPunctuation" value="true" />
+                       id="keepPunctuation" value="true"/>
                 <label>Points</label>
                 <input type="text" th:value="*{points}" th:field="*{points}"/>
                 <button>Save</button>

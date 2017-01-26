@@ -32,17 +32,17 @@ public class CryptoController {
     @Autowired
     Users usersRepo;
 
-    private User loggedUser(){
+    private User loggedUser() {
         return usersRepo.findOne(loggedInUser().getId());
     }
 
     @GetMapping()
-    public String index(Model model){
+    public String index(Model model) {
         List<Crypto> cryptoList = cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, true);
         List<Crypto> orderedCryptoList = new ArrayList<>();
 //        TODO: This for loop simply makes it show from most recent to oldest. Removing/commenting it out will cause it to sort with oldest first
-        for (int i = cryptoList.size()-1; i >= 0; i--) {
-            if(isLoggedIn()) {
+        for (int i = cryptoList.size() - 1; i >= 0; i--) {
+            if (isLoggedIn()) {
                 if (loggedUser().getId() != cryptoList.get(i).getUser().getId() && userCryptosRepo.findByPlayerIdAndCryptoId(loggedUser().getId(), cryptoList.get(i).getId()) == null) {
                     orderedCryptoList.add(cryptoList.get(i));
                 }
@@ -55,27 +55,27 @@ public class CryptoController {
     }
 
     @GetMapping("/create")
-    public String createGet(Model model){
+    public String createGet(Model model) {
         model.addAttribute("crypto", new Crypto());
         return "/cryptos/create";
     }
 
     @PostMapping("/create")
     public String createCrypto(@Valid Crypto crypto, Errors validation, Model model) throws Exception {
-        if(crypto.getScheme().equals("caesar") && !crypto.getCryptokey().matches("\\d+")) {
+        if (crypto.getScheme().equals("caesar") && !crypto.getCryptokey().matches("\\d+")) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
         }
-        if(crypto.getScheme().equals("railfence") && !crypto.getCryptokey().matches("\\d+")){
+        if (crypto.getScheme().equals("railfence") && !crypto.getCryptokey().matches("\\d+")) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
         }
-        if(crypto.getScheme().equals("kamasutra") && ((crypto.getCryptokey().length() < 26) || !Cryptography.check26
-                (crypto.getCryptokey().toCharArray()))){
+        if (crypto.getScheme().equals("kamasutra") && ((crypto.getCryptokey().length() < 26) || !Cryptography.check26
+                (crypto.getCryptokey().toCharArray()))) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must contain all 26 letters exactly once");
         }
-        if(crypto.getScheme().equals("vigenere") && !crypto.getCryptokey().matches("[a-zA-Z]+")) {
+        if (crypto.getScheme().equals("vigenere") && !crypto.getCryptokey().matches("[a-zA-Z]+")) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must contain only letters");
         }
-        if(validation.hasErrors()){
+        if (validation.hasErrors()) {
             model.addAttribute(validation.getAllErrors());
             model.addAttribute("crypto", crypto);
             return "/cryptos/create";
@@ -90,25 +90,25 @@ public class CryptoController {
     }
 
     @GetMapping("/{id}")
-    public String individualCrypto(@PathVariable long id, Model model){
+    public String individualCrypto(@PathVariable long id, Model model) {
         Crypto crypto = cryptosRepo.findOne(id);
-        if((crypto.getIsApproved() && crypto.getActive()) || (isLoggedIn() && crypto.getUser().getId() == loggedUser().getId()) || (isLoggedIn() && loggedUser().getAdmin())) {
+        if ((crypto.getIsApproved() && crypto.getActive()) || (isLoggedIn() && crypto.getUser().getId() == loggedUser().getId()) || (isLoggedIn() && loggedUser().getAdmin())) {
             model.addAttribute("crypto", crypto);
-            if(isLoggedIn() && ((loggedUser().getId() == crypto.getUser().getId()) || (isLoggedIn() && loggedUser().getAdmin()))) {
+            if (isLoggedIn() && ((loggedUser().getId() == crypto.getUser().getId()) || (isLoggedIn() && loggedUser().getAdmin()))) {
                 model.addAttribute("showEditControls", true);
             }
-            if(isLoggedIn() && loggedUser().getAdmin()) {
+            if (isLoggedIn() && loggedUser().getAdmin()) {
                 model.addAttribute("isAdmin", true);
             }
             boolean solvable = false;
-            if(isLoggedIn()) {
+            if (isLoggedIn()) {
                 User user = loggedUser();
                 if (isLoggedIn() && !user.getAdmin() && (user.getId() != crypto.getUser().getId()) && userCryptosRepo.findByPlayerIdAndCryptoId(user.getId(), crypto.getId()) == null) {
                     solvable = true;
                 }
             }
             model.addAttribute("solvable", solvable);
-            if(!solvable && isLoggedIn()){
+            if (!solvable && isLoggedIn()) {
                 model.addAttribute("showExtendedInfo", true);
             }
             return "/cryptos/challenge";
@@ -118,9 +118,9 @@ public class CryptoController {
     }
 
     @PostMapping("/{id}/delete")
-    public String deleteCrypto(@PathVariable long id){
+    public String deleteCrypto(@PathVariable long id) {
         Crypto crypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && loggedUser().getId() == crypto.getUser().getId() || (isLoggedIn() && loggedUser().getAdmin())) {
+        if (isLoggedIn() && loggedUser().getId() == crypto.getUser().getId() || (isLoggedIn() && loggedUser().getAdmin())) {
             crypto.setActive(false);
             cryptosRepo.save(crypto);
             return "redirect:/cryptos";
@@ -130,9 +130,9 @@ public class CryptoController {
     }
 
     @GetMapping("/{id}/edit")
-    public String updateCryptoGet(@PathVariable long id, Model model){
+    public String updateCryptoGet(@PathVariable long id, Model model) {
         Crypto crypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && (loggedUser().getId() == crypto.getUser().getId() || loggedUser().getAdmin())) {
+        if (isLoggedIn() && (loggedUser().getId() == crypto.getUser().getId() || loggedUser().getAdmin())) {
             model.addAttribute("crypto", crypto);
             return "/cryptos/edit";
         } else {
@@ -142,28 +142,28 @@ public class CryptoController {
     }
 
     @PostMapping("/{id}/edit")
-    public String updateCrypto(@PathVariable long id, @Valid Crypto crypto, Errors validation, Model model) throws Exception{
-        if(crypto.getScheme().equals("caesar") && !crypto.getCryptokey().matches("\\d+")) {
+    public String updateCrypto(@PathVariable long id, @Valid Crypto crypto, Errors validation, Model model) throws Exception {
+        if (crypto.getScheme().equals("caesar") && !crypto.getCryptokey().matches("\\d+")) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
         }
-        if(crypto.getScheme().equals("railfence") && !crypto.getCryptokey().matches("\\d+")){
+        if (crypto.getScheme().equals("railfence") && !crypto.getCryptokey().matches("\\d+")) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must be a positive whole number");
         }
-        if(crypto.getScheme().equals("kamasutra") && ((crypto.getCryptokey().length() < 26) || !Cryptography.check26
-                (crypto.getCryptokey().toCharArray()))){
+        if (crypto.getScheme().equals("kamasutra") && ((crypto.getCryptokey().length() < 26) || !Cryptography.check26
+                (crypto.getCryptokey().toCharArray()))) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must contain all 26 letters exactly once");
         }
-        if(crypto.getScheme().equals("vigenere") && !crypto.getCryptokey().matches("[a-zA-Z]+")) {
+        if (crypto.getScheme().equals("vigenere") && !crypto.getCryptokey().matches("[a-zA-Z]+")) {
             validation.rejectValue("cryptokey", "crypto.cryptokey", "Key must contain only letters");
         }
-        if(validation.hasErrors()){
+        if (validation.hasErrors()) {
             model.addAttribute(validation.getAllErrors());
             model.addAttribute("crypto", crypto);
             return "/cryptos/edit";
         }
         crypto.setCryptoText(CipherSelector.create(crypto));
         Crypto oldCrypto = cryptosRepo.findOne(id);
-        if(isLoggedIn() && loggedUser().getId() == oldCrypto.getUser().getId() || loggedUser().getAdmin()) {
+        if (isLoggedIn() && loggedUser().getId() == oldCrypto.getUser().getId() || loggedUser().getAdmin()) {
             oldCrypto.setName(crypto.getName());
             oldCrypto.setSolution(crypto.getSolution());
             oldCrypto.setPlainText(crypto.getPlainText());
@@ -183,15 +183,15 @@ public class CryptoController {
     }
 
     @PostMapping("{id}/solve")
-    public String solveCrypto(@PathVariable long id, @RequestParam("solution") String solution){
+    public String solveCrypto(@PathVariable long id, @RequestParam("solution") String solution) {
 
         boolean cryptoIsCorrect = (cryptosRepo.findOne(id).getSolution().equalsIgnoreCase(solution));
-        if(cryptoIsCorrect){
+        if (cryptoIsCorrect) {
             Crypto crypto = cryptosRepo.findOne(id);
-            crypto.setUsersSolved(crypto.getUsersSolved()+1);
+            crypto.setUsersSolved(crypto.getUsersSolved() + 1);
             cryptosRepo.save(crypto);
             User currentUser = usersRepo.findOne(loggedUser().getId());
-            currentUser.setPoints(currentUser.getPoints()+crypto.getPoints());
+            currentUser.setPoints(currentUser.getPoints() + crypto.getPoints());
             usersRepo.save(currentUser);
             UserCrypto userCrypto = new UserCrypto();
             userCrypto.setCrypto(crypto);
@@ -204,8 +204,8 @@ public class CryptoController {
     }
 
     @PostMapping("{id}/approve")
-    public String approveCrypto(@PathVariable long id){
-        if(isLoggedIn() && loggedUser().getAdmin()){
+    public String approveCrypto(@PathVariable long id) {
+        if (isLoggedIn() && loggedUser().getAdmin()) {
             Crypto crypto = cryptosRepo.findOne(id);
             crypto.setIsApproved(true);
             cryptosRepo.save(crypto);
@@ -216,21 +216,21 @@ public class CryptoController {
     }
 
     @GetMapping("/challenge")
-    public String challenge(){
+    public String challenge() {
         long id = 0;
         boolean valid = false;
-        do{
-            id = (long) Math.ceil(Math.random()*1000);
+        do {
+            id = (long) Math.ceil(Math.random() * 1000);
             Crypto crypto = cryptosRepo.findOne(id);
-            if(!isLoggedIn()) {
+            if (!isLoggedIn()) {
                 if (crypto != null && crypto.getIsApproved() && crypto.getActive()) {
                     valid = true;
                 } else {
                     valid = false;
                 }
             } else {
-                if(crypto != null && crypto.getIsApproved() && crypto.getActive()){
-                    if(userCryptosRepo.findByPlayerIdAndCryptoId(loggedUser().getId(), crypto.getId()) == null){
+                if (crypto != null && crypto.getIsApproved() && crypto.getActive()) {
+                    if (userCryptosRepo.findByPlayerIdAndCryptoId(loggedUser().getId(), crypto.getId()) == null) {
                         valid = true;
                     } else {
                         valid = false;
@@ -240,6 +240,6 @@ public class CryptoController {
                 }
             }
         } while (!valid);
-        return "redirect:/cryptos/"+ id;
+        return "redirect:/cryptos/" + id;
     }
 }

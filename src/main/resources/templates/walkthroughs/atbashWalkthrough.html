@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="fragments/header :: header(${'Atbash'})">
+<head th:replace="fragments/header :: header(${'Atbash Cipher'})">
 </head>
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div th:replace="fragments/wikinav :: wikinav" class="row"></div>
     <div class="row walkthrough-text">
-        <div class="col-md-6 col-md-offset-3">
-            <h3 class="text-center">
+        <div class="col-md-10 col-md-offset-1">
+            <h2 class="text-center">
                 Atbash Cipher
-            </h3>
+            </h2>
 
             <p class="text-center">
             The Atbash cipher was originally used to encrypt the Hebrew alphabet, and
