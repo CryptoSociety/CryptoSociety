@@ -8,102 +8,103 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div th:replace="fragments/wikinav :: wikinav" class="row"></div>
     <div class="row walkthrough-text">
-        <div class="col-md-6 col-md-offset-3">
-            <h3 class="text-center">
+        <div class="col-md-10 col-md-offset-1">
+            <h2 class="text-center">
                 Vigenère Cipher
-            </h3>
+            </h2>
 
             <p class="text-center">
                 The Vigenère Cipher, or as it is known sometimes by the tool employed to
-            construct it, the Vigenere Square, represents a massive leap forward in
-            cryptographic science from anything covered on this site up until now.  Every
-            cipher we have covered so far has been a form of monoalphabetic cipher, meaning
-            there is one cipher alphabet employed throughout the creation of the ciphertext.
+                construct it, the Vigenere Square, represents a massive leap forward in
+                cryptographic science from anything covered on this site up until now. Every
+                cipher we have covered so far has been a form of monoalphabetic cipher, meaning
+                there is one cipher alphabet employed throughout the creation of the ciphertext.
                 The Vigenère Cipher is a polyalphabetic cipher. That means it employs multiple
-            shifting alphabets throughout it's creation.
+                shifting alphabets throughout it's creation.
 
             </p>
             <p class="text-center">
                 In it's simplest form, the Vigenère Cipher is a series of Caesar shifts,
-            with each letter of the plaintext being encrypted by a different shift,
+                with each letter of the plaintext being encrypted by a different shift,
                 determined via a keyword. We start by drawing the aforementioned Vigenère
-            Square: <br />
-                <code>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code><br />
-                <code>B C D E F G H I J K L M N O P Q R S T U V W X Y Z A</code><br />
-                <code>C D E F G H I J K L M N O P Q R S T U V W X Y Z A B</code><br />
-                <code>D E F G H I J K L M N O P Q R S T U V W X Y Z A B C</code><br />
-                <code>E F G H I J K L M N O P Q R S T U V W X Y Z A B C D</code><br />
-                <code>F G H I J K L M N O P Q R S T U V W X Y Z A B C D E</code><br />
-                <code>G H I J K L M N O P Q R S T U V W X Y Z A B C D E F</code><br />
-                <code>H I J K L M N O P Q R S T U V W X Y Z A B C D E F G</code><br />
-                <code>I J K L M N O P Q R S T U V W X Y Z A B C D E F G H</code><br />
-                <code>J K L M N O P Q R S T U V W X Y Z A B C D E F G H I</code><br />
-                <code>K L M N O P Q R S T U V W X Y Z A B C D E F G H I J</code><br />
-                <code>L M N O P Q R S T U V W X Y Z A B C D E F G H I J K</code><br />
-                <code>M N O P Q R S T U V W X Y Z A B C D E F G H I J K L</code><br />
-                <code>N O P Q R S T U V W X Y Z A B C D E F G H I J K L M</code><br />
-                <code>O P Q R S T U V W X Y Z A B C D E F G H I J K L M N</code><br />
-                <code>P Q R S T U V W X Y Z A B C D E F G H I J K L M N O</code><br />
-                <code>Q R S T U V W X Y Z A B C D E F G H I J K L M N O P</code><br />
-                <code>R S T U V W X Y Z A B C D E F G H I J K L M N O P Q</code><br />
-                <code>S T U V W X Y Z A B C D E F G H I J K L M N O P Q R</code><br />
-                <code>T U V W X Y Z A B C D E F G H I J K L M N O P Q R S</code><br />
-                <code>U V W X Y Z A B C D E F G H I J K L M N O P Q R S T</code><br />
-                <code>V W X Y Z A B C D E F G H I J K L M N O P Q R S T U</code><br />
-                <code>W X Y Z A B C D E F G H I J K L M N O P Q R S T U V</code><br />
-                <code>X Y Z A B C D E F G H I J K L M N O P Q R S T U V W</code><br />
-                <code>Y Z A B C D E F G H I J K L M N O P Q R S T U V W X</code><br />
+                Square: <br/>
+                <code>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code><br/>
+                <code>B C D E F G H I J K L M N O P Q R S T U V W X Y Z A</code><br/>
+                <code>C D E F G H I J K L M N O P Q R S T U V W X Y Z A B</code><br/>
+                <code>D E F G H I J K L M N O P Q R S T U V W X Y Z A B C</code><br/>
+                <code>E F G H I J K L M N O P Q R S T U V W X Y Z A B C D</code><br/>
+                <code>F G H I J K L M N O P Q R S T U V W X Y Z A B C D E</code><br/>
+                <code>G H I J K L M N O P Q R S T U V W X Y Z A B C D E F</code><br/>
+                <code>H I J K L M N O P Q R S T U V W X Y Z A B C D E F G</code><br/>
+                <code>I J K L M N O P Q R S T U V W X Y Z A B C D E F G H</code><br/>
+                <code>J K L M N O P Q R S T U V W X Y Z A B C D E F G H I</code><br/>
+                <code>K L M N O P Q R S T U V W X Y Z A B C D E F G H I J</code><br/>
+                <code>L M N O P Q R S T U V W X Y Z A B C D E F G H I J K</code><br/>
+                <code>M N O P Q R S T U V W X Y Z A B C D E F G H I J K L</code><br/>
+                <code>N O P Q R S T U V W X Y Z A B C D E F G H I J K L M</code><br/>
+                <code>O P Q R S T U V W X Y Z A B C D E F G H I J K L M N</code><br/>
+                <code>P Q R S T U V W X Y Z A B C D E F G H I J K L M N O</code><br/>
+                <code>Q R S T U V W X Y Z A B C D E F G H I J K L M N O P</code><br/>
+                <code>R S T U V W X Y Z A B C D E F G H I J K L M N O P Q</code><br/>
+                <code>S T U V W X Y Z A B C D E F G H I J K L M N O P Q R</code><br/>
+                <code>T U V W X Y Z A B C D E F G H I J K L M N O P Q R S</code><br/>
+                <code>U V W X Y Z A B C D E F G H I J K L M N O P Q R S T</code><br/>
+                <code>V W X Y Z A B C D E F G H I J K L M N O P Q R S T U</code><br/>
+                <code>W X Y Z A B C D E F G H I J K L M N O P Q R S T U V</code><br/>
+                <code>X Y Z A B C D E F G H I J K L M N O P Q R S T U V W</code><br/>
+                <code>Y Z A B C D E F G H I J K L M N O P Q R S T U V W X</code><br/>
                 <code>Z A B C D E F G H I J K L M N O P Q R S T U V W X Y</code>
 
-        </p>
+            </p>
             <p class="text-center">
-            The first line is simply the alphabet, with no shift applied.  The following
-            lines are each shifted by one position.  To begin using the cipher, first you select a keyword, which must be known by both the sender and the receiver
-            of the message.  For our demonstration, let's choose the keyword "Black".  Our
-            test message will be "I have a secret message for you."
+                The first line is simply the alphabet, with no shift applied. The following
+                lines are each shifted by one position. To begin using the cipher, first you select a keyword, which
+                must be known by both the sender and the receiver
+                of the message. For our demonstration, let's choose the keyword "Black". Our
+                test message will be "I have a secret message for you."
 
-        </p>
+            </p>
             <p class="text-center">
-            To encipher the first letter of the message, find the letter to encrypt in
-            the first row.  Mark the column it is at the top of, in this case, the 9th
-            column.  Then, take the first letter of the keyword, and find the row that
-            begins with it.  In this case, "B" begins the second row.  Go across that row to
-            the column we marked earlier, the one with "I" at the top.  The letter in that
-            position will be the first letter of the ciphertext, in this case "J".
+                To encipher the first letter of the message, find the letter to encrypt in
+                the first row. Mark the column it is at the top of, in this case, the 9th
+                column. Then, take the first letter of the keyword, and find the row that
+                begins with it. In this case, "B" begins the second row. Go across that row to
+                the column we marked earlier, the one with "I" at the top. The letter in that
+                position will be the first letter of the ciphertext, in this case "J".
 
-        </p>
+            </p>
             <p class="text-center">
-            For the second letter of the message, repeat the process, but use the column
-            topped by the second letter of the keyword.  Find the row that starts with "H"
-            and the column that starts with "L".  They meet at "S", the second letter of the
-            cipher text.
+                For the second letter of the message, repeat the process, but use the column
+                topped by the second letter of the keyword. Find the row that starts with "H"
+                and the column that starts with "L". They meet at "S", the second letter of the
+                cipher text.
 
-        </p>
+            </p>
             <p class="text-center">
-            Repeat this process until the end of your keyword.  Our keyword has 5
-            letters, so what happens for the sixth letter of the plaintext? Simply repeat
-            the keyword!  Begin with "B" again.  Drawing the whole process out, we have: <br />
+                Repeat this process until the end of your keyword. Our keyword has 5
+                letters, so what happens for the sixth letter of the plaintext? Simply repeat
+                the keyword! Begin with "B" again. Drawing the whole process out, we have: <br/>
 
-                <code>I H A V E A S E C R E T M E S S A G E F O R Y O U </code><br />
-                <code>B L A C K B L A C K C L A C K B L A C K B L A C K </code><br />
+                <code>I H A V E A S E C R E T M E S S A G E F O R Y O U </code><br/>
+                <code>B L A C K B L A C K C L A C K B L A C K B L A C K </code><br/>
                 <code>J S A X O B D E E B F E M G C T L G G P P C Y Q E</code>
 
-        </p>
+            </p>
             <p class="text-center">
-            There are couple interesting things to note using this cipher.  First, look
-            at the two "S"'s in "message".  One was encrypted into "C", but the other was
-            encrypted into "T".  Then, count up the "E"'s in the ciphertext.  There are 4 of
-            them, but none correspond to the same letter in the plaintext.  The 4
-            respectively came from "E", "C", "T", and "U".  This demonstrates the strength
+                There are couple interesting things to note using this cipher. First, look
+                at the two "S"'s in "message". One was encrypted into "C", but the other was
+                encrypted into "T". Then, count up the "E"'s in the ciphertext. There are 4 of
+                them, but none correspond to the same letter in the plaintext. The 4
+                respectively came from "E", "C", "T", and "U". This demonstrates the strength
                 of the Vigenère Cipher, and polyalphabetic ciphers in general: conventional
-            frequency analysis, the primary tool of the cryptanalyst up until this point, is
-            useless.
+                frequency analysis, the primary tool of the cryptanalyst up until this point, is
+                useless.
 
-        </p>
+            </p>
             <p class="text-center">
                 Cracking the Vigenère Cipher is a complex process that took hundreds of
-            years to accomplish.  It will be covered in it's own article in this guide.
-</p>
+                years to accomplish. It will be covered in it's own article in this guide.
+            </p>
         </div>
     </div>
     <div th:replace="fragments/footer :: footer" class="row footer">

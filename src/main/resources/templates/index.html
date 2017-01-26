@@ -7,46 +7,48 @@
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="contentDiv">
-    <div class="row">
-        <div class=".col-md-6 .col-md-offset-3">
-            <h3 class="text-center">
-                Welcome to CryptoSociety
-            </h3>
-            <p class="text-center">
-                Cryptography.  Half-art, half-science, the practice of hidden writing has
-                existed for thousands of years.  It is referenced in holy books,
-                philosophical works, military treatises, and royal correspondence. It has
-                been practiced by kings, priests, scientists, occultists, soldiers, rebels,
-                and spies.  Today, we all rely on cryptography to safeguard our bank
-                accounts, online identities, and personal details from criminals and
-                surveillance programs.  But what exactly is this obscure means of
-                communication, so ubiquitous in our lives, and yet so beyond understanding
-                that it can seem akin to magic?
-            </p>
-            <p class="text-center">
-                This site aims to give an introduction to simple cryptography, regardless of
-                your learning style.  If you are completely new to anything to do with
-                hidden writing, please take a look at our <a class="indexlink" href="/walkthroughs">walkthrough</a> page, for a guide to
-                some terms and an explanation of what you might find on the site.  If you
-                prefer your learning to be more hands-on, take a look at the <a class="indexlink" href="/cryptos">challenges</a>
-                page, to try your hand at cracking a few ciphers by yourself.  And if you're
-                coming here from another site or project, and have some ciphers from
-                somewhere else to crack, please make use of our <a class="indexlink" href="/toolbox">cipher tool</a> to assist you.
-            </p>
-            <p class="text-center">
-                At this point, we should take the time to clarify: the cipher systems
-                discussed on this page come from antiquity.  They represent a branch of
-                cryptography known as "classical cryptography."  They have all been broken
-                many, many times.  Absolutely none of these ciphers will keep your
-                information safe in the modern world.  We do not get into modern digital
-                cryptography here.  We will not be covering RSA, PGP, hash sums, or anything
-                of that nature.  This site is for education, history, and entertainment.  Do
-                not use anything you learn here to encrypt your password, bank information,
-                etc.
+        <div class="row">
+            <div class=".col-md-6 .col-md-offset-3">
+                <h1 class="text-center">
+                    Welcome to CryptoSociety
+                </h1>
+                <p class="text-center">
+                    Cryptography. Half-art, half-science, the practice of hidden writing has
+                    existed for thousands of years. It is referenced in holy books,
+                    philosophical works, military treatises, and royal correspondence. It has
+                    been practiced by kings, priests, scientists, occultists, soldiers, rebels,
+                    and spies. Today, we all rely on cryptography to safeguard our bank
+                    accounts, online identities, and personal details from criminals and
+                    surveillance programs. But what exactly is this obscure means of
+                    communication, so ubiquitous in our lives, and yet so beyond understanding
+                    that it can seem akin to magic?
+                </p>
+                <p class="text-center">
+                    This site aims to give an introduction to simple cryptography, regardless of
+                    your learning style. If you are completely new to anything to do with
+                    hidden writing, please take a look at our <a class="indexlink" href="/walkthroughs">walkthrough</a>
+                    page, for a guide to
+                    some terms and an explanation of what you might find on the site. If you
+                    prefer your learning to be more hands-on, take a look at the <a class="indexlink" href="/cryptos">challenges</a>
+                    page, to try your hand at cracking a few ciphers by yourself. And if you're
+                    coming here from another site or project, and have some ciphers from
+                    somewhere else to crack, please make use of our <a class="indexlink" href="/toolbox">cipher tool</a>
+                    to assist you.
+                </p>
+                <p class="text-center">
+                    At this point, we should take the time to clarify: the cipher systems
+                    discussed on this page come from antiquity. They represent a branch of
+                    cryptography known as "classical cryptography." They have all been broken
+                    many, many times. Absolutely none of these ciphers will keep your
+                    information safe in the modern world. We do not get into modern digital
+                    cryptography here. We will not be covering RSA, PGP, hash sums, or anything
+                    of that nature. This site is for education, history, and entertainment. Do
+                    not use anything you learn here to encrypt your password, bank information,
+                    etc.
 
-            </p>
+                </p>
+            </div>
         </div>
-    </div>
     </div>
     <div th:replace="fragments/footer :: footer" class="row footer">
     </div>

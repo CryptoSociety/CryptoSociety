@@ -31,13 +31,13 @@ public class AuthenticationController {
     @Autowired
     Cryptos cryptosRepo;
 
-    private User loggedUser(){
+    private User loggedUser() {
         return userDao.findOne(loggedInUser().getId());
     }
 
     @GetMapping("/login")
     public String showLoginForm() {
-        if(isLoggedIn()){
+        if (isLoggedIn()) {
             return "redirect:/users/profile";
         } else {
             return "users/login";
@@ -46,7 +46,7 @@ public class AuthenticationController {
 
     @GetMapping("/register")
     public String showRegister(Model model) {
-        if(isLoggedIn()){
+        if (isLoggedIn()) {
             return "redirect:/users/profile";
         } else {
             model.addAttribute("user", new User());
@@ -54,7 +54,7 @@ public class AuthenticationController {
         }
     }
 
-//  TODO: Implement automatic login after registration, maybe
+    //  TODO: Implement automatic login after registration, maybe
     @PostMapping("/register")
     public String createUser(@Valid User user, Errors validation, Model model) {
         if (validation.hasErrors()) {
@@ -85,13 +85,13 @@ public class AuthenticationController {
                 hasError = true;
             } else {
                 String password = user.getPassword();
-                if(password.equalsIgnoreCase("Invalid entry")){
+                if (password.equalsIgnoreCase("Invalid entry")) {
                     model.addAttribute("passwordError", "Password cannot be blank and must be between 5 and 40 characters");
                     hasError = true;
                 }
             }
         }
-        if(hasError){
+        if (hasError) {
             model.addAttribute("user", user);
             return "users/register";
         } else {
@@ -102,10 +102,10 @@ public class AuthenticationController {
     }
 
     @GetMapping("/users/{id}")
-    public String showUser(@PathVariable long id, Model model){
+    public String showUser(@PathVariable long id, Model model) {
         User user = userDao.findOne(id);
         model.addAttribute("user", user);
-        if(isLoggedIn()) {
+        if (isLoggedIn()) {
             model.addAttribute("loggedInUser", loggedUser());
             model.addAttribute("isAdmin", isLoggedIn() && loggedUser().getAdmin());
             model.addAttribute("showEditControls", isLoggedIn() && loggedUser().getId() == user.getId());
@@ -114,17 +114,17 @@ public class AuthenticationController {
     }
 
     @GetMapping("/users/profile")
-    public String personalProfile(){
-        if(isLoggedIn()){
-            return ("redirect:/users/"+loggedUser().getId());
+    public String personalProfile() {
+        if (isLoggedIn()) {
+            return ("redirect:/users/" + loggedUser().getId());
         } else {
             return "redirect:/login";
         }
     }
 
     @GetMapping("/users/{id}/settings")
-    public String userSettingsGet(@PathVariable long id, Model model){
-        if(isLoggedIn() && loggedUser().getId() == id) {
+    public String userSettingsGet(@PathVariable long id, Model model) {
+        if (isLoggedIn() && loggedUser().getId() == id) {
             model.addAttribute("user", userDao.findOne(id));
             return "/users/edit";
         } else {
@@ -133,15 +133,15 @@ public class AuthenticationController {
     }
 
     @PostMapping("/users/{id}/settings")
-    public String userSettingsPost(@PathVariable long id, User updatedUser, Model model, Errors errors, HttpServletRequest request) throws Exception{
-        if(isLoggedIn() && loggedUser().getId() == id) {
+    public String userSettingsPost(@PathVariable long id, User updatedUser, Model model, Errors errors, HttpServletRequest request) throws Exception {
+        if (isLoggedIn() && loggedUser().getId() == id) {
             boolean hasError = false;
             User user = userDao.findOne(id);
 
             if (!request.getParameter("currentpassword").isEmpty() && !request.getParameter("newpassword").trim().isEmpty() && !request.getParameter("confirmpassword").trim().isEmpty()) {
                 if (BCrypt.checkpw(request.getParameter("currentpassword"), user.getPassword())) {
                     if (request.getParameter("newpassword").equals(request.getParameter("confirmpassword"))) {
-                        if(request.getParameter("newpassword").trim().length() < 5 || request.getParameter("newpassword").trim().length() > 40){
+                        if (request.getParameter("newpassword").trim().length() < 5 || request.getParameter("newpassword").trim().length() > 40) {
                             model.addAttribute("passwordError", "Password must be 5-40 characters");
                             hasError = true;
                         } else {
@@ -182,14 +182,14 @@ public class AuthenticationController {
                     hasError = true;
                 }
                 Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-                Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(email);
+                Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
                 if (!matcher.find()) {
                     model.addAttribute("emailError", "Please enter a valid email address.");
                     hasError = true;
                 }
             }
 
-            if(hasError){
+            if (hasError) {
                 model.addAttribute("user", user);
                 return "/users/edit";
             } else {
@@ -202,9 +202,9 @@ public class AuthenticationController {
     }
 
     @GetMapping("/admin")
-    public String adminPage(Model model){
-        if(isLoggedIn() && loggedUser().getAdmin()){
-            model.addAttribute("activeUnapproved",cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, false));
+    public String adminPage(Model model) {
+        if (isLoggedIn() && loggedUser().getAdmin()) {
+            model.addAttribute("activeUnapproved", cryptosRepo.findByActiveEqualsAndIsApprovedEquals(true, false));
             return "/admin";
         } else {
             return "redirect:/login";

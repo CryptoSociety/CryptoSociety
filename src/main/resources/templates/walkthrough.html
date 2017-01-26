@@ -8,60 +8,60 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div th:replace="fragments/wikinav :: wikinav" class="row"></div>
     <div class="row walkthrough-text">
-        <div class="col-md-6 col-md-offset-3">
-            <h3 class="text-center">
+        <div class="col-md-10 col-md-offset-1">
+            <h2 class="text-center">
                 Walkthrough Page
-            </h3>
+            </h2>
 
             <p class="text-center">
                 Whether you are brand new to cryptography, or an old hand looking to pick up
-                a few new tricks, you are in the right spot.  Here, you will find pages on
+                a few new tricks, you are in the right spot. Here, you will find pages on
                 all of the cipher systems in use on this site, as well as decryption
-                techniques to help solving the challenges.  First, a few terms you will see
+                techniques to help solving the challenges. First, a few terms you will see
                 in use, either on this site or in your further explorations of cryptography.
 
             </p>
             <p class="text-center">
                 Cryptography: any means by which the contents of a message are hidden from
-                unintended viewers.  This can include scrambling the message, running each
+                unintended viewers. This can include scrambling the message, running each
                 letter through some algorithm to disguise it, replacing words with other
                 preselected words, or even hiding the existence of a message entirely.
 
-        </p>
+            </p>
             <p class="text-center">
                 Plaintext: the message being sent, written out in plain english (or whatever
-                language you are communicating in) with no cryptography to hide it.  Also
+                language you are communicating in) with no cryptography to hide it. Also
                 referred to as "cleartext."
 
-        </p>
+            </p>
             <p class="text-center">
-                Ciphertext: the encoded or enciphered message to be sent.  This will usually
-                look like a random jumble of words or letters.  It is usually considered
+                Ciphertext: the encoded or enciphered message to be sent. This will usually
+                look like a random jumble of words or letters. It is usually considered
                 best practice to remove all punctuation, spacing, and line breaks, and to
                 spell out numbers (1, 2, 3) as words (one, two, three) so they don't stand
-                out.  We have challenges in both formats, to highlight the differences.
+                out. We have challenges in both formats, to highlight the differences.
 
-        </p>
+            </p>
             <p class="text-center">
-                Code: cryptography that operates on the information level of a message.  A
+                Code: cryptography that operates on the information level of a message. A
                 word, phrase, or even full sentence will be mapped to another word, phrase,
-                or symbol, without there necessarily being any relation between them.  In
+                or symbol, without there necessarily being any relation between them. In
                 World War II, the phrase "Jean has a long mustache," was broadcast to the
                 french resistance on D-Day
-                to signal the beginning of the allied invasion.  This is an example of a
-                code.  The phrase has no correlation whatsoever with the message being sent.
+                to signal the beginning of the allied invasion. This is an example of a
+                code. The phrase has no correlation whatsoever with the message being sent.
                 There is no algorithm that can extract "Allies landing at Normandy" from the
-                code phrase.  It works because both parties, the sender and receiver, had
-                already agreed on a list of phrases and their meanings.  Any code requires
-                this pre-meeting and agreement.  Longer codes will require a /codebook/, a
-                list of words and their meaning in context of the code.  Hiding a message
+                code phrase. It works because both parties, the sender and receiver, had
+                already agreed on a list of phrases and their meanings. Any code requires
+                this pre-meeting and agreement. Longer codes will require a /codebook/, a
+                list of words and their meaning in context of the code. Hiding a message
                 through use of a code is referred to as "encoding."
 
-        </p>
+            </p>
             <p class="text-center">
                 We do not cover code making on this site, but focus purely on /ciphers/.
 
-        </p>
+            </p>
             <p class="text-center">
                 Cipher: cryprography that operates on the character level of a message.
                 Ciphers use some scheme or algorithm to mask individual letters and numbers of a
@@ -69,44 +69,44 @@
                 scramble the order that they were sent in, or replace each letter with an
                 arbitrary symbol, picked in advance. Because ciphers are based on
                 algorithms, patterns tend to emerge, and most can be broken through careful
-                thought and concentrated attack.  Hiding a message through the use of a
+                thought and concentrated attack. Hiding a message through the use of a
                 cipher is known as "encryption" or "encipherment."
 
-        </p>
+            </p>
             <p class="text-center">
                 Steganography: a method of cryptography in which a message is hidden from
-                view in some way.  This can mean anything from shrinking a message down until
-                you need a microscope to see it to writing in invisible ink.  There is even
+                view in some way. This can mean anything from shrinking a message down until
+                you need a microscope to see it to writing in invisible ink. There is even
                 a story of a greek noble sending a message by shaving his servants head and
                 tattooing the message on his bare scalp, then waiting for his hair to
-                regrow.  When the message was hidden, the servant was sent on a routine
+                regrow. When the message was hidden, the servant was sent on a routine
                 errand, and the intended recipient shaved the servants head and read the
-                message.  Now, we tend to treat people a little better than that, so the
+                message. Now, we tend to treat people a little better than that, so the
                 preferred method of hiding message is to use digital noise in some way, such
                 as the least important bit in an image file.
 
-        </p>
+            </p>
             <p class="text-center">
                 Steganography is another field we will not be covering on this site, but you
                 are encouraged to research it online elsewhere.
 
-        </p>
+            </p>
             <p class="text-center">
-                Key: the piece of knowledge needed to decrypt a message.  This can be
-                anything from a number to a word to an entire codebook.  They key is the
+                Key: the piece of knowledge needed to decrypt a message. This can be
+                anything from a number to a word to an entire codebook. They key is the
                 knowledge that must be kept hidden. In a well constructed cipher, even if
                 your adversary knows what technique you used to encrypt a message, they will
-                be powerless to decrypt it without the key.  Because of this, the number of
-                possible keys is one measure of how secure a cipher system is.  Later, you
+                be powerless to decrypt it without the key. Because of this, the number of
+                possible keys is one measure of how secure a cipher system is. Later, you
                 will learn about the Caesar shift cipher, a method that has only 26 possible
-                keys.  This is very weak compared to modern digital ciphers, which often
+                keys. This is very weak compared to modern digital ciphers, which often
                 have trillions and trillions of possible keys.
 
-        </p>
+            </p>
             <p class="text-center">
                 Cryptanalysis: any method used to figure out the contents of an encrypted
                 message without having knowledge of the key beforehand. Also referred to as
-                "breaking" or "cracking" a code or cipher.  Cryptanalysis can require a mix
+                "breaking" or "cracking" a code or cipher. Cryptanalysis can require a mix
                 of math, linguistics, logic, pattern recognition, and often some lucky
                 guesswork, but we try to provide a gentle introduction here.
 
@@ -114,7 +114,7 @@
         </div>
     </div>
 </div>
-    <div th:replace="fragments/footer :: footer" class="row footer">
-    </div>
+<div th:replace="fragments/footer :: footer" class="row footer">
+</div>
 </body>
 </html>

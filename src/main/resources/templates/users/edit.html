@@ -6,33 +6,36 @@
 <body>
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
-    <div class="row">
+    <div class="row editprofileDiv">
         <div class="col-md-12">
+            <h2>Edit User Settings</h2>
             <form th:action="@{'/users/' + *{id} + '/settings'}" th:method="POST" th:object="${user}">
                 <div>
-                    <label for="username">Update Username</label>
-                    <input type="text" id="username" th:value="*{username}" th:field="*{username}" name="username"/>
+                    <label for="username">Update Username:</label>
+                    <input class="editinput" type="text" id="username" th:value="*{username}" th:field="*{username}"
+                           name="username"/>
                 </div>
                 <div th:if="${usernameError}" class="alert alert-danger" th:text="${usernameError}"></div>
                 <div>
-                    <label for="email">Update Email</label>
-                    <input type="text" id="email" th:value="*{email}" th:field="*{email}" name="email"/>
+                    <label for="email">Update Email:</label>
+                    <input class="editinput" type="text" id="email" th:value="*{email}" th:field="*{email}"
+                           name="email"/>
                 </div>
                 <div th:if="${emailError}" class="alert alert-danger" th:text="${emailError}"></div>
                 <div>
-                    <label for="currentpassword">Current Password</label>
-                    <input type="password" id="currentpassword" name="currentpassword"/>
+                    <label for="currentpassword">Current Password:</label>
+                    <input class="editinput" type="password" id="currentpassword" name="currentpassword"/>
                 </div>
                 <div>
-                    <label for="newpassword">New Password</label>
-                    <input type="password" id="newpassword" name="newpassword"/>
+                    <label for="newpassword">New Password:</label>
+                    <input class="editinput" type="password" id="newpassword" name="newpassword"/>
                 </div>
                 <div>
-                    <label for="confirmpassword">Confirm New Password</label>
-                    <input type="password" id="confirmpassword" name="confirmpassword"/>
+                    <label for="confirmpassword">Confirm New Password:</label>
+                    <input class="editinput" type="password" id="confirmpassword" name="confirmpassword"/>
                 </div>
                 <div th:if="${passwordError}" class="alert alert-danger" th:text="${passwordError}"></div>
-                <button>Submit</button>
+                <input class="btn btn-lg btn-block submitbutton" type="submit"/>
             </form>
         </div>
     </div>

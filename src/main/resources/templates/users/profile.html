@@ -6,47 +6,64 @@
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="jumbotron">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 th:text="${user.username}+'&#8217;s profile page'"></h1>
-            <h4 th:if="${isAdmin} and ${user.admin}"><a th:href="@{'/admin'}">Admin</a></h4>
-            <h3><a class="indexlink" th:if="${showEditControls}" th:href="@{'/users/'+*{id}+'/settings'}" >Change settings</a></h3>
-            <h2 th:text="'Points: '+${user.points}"></h2>
+        <div class="row">
             <div class="col-md-6">
-                <h1>Posted: </h1>
-                <div th:each="crypto : ${user.getOrderedCryptos()}" th:object="${crypto}">
-                    <div th:with="activeAndApproved=*{active} and *{isApproved},userIsOwner=${showEditControls},isAdmin=${isAdmin}">
-                        <div th:if="${activeAndApproved} or ${userIsOwner} or ${isAdmin}" class="panel panel-default">
-                            <div class="panel-heading"><a th:href="@{'/cryptos/' + *{id}}" th:text="*{name}" class="panel-title"></a></div>
-                            <div class="panel-body">
-                                <div th:text="*{scheme}"></div>
-                                <div th:text="*{cryptoText}">Puzzle</div>
-                                <div th:text="*{creationDate}"></div>
-                                <div th:unless="*{active}">Inactive</div>
+                <h2 th:text="${user.username}+'&#8217;s Profile'"></h2>
+            </div>
+            <div class="col-md-6">
+                <h2 th:text="'Points: '+${user.points}"></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 th:if="${isAdmin} and ${user.admin}"><a class="indexlink" th:href="@{'/admin'}">Admin Page</a></h4>
+                <h4><a class="indexlink" th:if="${showEditControls}" th:href="@{'/users/'+*{id}+'/settings'}">Change
+                    User
+                    Settings</a></h4>
+            </div>
+            <div class="row">
+                <div class="col-md-6 postedDiv">
+                    <h3>Posted: </h3>
+                    <div th:each="crypto : ${user.getOrderedCryptos()}" th:object="${crypto}">
+                        <div th:with="activeAndApproved=*{active} and *{isApproved},userIsOwner=${showEditControls},isAdmin=${isAdmin}">
+                            <div th:if="${activeAndApproved} or ${userIsOwner} or ${isAdmin}"
+                                 class="panel panel-default">
+                                <div class="panel-heading"><a th:href="@{'/cryptos/' + *{id}}" th:text="*{name}"
+                                                              class="panel-title"></a></div>
+                                <div class="panel-body">
+                                    <div th:text="*{scheme}"></div>
+                                    <div th:text="*{cryptoText}">Puzzle</div>
+                                    <div th:text="*{creationDate}"></div>
+                                    <div th:unless="*{active}">Inactive</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <h1>Solved:</h1>
-                <div>
-                    <div th:each="userCrypto : ${user.getOrderedUserCryptos()}" th:object="${userCrypto}" class="panel panel-default">
-                        <div th:if="*{crypto.active} and *{crypto.isApproved}" class="panel-heading"><a  th:href="@{'/cryptos/' + *{crypto.id}}" th:text="*{crypto.name}" class="panel-title"></a></div>
-                        <div th:unless="*{crypto.active} and *{crypto.isApproved}" th:text="*{crypto.name}" class="panel-heading panel-title">Title</div>
-                        <div class="panel-body">
-                            <div th:text="*{crypto.scheme}"></div>
-                            <div th:text="*{crypto.cryptoText}">Puzzle</div>
-                            <div th:text="*{crypto.creationDate}"></div>
-                            <div th:text="*{crypto.points}"></div>
-                            <div th:unless="*{crypto.active}">Inactive</div>
+                <div class="col-md-6 solvedDiv">
+                    <h3>Solved:</h3>
+                    <div>
+                        <div th:each="userCrypto : ${user.getOrderedUserCryptos()}" th:object="${userCrypto}"
+                             class="panel panel-default">
+                            <div th:if="*{crypto.active} and *{crypto.isApproved}" class="panel-heading"><a
+                                    th:href="@{'/cryptos/' + *{crypto.id}}" th:text="*{crypto.name}"
+                                    class="panel-title"></a></div>
+                            <div th:unless="*{crypto.active} and *{crypto.isApproved}" th:text="*{crypto.name}"
+                                 class="panel-heading panel-title">Title
+                            </div>
+                            <div class="panel-body">
+                                <div th:text="*{crypto.scheme}"></div>
+                                <div th:text="*{crypto.cryptoText}">Puzzle</div>
+                                <div th:text="*{crypto.creationDate}"></div>
+                                <div th:text="*{crypto.points}"></div>
+                                <div th:unless="*{crypto.active}">Inactive</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     <div th:replace="fragments/footer :: footer" class="row footer">
     </div>
 </div>
