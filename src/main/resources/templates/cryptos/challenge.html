@@ -47,13 +47,16 @@
         <div th:text="*{usersSolved}">Users solved</div>
         <div th:text="*{creationDate}">Created</div>
     </div>
-</div>
-
-<div id="formContent">
     <form th:if="${solvable}" th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
         <textarea title="workbench" type="text" name="solution"></textarea>
         <button>Solve</button>
     </form>
+</div>
+
+<div id="formContent">
+    <div th:include="fragments/workbench :: ${crypto.scheme}"></div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/{system}.js(system=${crypto.scheme})}"></script>
     <div th:replace="fragments/footer :: footer" class="row footer"></div>
 </div>
 </body>
