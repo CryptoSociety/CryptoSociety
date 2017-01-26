@@ -3,10 +3,10 @@
  */
 'use strict';
 $(document).ready(function () {
-    var $plaintext = $('#plaintextBox'),
-        $ciphertext = $('#ciphertextBox'),
-        $encrypt = $('#encrypt'),
-        $decrypt = $('#decrypt');
+    var $plaintext = $('#atbashplaintextBox'),
+        $ciphertext = $('#atbashciphertextBox'),
+        $encrypt = $('#atbashencrypt'),
+        $decrypt = $('#atbashdecrypt');
     $encrypt.click(function () {
         $.ajax({url: "/workbench/atbashtool.json",
             type: 'GET',

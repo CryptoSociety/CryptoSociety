@@ -3,12 +3,12 @@
  */
 'use strict';
 $(document).ready(function() {
-    var $plaintext = $('#plaintextBox'),
-        $ciphertext = $('#ciphertextBox'),
-        $encrypt = $('#encrypt'),
-        $decrypt = $('#decrypt'),
+    var $plaintext = $('#vigenereplaintextBox'),
+        $ciphertext = $('#vigenereciphertextBox'),
+        $encrypt = $('#vigenereencrypt'),
+        $decrypt = $('#vigeneredecrypt'),
         $keyword = $('#keyword'),
-        $error = $('#error');
+        $error = $('#vigenereerror');
     $encrypt.click(function () {
         if(!allLetters($keyword.val()))
             $error.text("The keyword must not contain numbers or special symbols/characters.");
