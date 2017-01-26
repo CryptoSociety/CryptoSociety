@@ -8,11 +8,14 @@ $(document).ready(function () {
         $encrypt = $('#encrypt'),
         $decrypt = $('#decrypt');
     $encrypt.click(function () {
-        $.ajax({url: "/workbench/atbashtool.json",
+        $.ajax({
+            url: "/workbench/atbashtool.json",
             type: 'GET',
             dataType: 'text',
-            data: {input: $plaintext.val(),
-            punctuation: true}
+            data: {
+                input: $plaintext.val(),
+                punctuation: true
+            }
         }).done(function (r) {
             $ciphertext.val(r)
         }).fail(function (e) {
@@ -20,11 +23,14 @@ $(document).ready(function () {
         })
     });
     $decrypt.click(function () {
-        $.ajax({url: "/workbench/atbashtool.json",
+        $.ajax({
+            url: "/workbench/atbashtool.json",
             type: 'GET',
             dataType: 'text',
-            data: {input: $ciphertext.val(),
-                punctuation: true}
+            data: {
+                input: $ciphertext.val(),
+                punctuation: true
+            }
         }).done(function (r) {
             $plaintext.val(r)
         }).fail(function (e) {

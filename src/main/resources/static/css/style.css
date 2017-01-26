@@ -53,7 +53,7 @@
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
-    color:  #00DE00
+    color: #00DE00
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
@@ -72,11 +72,11 @@
     border-bottom-color: #00DE00
 }
 
-.footertext{
-    color:#00DE00
+.footertext {
+    color: #00DE00
 }
 
-.rightnav{
+.rightnav {
     margin-right: 20px;
 }
 
@@ -92,24 +92,26 @@ body, html {
     overflow-x: hidden;
 }
 
-.jumbotron{
+.jumbotron {
     background-color: #222222;
     color: #00DE00;
 }
-.indexlink{
+
+.indexlink {
     color: white;
     text-decoration: underline;
 }
-.editlink{
+
+.editlink {
     margin-left: 10%;
 }
 
-.contentDiv{
+.contentDiv {
     position: fixed;
     text-shadow: 0.1em 0.1em 0.2em #000;
     background-color: #000;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     padding: 20px;
     width: 80%;
     color: rgb(126, 219, 82);
@@ -122,14 +124,15 @@ body, html {
     border-top-width: 20px;
     overflow: auto;
     margin-left: 9%;
-    margin-top: 5%;
+    margin-top: 3%;
+    margin-bottom: 7%;
 }
 
-.walkthrough-text{
+.walkthrough-text {
     text-shadow: 0.1em 0.1em 0.2em #000;
     background-color: #000;
     text-align: center;
-    width:75%;
+    width: 75%;
     font-size: 16px;
     padding: 20px;
     color: rgb(126, 219, 82);
@@ -145,7 +148,7 @@ body, html {
     margin-top: 3%;
 }
 
-.challengesDiv1{
+.challengesDiv1 {
     text-shadow: 0.1em 0.1em 0.2em #000;
     background-color: #000;
     text-align: center;
@@ -162,7 +165,7 @@ body, html {
     margin-top: 5%;
 }
 
-.challengesDiv2{
+.challengesDiv2 {
     text-shadow: 0.1em 0.1em 0.2em #000;
     background-color: #000;
     text-align: center;
@@ -179,7 +182,7 @@ body, html {
     margin-top: 5%;
 }
 
-.toolDiv{
+.toolDiv {
     position: fixed;
     text-shadow: 0.1em 0.1em 0.2em #000;
     background-color: #000;
@@ -200,9 +203,10 @@ body, html {
     margin-top: 5%;
 }
 
-.backbutton{
-margin-right:20px;
+.backbutton {
+    margin-right: 20px;
 }
+
 /*-------------------------------------Register/Login Page----------------------------------------------*/
 .submitbutton {
     height: 50px;
@@ -224,18 +228,27 @@ margin-right:20px;
     background-color: #aa422f;
 }
 
-.panel{
+.panel {
     margin-top: 40px;
 }
 
-.form-group{
+.form-group {
     margin-left: 10px;
     margin-right: 10px;
 }
+
 .panel > .panel-heading {
     background-image: none;
     background-color: #222222;
     color: #00DE00;
+}
+
+.panel-default, .panel-heading {
+    border-color: black;
+}
+
+fieldset, .panel.panel-default {
+    background-color: #555555;
 }
 
 /*----------------------------------------Challenge Page----------------------------------------------*/
@@ -251,32 +264,33 @@ div#layoutObj {
     color: #00DE00;
     text-decoration: underline;
 }
-.container-fluid{
+
+.container-fluid {
     margin-top: 50px;
-    margin-bottom:50px;
+    margin-bottom: 50px;
 }
 
 /*#layoutObj{*/
-    /*height: 100vh;*/
-    /*width: 100%;*/
-    /*margin-left: 40px;*/
+/*height: 100vh;*/
+/*width: 100%;*/
+/*margin-left: 40px;*/
 /*}*/
 
-div.dhx_cell_hdr{
+div.dhx_cell_hdr {
     background-color: #000000;
 }
 
 /*textarea{*/
-    /*height: 100%;*/
-    /*width: 100%;*/
-    /*-webkit-box-sizing: border-box;*/
-    /*-moz-box-sizing: border-box;*/
-    /*box-sizing: border-box;*/
-    /*background-color: #222222 !important;*/
-    /*color: #00DE00;*/
+/*height: 100%;*/
+/*width: 100%;*/
+/*-webkit-box-sizing: border-box;*/
+/*-moz-box-sizing: border-box;*/
+/*box-sizing: border-box;*/
+/*background-color: #222222 !important;*/
+/*color: #00DE00;*/
 /*}*/
 
-#challenge, #formContent{
+#challenge, #formContent {
     height: 100%;
     width: 100%;
     -webkit-box-sizing: border-box;
@@ -287,8 +301,15 @@ div.dhx_cell_hdr{
     resize: none;
 }
 
-#formContent{
+#formContent {
     overflow-y: scroll;
+}
+
+code {
+    color: white;
+    background-color: #555555;
+    font-family: 'Anonymous Pro', monospace;
+    text-shadow: none;
 }
 
 /*------------------------------------------Sidebar---------------------------------------------*/
@@ -359,7 +380,7 @@ div.dhx_cell_hdr{
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .sidebar-nav li a:active,
@@ -382,7 +403,7 @@ div.dhx_cell_hdr{
     background: none;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
     #wrapper {
         padding-left: 250px;
     }
@@ -408,4 +429,60 @@ div.dhx_cell_hdr{
         position: relative;
         margin-right: 0;
     }
+}
+
+/*---------------------------------------------Profile Page-------------------------------------*/
+.solvedDiv {
+    text-shadow: 0.1em 0.1em 0.2em #000;
+    background-color: #000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    color: rgb(126, 219, 82);
+    cursor: default;
+    border-color: #00DE00;;
+    border-style: solid;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 20px;
+}
+
+.postedDiv {
+    text-shadow: 0.1em 0.1em 0.2em #000;
+    background-color: #000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    color: rgb(126, 219, 82);
+    cursor: default;
+    border-color: #00DE00;;
+    border-style: solid;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 20px;
+}
+
+.editprofileDiv {
+    text-shadow: 0.1em 0.1em 0.2em #000;
+    background-color: #000;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+    color: rgb(126, 219, 82);
+    cursor: default;
+    border-color: #00DE00;;
+    border-style: solid;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 20px;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 3%;
+}
+
+.editinput {
+    color: black;
 }

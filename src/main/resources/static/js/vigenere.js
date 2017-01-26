@@ -2,7 +2,7 @@
  * Created by Duke on 1/20/17.
  */
 'use strict';
-$(document).ready(function() {
+$(document).ready(function () {
     var $plaintext = $('#plaintextBox'),
         $ciphertext = $('#ciphertextBox'),
         $encrypt = $('#encrypt'),
@@ -10,7 +10,7 @@ $(document).ready(function() {
         $keyword = $('#keyword'),
         $error = $('#error');
     $encrypt.click(function () {
-        if(!allLetters($keyword.val()))
+        if (!allLetters($keyword.val()))
             $error.text("The keyword must not contain numbers or special symbols/characters.");
         else {
             $.ajax({
@@ -29,7 +29,7 @@ $(document).ready(function() {
         }
     });
     $decrypt.click(function () {
-        if(!allLetters($keyword.val()))
+        if (!allLetters($keyword.val()))
             $error.text("The keyword must not contain numbers or special symbols/characters.");
         else {
             $.ajax({
@@ -49,7 +49,7 @@ $(document).ready(function() {
     });
     function allLetters(input) {
         var result = true;
-        for (var i = 0; i < input.length; i++){
+        for (var i = 0; i < input.length; i++) {
             if (input.charAt(i).toUpperCase() == input.charAt(i).toLowerCase())
                 result = false;
         }

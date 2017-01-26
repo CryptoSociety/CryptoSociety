@@ -11,8 +11,8 @@ var $plaintext = $('#plaintextBox'),
     $error = $('#error');
 $('#keyFields').find('input').on("keyup", function () {
     var alphabet = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
-    for(var i=0;i<$array.length;i++) {
-        var value =  $array.eq(i).val();
+    for (var i = 0; i < $array.length; i++) {
+        var value = $array.eq(i).val();
         alphabet = alphabet.replace(value.toUpperCase(), "");
     }
     $list.html(alphabet);
@@ -28,7 +28,9 @@ $encrypt.click(function () {
             dataType: 'text',
             data: {
                 input: $plaintext.val(),
-                key: $('[name="key[]"').map(function(){return this.value}).toArray().join(""),
+                key: $('[name="key[]"').map(function () {
+                    return this.value
+                }).toArray().join(""),
                 punctuation: true
             }
         }).done(function (r) {
@@ -49,7 +51,9 @@ $decrypt.click(function () {
             dataType: 'text',
             data: {
                 input: $ciphertext.val(),
-                key: $('[name="key[]"').map(function(){return this.value}).toArray().join(""),
+                key: $('[name="key[]"').map(function () {
+                    return this.value
+                }).toArray().join(""),
                 punctuation: true
             }
         }).done(function (r) {

@@ -22,7 +22,7 @@ public class IndexWalkthroughWorkbenchController {
     Walkthroughs walkthroughsRepo;
 
     @GetMapping("")
-    public String landingPage(Model model){
+    public String landingPage(Model model) {
         List<Crypto> mostRecentCryptos = cryptosRepo.findFirst3ByActiveEqualsAndIsApprovedEqualsOrderByCreationDateDesc(true, true);
 //        TODO: implement most recent in view, and check if ordering is right or needs to be reversed
         model.addAttribute("mostRecentCryptos", mostRecentCryptos);
@@ -30,10 +30,10 @@ public class IndexWalkthroughWorkbenchController {
     }
 
     @GetMapping("/walkthroughs")
-    public String walkthroughIndex(Model model){
+    public String walkthroughIndex(Model model) {
         List<Walkthrough> allWalkthroughs = walkthroughsRepo.findAllByOrderByDifficultyAsc();
         model.addAttribute("allWalkthroughs", allWalkthroughs);
-       return "walkthrough";
+        return "walkthrough";
     }
 
 //    @GetMapping("/walkthroughs/{scheme}")
@@ -46,34 +46,40 @@ public class IndexWalkthroughWorkbenchController {
 //    }
 
     @GetMapping("/walkthroughs/caesar")
-    public String caesarWalkthrough(){
+    public String caesarWalkthrough() {
         return "walkthroughs/caesarWalkthrough";
     }
 
     @GetMapping("/walkthroughs/railfence")
-    public String railfenceWalkthrough(){
+    public String railfenceWalkthrough() {
         return "walkthroughs/railfenceWalkthrough";
     }
+
     @GetMapping("/walkthroughs/atbash")
-    public String atbashWalkthrough(){
+    public String atbashWalkthrough() {
         return "walkthroughs/atbashWalkthrough";
     }
+
     @GetMapping("/walkthroughs/kamasutra")
-    public String kamasutraWalkthrough(){
+    public String kamasutraWalkthrough() {
         return "walkthroughs/kamasutraWalkthrough";
     }
+
     @GetMapping("/walkthroughs/vigenere")
-    public String vigenereWalkthrough(){
+    public String vigenereWalkthrough() {
         return "walkthroughs/vigenereWalkthrough";
     }
+
     @GetMapping("/walkthroughs/vigenereDecrypt")
-    public String vigenereDecryptWalkthrough(){
+    public String vigenereDecryptWalkthrough() {
         return "walkthroughs/vigeneredecryptWalkthrough";
     }
+
     @GetMapping("/walkthroughs/cryptanalysis")
-    public String cryptanalysisWalkthrough(){
+    public String cryptanalysisWalkthrough() {
         return "walkthroughs/cryptanalysisWalkthrough";
     }
+
     @GetMapping("/toolbox")
     public String toolIndex() {
         return "toolindex";

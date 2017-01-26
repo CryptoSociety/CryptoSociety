@@ -3,7 +3,7 @@
  */
 'use strict';
 
-$(document).ready(function() {
+$(document).ready(function () {
     var $plaintext = $('#plaintextBox'),
         $ciphertext = $('#ciphertextBox'),
         $encrypt = $('#encrypt'),

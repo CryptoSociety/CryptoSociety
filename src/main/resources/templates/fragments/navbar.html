@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 </head>
 <body>
@@ -12,7 +12,7 @@
                     <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                         class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                    <a href="/" class="navbar-brand">CryptoSociety</a>
+                <a href="/" class="navbar-brand">CryptoSociety</a>
             </div>
             <nav class="collapse sticky-top navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
@@ -34,7 +34,8 @@
                         <a href="/../login" class="rightnav">Login</a>
                     </li>
                     <li class="dropdown" sec:authorize="isAuthenticated()">
-                        <a href="#" class="dropdown-toggle rightnav" data-toggle="dropdown"><span sec:authentication="name">Username should be here</span><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle rightnav" data-toggle="dropdown"><span
+                                sec:authentication="name">Username should be here</span><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/../users/profile">Your Profile</a></li>
                             <li><a href="#" id="logoutbutton">Logout</a></li>
