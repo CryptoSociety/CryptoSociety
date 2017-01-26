@@ -4,109 +4,19 @@
 <head th:replace="fragments/header :: header(${'Workbench Index'})"></head>
 <body>
 <div class="container-fluid">
-    <div class="modal fade" id="caesarModal" tabindex="-1" role="dialog" aria-labelledby="caesarTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1 class="modal-title" id="caesarTitle">Caesar Cipher</h1>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div th:replace="fragments/workbench :: caesar"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="atbashModal" tabindex="-1" role="dialog" aria-labelledby="atbashTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1 class="modal-title" id="atbashTitle">Atbash Cipher</h1>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div th:replace="fragments/workbench :: atbash"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="kamasutraModal" tabindex="-1" role="dialog" aria-labelledby="kamasutraTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1 class="modal-title" id="kamasutraTitle">Kama Sutra Cipher</h1>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div th:replace="fragments/workbench :: kamasutra"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="railfenceModal" tabindex="-1" role="dialog" aria-labelledby="railfenceTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1 class="modal-title" id="railfenceTitle">Rail Fence Cipher</h1>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div th:replace="fragments/workbench :: railfence"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="vigenereModal" tabindex="-1" role="dialog" aria-labelledby="vigenereTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h1 class="modal-title" id="vigenereTitle">Vigenere Cipher</h1>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div th:replace="fragments/workbench :: vigenere"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row toolDiv">
         <div class="col-md-12">
             <h1>Our Cipher Tools</h1>
-            <div><a class="indexlink" data-toggle="modal" data-target="#caesarModal">Caesar Cipher</a></div>
-            <div><a class="indexlink" data-toggle="modal" data-target="#atbashModal">Atbash Cipher</a></div>
-            <div><a class="indexlink" data-toggle="modal" data-target="#kamasutraModal">Kama Sutra Cipher</a></div>
-            <div><a class="indexlink" data-toggle="modal" data-target="#railfenceModal">Rail Fence Cipher</a></div>
-            <div><a class="indexlink" data-toggle="modal" data-target="#vigenereModal">Vigenere Cipher</a></div>
+            <div><a class="indexlink" href="/workbench/caesar">Caesar Cipher</a></div>
+            <div><a class="indexlink" href="/workbench/atbash">Atbash Cipher</a></div>
+            <div><a class="indexlink" href="/workbench/kamasutra">Kama Sutra Cipher</a></div>
+            <div><a class="indexlink" href="/workbench/railfence">Rail Fence Cipher</a></div>
+            <div><a class="indexlink" href="/workbench/vigenere">Vigenere Cipher</a></div>
         </div>
     </div>
-    <div th:replace="fragments/footer :: footer" class="row footer"></div>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/../js/caesar.js"></script>
-    <script type="text/javascript" src="/../js/atbash.js"></script>
-    <script type="text/javascript" src="/../js/kamasutra.js"></script>
-    <script type="text/javascript" src="/../js/railfence.js"></script>
-    <script type="text/javascript" src="/../js/vigenere.js"></script>
+    <div th:replace="fragments/footer :: footer" class="row footer">
+    </div>
 </div>
 </body>
 </html>

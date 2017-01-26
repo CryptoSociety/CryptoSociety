@@ -4,12 +4,12 @@
 'use strict';
 
 $(document).ready(function() {
-    var $plaintext = $('#railfenceplaintextBox'),
-        $ciphertext = $('#railfenceciphertextBox'),
-        $encrypt = $('#railfenceencrypt'),
-        $decrypt = $('#railfencedecrypt'),
+    var $plaintext = $('#plaintextBox'),
+        $ciphertext = $('#ciphertextBox'),
+        $encrypt = $('#encrypt'),
+        $decrypt = $('#decrypt'),
         $rails = $('#numberOfRails'),
-        $error = $('#railfenceerror');
+        $error = $('#error');
     $encrypt.click(function () {
         if (isNaN($rails.val()))
             $error.text("The number of rails must be a positive whole number.");
