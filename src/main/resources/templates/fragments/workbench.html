@@ -6,108 +6,123 @@
 </head>
 <body>
 <div th:fragment="caesar">
-    <label for="plaintextBox">Plaintext:</label>
-    <input type="text" name="plaintextBox" id="plaintextBox" />
-    <button id="encrypt">encrypt</button>
-    <label for="ciphertextBox">Ciphertext:</label>
-    <input type="text" name="ciphertextBox" id="ciphertextBox" />
-    <button id="decrypt">Decrypt</button>
-    <label for="shiftAmount">Shift:</label>
-    <input type="text" name="shiftAmount" id="shiftAmount" value="3"/>
+    <div class="col-md-6">
+        <div><label for="plaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
+        <button id="encrypt">Encrypt</button>
+    </div>
+    <div class="col-md-6">
+        <div><label for="ciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
+        <button id="decrypt">Decrypt</button>
+    </div>
+    <div class="col-md-6">
+        <label for="shiftAmount">Shift:</label>
+        <input type="text" name="shiftAmount" id="shiftAmount" value="3"/>
+    </div>
     <p id="error"></p>
 </div>
 <div th:fragment="atbash">
-    <label for="plaintextBox">Plaintext:</label>
-    <input type="text" name="plaintextBox" id="plaintextBox" />
-    <button id="encrypt">encrypt</button>
-    <label for="ciphertextBox">Ciphertext:</label>
-    <input type="text" name="ciphertextBox" id="ciphertextBox" />
-    <button id="decrypt">Decrypt</button>
+    <div class="col-md-6">
+        <div><label for="plaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
+        <button id="encrypt">Encrypt</button>
+    </div>
+    <div class="col-md-6">
+        <div><label for="ciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
+        <button id="decrypt">Decrypt</button>
+    </div>
 </div>
 <div th:fragment="kamasutra">
-    <table id="keyFields">
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1" /></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-        <tr>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-            <td><input name="key[]" type="text" maxlength="1"/></td>
-        </tr>
-    </table>
-    <label for="plaintextBox">Plaintext:</label>
-    <input type="text" name="plaintextBox" id="plaintextBox" />
-    <button id="encrypt">encrypt</button>
-    <label for="ciphertextBox">Ciphertext:</label>
-    <input type="text" name="ciphertextBox" id="ciphertextBox" />
-    <button id="decrypt">Decrypt</button>
-    <p>Letters needed: <span id="lettersList">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span></p>
+    <div id="keyFields" class="col-md-6">
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <div>
+            <input name="key[]" type="text" maxlength="1"/> = <input name="key[]" type="text" maxlength="1"/>
+        </div>
+        <p>Letters needed: <span id="lettersList">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span></p>
+    </div>
+    <div class="col-md-6">
+    <div>
+        <div><label for="plaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
+        <button id="encrypt">Encrypt</button>
+    </div>
+    <div>
+        <div><label for="ciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
+        <button id="decrypt">Decrypt</button>
+    </div>
+    </div>
     <p id="error"></p>
 </div>
 <div th:fragment="railfence">
-    <label for="plaintextBox">Plaintext:</label>
-    <input type="text" name="plaintextBox" id="plaintextBox" />
-    <button id="encrypt">encrypt</button>
-    <label for="ciphertextBox">Ciphertext:</label>
-    <input type="text" name="ciphertextBox" id="ciphertextBox" />
-    <button id="decrypt">Decrypt</button>
-    <label for="numberOfRails">Number of Rails:</label>
-    <input type="text" name="numberOfRails" id="numberOfRails" />
+    <div class="col-md-6">
+        <div><label for="plaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
+        <button id="encrypt">Encrypt</button>
+    </div>
+    <div class="col-md-6">
+        <div><label for="ciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
+        <button id="decrypt">Decrypt</button>
+    </div>
+    <div class="col-md-6">
+        <label for="numberOfRails">Number of Rails:</label>
+        <input type="text" name="numberOfRails" id="numberOfRails" />
+    </div>
     <p id="error"></p>
 </div>
 <div th:fragment="vigenere">
-    <label for="plaintextBox">Plaintext:</label>
-    <input type="text" name="plaintextBox" id="plaintextBox" />
-    <button id="encrypt">encrypt</button>
-    <label for="ciphertextBox">Ciphertext:</label>
-    <input type="text" name="ciphertextBox" id="ciphertextBox" />
-    <button id="decrypt">Decrypt</button>
-    <label for="numberOfRails">Keyword:</label>
-    <input type="text" name="keyword" id="keyword" />
+    <div class="col-md-6">
+        <div><label for="plaintextBox">Plaintext:</label></div>
+        <textarea type="text" name="plaintextBox" id="plaintextBox"></textarea>
+        <button id="encrypt">Encrypt</button>
+    </div>
+    <div class="col-md-6">
+        <div><label for="ciphertextBox">Ciphertext:</label></div>
+        <textarea type="text" name="ciphertextBox" id="ciphertextBox"></textarea>
+        <button id="decrypt">Decrypt</button>
+    </div>
+    <div class="col-md-6">
+        <label for="keyword">Keyword:</label>
+        <input type="text" name="keyword" id="keyword" />
+    </div>
     <p id="error"></p>
 </div>
 </body>

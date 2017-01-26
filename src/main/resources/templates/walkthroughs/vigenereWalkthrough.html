@@ -28,34 +28,32 @@
             with each letter of the plaintext being encrypted by a different shift,
                 determined via a keyword. We start by drawing the aforementioned Vigenère
             Square: <br />
-            <code>
-                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br />
-                B C D E F G H I J K L M N O P Q R S T U V W X Y Z A<br />
-                C D E F G H I J K L M N O P Q R S T U V W X Y Z A B<br />
-                D E F G H I J K L M N O P Q R S T U V W X Y Z A B C<br />
-                E F G H I J K L M N O P Q R S T U V W X Y Z A B C D<br />
-                F G H I J K L M N O P Q R S T U V W X Y Z A B C D E<br />
-                G H I J K L M N O P Q R S T U V W X Y Z A B C D E F<br />
-                H I J K L M N O P Q R S T U V W X Y Z A B C D E F G<br />
-                I J K L M N O P Q R S T U V W X Y Z A B C D E F G H<br />
-                J K L M N O P Q R S T U V W X Y Z A B C D E F G H I<br />
-                K L M N O P Q R S T U V W X Y Z A B C D E F G H I J<br />
-                L M N O P Q R S T U V W X Y Z A B C D E F G H I J K<br />
-                M N O P Q R S T U V W X Y Z A B C D E F G H I J K L<br />
-                N O P Q R S T U V W X Y Z A B C D E F G H I J K L M<br />
-                O P Q R S T U V W X Y Z A B C D E F G H I J K L M N<br />
-                P Q R S T U V W X Y Z A B C D E F G H I J K L M N O<br />
-                Q R S T U V W X Y Z A B C D E F G H I J K L M N O P<br />
-                R S T U V W X Y Z A B C D E F G H I J K L M N O P Q<br />
-                S T U V W X Y Z A B C D E F G H I J K L M N O P Q R<br />
-                T U V W X Y Z A B C D E F G H I J K L M N O P Q R S<br />
-                U V W X Y Z A B C D E F G H I J K L M N O P Q R S T<br />
-                V W X Y Z A B C D E F G H I J K L M N O P Q R S T U<br />
-                W X Y Z A B C D E F G H I J K L M N O P Q R S T U V<br />
-                X Y Z A B C D E F G H I J K L M N O P Q R S T U V W<br />
-                Y Z A B C D E F G H I J K L M N O P Q R S T U V W X<br />
-                Z A B C D E F G H I J K L M N O P Q R S T U V W X Y
-            </code>
+                <code>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</code><br />
+                <code>B C D E F G H I J K L M N O P Q R S T U V W X Y Z A</code><br />
+                <code>C D E F G H I J K L M N O P Q R S T U V W X Y Z A B</code><br />
+                <code>D E F G H I J K L M N O P Q R S T U V W X Y Z A B C</code><br />
+                <code>E F G H I J K L M N O P Q R S T U V W X Y Z A B C D</code><br />
+                <code>F G H I J K L M N O P Q R S T U V W X Y Z A B C D E</code><br />
+                <code>G H I J K L M N O P Q R S T U V W X Y Z A B C D E F</code><br />
+                <code>H I J K L M N O P Q R S T U V W X Y Z A B C D E F G</code><br />
+                <code>I J K L M N O P Q R S T U V W X Y Z A B C D E F G H</code><br />
+                <code>J K L M N O P Q R S T U V W X Y Z A B C D E F G H I</code><br />
+                <code>K L M N O P Q R S T U V W X Y Z A B C D E F G H I J</code><br />
+                <code>L M N O P Q R S T U V W X Y Z A B C D E F G H I J K</code><br />
+                <code>M N O P Q R S T U V W X Y Z A B C D E F G H I J K L</code><br />
+                <code>N O P Q R S T U V W X Y Z A B C D E F G H I J K L M</code><br />
+                <code>O P Q R S T U V W X Y Z A B C D E F G H I J K L M N</code><br />
+                <code>P Q R S T U V W X Y Z A B C D E F G H I J K L M N O</code><br />
+                <code>Q R S T U V W X Y Z A B C D E F G H I J K L M N O P</code><br />
+                <code>R S T U V W X Y Z A B C D E F G H I J K L M N O P Q</code><br />
+                <code>S T U V W X Y Z A B C D E F G H I J K L M N O P Q R</code><br />
+                <code>T U V W X Y Z A B C D E F G H I J K L M N O P Q R S</code><br />
+                <code>U V W X Y Z A B C D E F G H I J K L M N O P Q R S T</code><br />
+                <code>V W X Y Z A B C D E F G H I J K L M N O P Q R S T U</code><br />
+                <code>W X Y Z A B C D E F G H I J K L M N O P Q R S T U V</code><br />
+                <code>X Y Z A B C D E F G H I J K L M N O P Q R S T U V W</code><br />
+                <code>Y Z A B C D E F G H I J K L M N O P Q R S T U V W X</code><br />
+                <code>Z A B C D E F G H I J K L M N O P Q R S T U V W X Y</code>
 
         </p>
             <p class="text-center">
@@ -86,13 +84,9 @@
             letters, so what happens for the sixth letter of the plaintext? Simply repeat
             the keyword!  Begin with "B" again.  Drawing the whole process out, we have: <br />
 
-            <code>
-                I H A V E A S E C R E T M E S S A G E F O R Y O U <br />
-
-                B L A C K B L A C K C L A C K B L A C K B L A C K <br />
-
-                J S A X O B D E E B F E M G C T L G G P P C Y Q E
-            </code>
+                <code>I H A V E A S E C R E T M E S S A G E F O R Y O U </code><br />
+                <code>B L A C K B L A C K C L A C K B L A C K B L A C K </code><br />
+                <code>J S A X O B D E E B F E M G C T L G G P P C Y Q E</code>
 
         </p>
             <p class="text-center">
