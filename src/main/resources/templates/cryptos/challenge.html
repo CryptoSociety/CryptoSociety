@@ -7,51 +7,57 @@
 <div class="container-fluid">
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center challenge-title">
+        <div class="col-md-10">
+            <h1 class="challenge-title text-center" id="challenge-page-header">
                 Challenge Page
             </h1>
+        </div>
+        <div class="col-md-2">
+            <div class="text-center challenge-buttons"></div>
+            <div th:if="${showEditControls}">
+                <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post" th:if="*{crypto.active}">
+                    <button class="button">Deactivate</button>
+                </form>
+                <form th:action="@{'/cryptos/'+*{id}+'/edit'}" th:method="get">
+                    <button class="button">Edit</button>
+                </form>
+            </div>
+            <div th:if="*{!crypto.isApproved}">
+                <div th:if="${isAdmin}">
+                    <form th:action="@{'/cryptos/'+*{id}+'/approve'}" th:method="post">
+                        <button class="button">Approve</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-11 col-md-11 col-lg-offset-1 col-md--offset-1" id="layoutObj"></div>
-    </div>
-    <div th:if="${showEditControls}">
-        <form th:action="@{'/cryptos/'+*{id}+'/delete'}" th:method="post" th:if="*{crypto.active}">
-            <button>Deactivate</button>
-        </form>
-        <form th:action="@{'/cryptos/'+*{id}+'/edit'}" th:method="get">
-            <button>Edit</button>
-        </form>
-    </div>
-    <div th:if="*{!crypto.isApproved}">
-        <div th:if="${isAdmin}">
-            <form th:action="@{'/cryptos/'+*{id}+'/approve'}" th:method="post">
-                <button>Approve</button>
-            </form>
-        </div>
     </div>
     <h2 th:if="${param.incorrect}">Incorrect answer.</h2>
 
 </div>
 <div id="challenge">
     <div th:object="${crypto}">
-        <div th:text="*{name}">Name</div>
-        <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+        <div>Name: <span th:text="*{name}"></span></div>
+        <div>Creator: <span><a class="indexlink" th:href="@{'/users/'+*{user.id}}"
+                               th:text="*{user.username}"></a></span></div>
         <div>Points: <span th:text="*{points}"></span></div>
-        <div th:text="*{cryptoText}">Crypto</div>
-        <div th:if="${showExtendedInfo}" th:text="*{plainText}">Plaintext</div>
-        <div th:if="${showExtendedInfo}" th:text="*{solution}">Solution</div>
-        <div th:text="*{scheme}">Scheme</div>
-        <div th:if="${showExtendedInfo}" th:text="*{cryptokey}">Key</div>
-        <div th:text="*{usersSolved}">Users solved</div>
-        <div th:text="*{creationDate}">Created</div>
+        <div>Decipher This: <span th:text="*{cryptoText}"></span></div>
+        <div th:if="${showExtendedInfo}">Challenge: <span th:text="*{plainText}"></span></div>
+        <div th:if="${showExtendedInfo}">Solution: <span th:text="*{solution}"></span></div>
+        <div>Scheme: <span th:text="*{scheme}"></span></div>
+        <div th:if="${showExtendedInfo}">Key: <span th:text="*{cryptokey}"></span></div>
+        <div>Users Solved: <span th:text="*{usersSolved}"></span></div>
+        <div>Date Created: <span th:text="*{creationDate}"></span></div>
     </div>
     <form th:if="${solvable}" th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
         <textarea title="workbench" type="text" name="solution"></textarea>
-        <button>Solve</button>
+        <button class="button">Solve</button>
     </form>
 </div>
+
+<textarea id="scratchpad"></textarea>
 
 <div id="formContent">
     <div th:include="fragments/workbench :: ${crypto.scheme}"></div>
