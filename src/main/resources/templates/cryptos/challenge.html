@@ -44,10 +44,10 @@
                                th:text="*{user.username}"></a></span></div>
         <div>Points: <span th:text="*{points}"></span></div>
         <div>Decipher This: <span th:text="*{cryptoText}"></span></div>
-        <div>Challenge: <span th:if="${showExtendedInfo}" th:text="*{plainText}"></span></div>
-        <div>Solution: <span th:if="${showExtendedInfo}" th:text="*{solution}"></span></div>
+        <div th:if="${showExtendedInfo}">Challenge: <span th:text="*{plainText}"></span></div>
+        <div th:if="${showExtendedInfo}">Solution: <span th:text="*{solution}"></span></div>
         <div>Scheme: <span th:text="*{scheme}"></span></div>
-        <div>Key: <span th:if="${showExtendedInfo}" th:text="*{cryptokey}"></span></div>
+        <div th:if="${showExtendedInfo}">Key: <span th:text="*{cryptokey}"></span></div>
         <div>Users Solved: <span th:text="*{usersSolved}"></span></div>
         <div>Date Created: <span th:text="*{creationDate}"></span></div>
     </div>
