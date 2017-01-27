@@ -8,12 +8,12 @@
     <div th:replace="fragments/navbar :: navbar" class="row navbar"></div>
     <div class="toolDiv">
         <div class="row">
-            <div class=".col-md-6 .col-md-offset-3">
+            <div class="col-md-12">
                 <h2 class="text-center">Leaderboards (Top 10 Users):</h2>
-                <div class="col-md-6 col-md-offset-3" th:each="user,iterStat : ${leaderboardUserList}" th:object="${user}">
-                    <div><span class="col-md-2" th:text="${iterStat.index} + 1 + '. '"></span><a
-                            class="col-md-8 indexlink" th:href="@{'/users/'+*{id}}" th:text="*{username}"></a><span
-                            class="col-md-2" th:text="*{points}"></span></div>
+                <div class="" th:each="user,iterStat : ${leaderboardUserList}" th:object="${user}">
+                    <div><span class="col-md-1" th:text="${iterStat.index} + 1 + '. '"></span><a
+                            class="col-md-10 indexlink" th:href="@{'/users/'+*{id}}" th:text="*{username}"></a><span
+                            class="col-md-1" th:text="*{points}"></span></div>
                 </div>
             </div>
         </div>
