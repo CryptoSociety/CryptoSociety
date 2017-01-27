@@ -35,7 +35,7 @@
                                               th:text="*{name}"></a></div>
                 <div class="panel-body">
                     <div>Type: <span th:text="*{scheme}"></span></div>
-                    <div>Challenge: <span th:text="*{cryptoText}"></span></div>
+                    <div class="decipherthis">Challenge: <span th:text="*{cryptoText}"></span></div>
                     <div>Date Created: <span th:text="*{creationDate}"></span></div>
                     <div>Creator: <span><a class="indexlink" th:href="@{'/users/'+*{user.id}}"
                                            th:text="*{user.username}"></a></span></div>

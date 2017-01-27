@@ -15,15 +15,15 @@
         <div class="col-md-6" th:each="crypto : ${activeUnapproved}" th:object="${crypto}">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <a th:href="@{'/cryptos/' + *{id}}">
+                    <a class="indexlink" th:href="@{'/cryptos/' + *{id}}">
                         <div class="panel-title" th:text="*{name}">Title</div>
                     </a>
                 </div>
                 <div class="panel-body">
                     <div th:text="*{scheme}"></div>
-                    <div th:text="*{cryptoText}">Puzzle</div>
+                    <div class="decipherthis" th:text="*{cryptoText}">Puzzle</div>
                     <div th:text="*{creationDate}"></div>
-                    <div><a th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+                    <div><a class="indexlink" th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
                 </div>
             </div>
         </div>
