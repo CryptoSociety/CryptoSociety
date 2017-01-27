@@ -565,7 +565,7 @@ div#challenge {
     color: #00DE00;
 }
 
-#solution, #plaintext, #points, #name, #scheme, #key, #keepPunctuation, #caesarshiftAmount, #numberOfRails, #keyword, .kama, .ksin, #rails, .button {
+#solution, #plaintext, #points, #name, #scheme, #key, #keepPunctuation, #caesarshiftAmount, #numberOfRails, #keyword, .kama, .ksin, #rails, .rails, .button {
     background-color: #222222;
     color: #00DE00;
 }
