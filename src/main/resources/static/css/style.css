@@ -33,7 +33,7 @@
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #777777;
+    color: #ccc;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
@@ -274,6 +274,7 @@ div.dhx_cell_hdr {
     box-sizing: border-box;
     background-color: #222222 !important;
     color: #00DE00;
+    resize: none;
 }
 
 div#challenge {
@@ -285,8 +286,8 @@ div#challenge {
     background-color: #222222 !important;
     color: #00DE00;
     resize: none;
-    margin-left: 3%;
-    margin-top: 3%;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 
 #formContent {
@@ -300,6 +301,8 @@ div#challenge {
 .challenge-link {
     color: #00DE00;
     text-decoration: underline;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .challenge-link:hover {
@@ -480,8 +483,18 @@ div#challenge {
 .editinput {
     color: black;
     width: 100%;
+    height: 40px;
     display: table-cell;
     margin-bottom: 2px;
+}
+
+#editinput2 {
+    color: black;
+    width: 100%;
+    height: 200px;
+    display: table-cell;
+    margin-bottom: 2px;
+    resize: none;
 }
 
 .editform {
@@ -563,6 +576,8 @@ div#challenge {
 #atbashplaintextBox, #kamasutraciphertextBox, #kamasutraplaintextBox, #railfenceciphertextBox, #railfenceplaintextBox, #plainText, .editinput {
     background-color: #222222;
     color: #00DE00;
+    resize: none;
+    width: 100%;
 }
 
 #solution, #plaintext, #points, #name, #scheme, #key, #keepPunctuation, #caesarshiftAmount, #numberOfRails, #keyword, .kama, .ksin, #rails, .rails, .button {
@@ -606,4 +621,27 @@ textarea, input {
 
 .loginlabel {
     color: #00DE00;
+}
+
+.saveuser {
+    margin-top: 5%;
+    margin-left: 75%;
+}
+
+#correct {
+    color: #00DE00;
+}
+
+#wrong {
+    color: red;
+}
+
+.center-key {
+    margin-left: 30%;
+    margin-top: 3%;
+}
+
+.decipherthis {
+    font-size: 23px;
+    font-weight: bold;
 }
