@@ -16,7 +16,7 @@
                     <form th:action="@{'/register'}" method="post" th:object="${user}" class="form-group register-form">
                         <fieldset>
                             <div class="form-group">
-                                <label for="username">Username:</label>
+                                <label class="loginlabel" for="username">Username:</label>
                                 <input id="username" class="form-control" name="username" th:value="*{username}"
                                        th:field="*{username}"/>
                                 <p class="alert alert-danger" th:if="${#fields.hasErrors('username')}"
@@ -25,7 +25,7 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="email">Email:</label>
+                                <label class="loginlabel" for="email">Email:</label>
                                 <input id="email" class="form-control" name="email" th:value="*{email}"
                                        th:field="*{email}"/>
                                 <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}"
@@ -34,7 +34,7 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label class="loginlabel" for="password">Password</label>
                                 <input id="password" class="form-control" name="password" th:field="*{password}"
                                        type="password"/>
                                 <p class="alert alert-danger" th:if="${#fields.hasErrors('password')}"
@@ -43,7 +43,7 @@
 
                             </div>
                             <div class="form-group">
-                                <input class="btn btn-default btn-block submitbutton" type="submit" value="Register"/>
+                                <input class="btn btn-block button fixbutton" type="submit" value="Register"/>
                             </div>
                         </fieldset>
                     </form>

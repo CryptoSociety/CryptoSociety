@@ -24,19 +24,20 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <h1 class="challenge.title text-center">CHALLENGES</h1>
+            <h1 class="challenge-title text-center" id="challenge-index-header">CHALLENGES</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6" th:each="crypto : ${cryptoList}" th:object="${crypto}">
             <div class="panel panel-default">
-                <div class="panel-heading"><a class="panel-title" th:href="@{'/cryptos/' + *{id}}"
+                <div class="panel-heading"><a class="panel-title challenge-link" th:href="@{'/cryptos/' + *{id}}"
                                               th:text="*{name}"></a></div>
                 <div class="panel-body">
-                    <div th:text="*{scheme}"></div>
-                    <div th:text="*{cryptoText}">Puzzle</div>
-                    <div th:text="*{creationDate}"></div>
-                    <div><a class="indexlink" th:href="@{'/users/'+*{user.id}}" th:text="*{user.username}"></a></div>
+                    <div>Type: <span th:text="*{scheme}"></span></div>
+                    <div>Challenge: <span th:text="*{cryptoText}"></span></div>
+                    <div>Date Created: <span th:text="*{creationDate}"></span></div>
+                    <div>Creator: <span><a class="indexlink" th:href="@{'/users/'+*{user.id}}"
+                                           th:text="*{user.username}"></a></span></div>
                 </div>
             </div>
         </div>

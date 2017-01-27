@@ -29,7 +29,7 @@
                             <div th:if="${activeAndApproved} or ${userIsOwner} or ${isAdmin}"
                                  class="panel panel-default">
                                 <div class="panel-heading"><a th:href="@{'/cryptos/' + *{id}}" th:text="*{name}"
-                                                              class="panel-title"></a></div>
+                                                              class="panel-title challenge-link"></a></div>
                                 <div class="panel-body">
                                     <div th:text="*{scheme}"></div>
                                     <div th:text="*{cryptoText}">Puzzle</div>
@@ -47,7 +47,7 @@
                              class="panel panel-default">
                             <div th:if="*{crypto.active} and *{crypto.isApproved}" class="panel-heading"><a
                                     th:href="@{'/cryptos/' + *{crypto.id}}" th:text="*{crypto.name}"
-                                    class="panel-title"></a></div>
+                                    class="panel-title challenge-link"></a></div>
                             <div th:unless="*{crypto.active} and *{crypto.isApproved}" th:text="*{crypto.name}"
                                  class="panel-heading panel-title">Title
                             </div>

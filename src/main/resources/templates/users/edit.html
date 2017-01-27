@@ -35,7 +35,8 @@
                     <input class="editinput" type="password" id="confirmpassword" name="confirmpassword"/>
                 </div>
                 <div th:if="${passwordError}" class="alert alert-danger" th:text="${passwordError}"></div>
-                <input class="btn btn-lg btn-block submitbutton editbutton" type="submit" value="Save Changes"/>
+                <input class="button btn-default" type="submit" value="Save Changes"/>
+                <input class="button btn-default" type="submit" href="/users/profile" value="Cancel"/>
             </form>
         </div>
     </div>

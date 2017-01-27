@@ -29,11 +29,11 @@
 }
 
 .navbar-inverse .navbar-brand:hover {
-    color: #53B01C
+    color: #00DE00
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #999999
+    color: #777777;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
@@ -126,6 +126,10 @@ body, html {
 .indexlink {
     color: white;
     text-decoration: underline;
+}
+
+.indexlink:hover {
+    color: red;
 }
 
 .editlink {
@@ -243,6 +247,10 @@ div#layoutObj {
     text-decoration: underline;
 }
 
+#challenge-page-header {
+    margin-left: 13%;
+}
+
 .container-fluid {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -288,6 +296,16 @@ div#challenge {
 .challenge-buttons {
     margin-top: 3px;
 }
+
+.challenge-link {
+    color: #00DE00;
+    text-decoration: underline;
+}
+
+.challenge-link:hover {
+    color: red;
+}
+
 /*------------------------------------------Sidebar---------------------------------------------*/
 #wrapper {
     padding-left: 0;
@@ -473,6 +491,16 @@ div#challenge {
 
 .editbutton {
     margin-left: 75%;
+    margin-top: 2%;
+
+}
+
+.editbutton:hover input {
+    color: #00DE00;
+}
+
+.editbutton input:hover {
+    color: #616161;
 }
 
 .fieldEditDiv {
@@ -548,4 +576,34 @@ div#challenge {
 
 #key {
     background-color: black;
+}
+
+textarea, input {
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.ksin {
+    width: 8%;
+}
+
+#kamalist {
+    padding-left: 0;
+}
+
+.button:hover {
+    background-color: #616161;
+    color: #00DE00;
+}
+
+.next {
+    margin-left: 10%;
+}
+
+.loginlabel {
+    color: #00DE00;
 }
