@@ -136,7 +136,7 @@ public class Cryptography {
         return plaintext.toString();
     }
     private String prepare(String input, boolean punctuation) {
-        input = input.toUpperCase();
+        input = input.toUpperCase().replaceAll(" ", "_");
         if (punctuation)
             return input;
         return input.replaceAll("[^A-Z0-9]", "");
