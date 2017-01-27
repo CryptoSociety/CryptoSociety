@@ -45,8 +45,8 @@
         <div>Points: <span th:text="*{points}"></span></div>
         <div>Scheme: <span th:text="*{scheme}"></span></div>
         <div class="decipherthis">Decipher This: <span th:text="*{cryptoText}"></span></div>
-        <div th:if="${showExtendedInfo}">PlainText: <span th:text="*{plainText}"></span></div>
-        <div th:if="${showExtendedInfo}">Solution: <span th:text="*{solution}"></span></div>
+        <div class="decipherthis" th:if="${showExtendedInfo}">PlainText: <span th:text="*{plainText}"></span></div>
+        <div class="decipherthis" th:if="${showExtendedInfo}">Solution: <span th:text="*{solution}"></span></div>
         <div th:if="${showExtendedInfo}">Key: <span th:text="*{cryptokey}"></span></div>
         <div th:if="${showExtendedInfo}">Users Solved: <span th:text="*{usersSolved}"></span></div>
         <div th:if="${showExtendedInfo}">Date Created: <span th:text="*{creationDate}"></span></div>
