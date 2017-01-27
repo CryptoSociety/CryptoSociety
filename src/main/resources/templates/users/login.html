@@ -22,15 +22,15 @@
                     <form th:action="@{/login}" method="POST" role="form">
                         <fieldset>
                             <div class="form-group">
-                                <label for="username">Username:</label>
+                                <label class="loginlabel" for="username">Username:</label>
                                 <input type="text" id="username" name="username" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <label for="password">Password:</label>
+                                <label class="loginlabel" for="password">Password:</label>
                                 <input type="password" id="password" name="password" class="form-control"/>
                             </div>
                             <div class="form-group">
-                                <input class="btn btn-lg btn-block submitbutton" type="submit" value="Login"/>
+                                <input class="btn btn-lg btn-block button fixbutton" type="submit" value="Login"/>
                             </div>
                         </fieldset>
                     </form>

@@ -9,7 +9,7 @@ $("#scheme").change(function () {
 
     } else if (val == "kamasutra") {
         $("#key").html("<label for='key'>Key</label>" +
-            "<ul style='list-style:none'>" +
+            "<ul id='kamalist' style='list-style:none'>" +
             "<li><input id='in1' class='ksin' maxlength='1'/><span> = </span><input id='in2' class='ksin' maxlength='1'/></li>" +
             "<li><input id='in3' class='ksin' maxlength='1'/><span> = </span><input id='in4' class='ksin' maxlength='1'/></li>" +
             "<li><input id='in5' class='ksin' maxlength='1'/><span> = </span><input id='in6' class='ksin' maxlength='1'/></li>" +
