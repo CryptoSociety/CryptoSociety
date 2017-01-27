@@ -32,7 +32,7 @@
                                                               class="panel-title challenge-link"></a></div>
                                 <div class="panel-body">
                                     <div th:text="*{scheme}"></div>
-                                    <div th:text="*{cryptoText}">Puzzle</div>
+                                    <div class="decipherthis" th:text="*{cryptoText}">Puzzle</div>
                                     <div th:text="*{creationDate}"></div>
                                     <div th:unless="*{active}">Inactive</div>
                                 </div>

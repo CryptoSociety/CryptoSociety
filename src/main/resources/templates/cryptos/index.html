@@ -29,18 +29,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6" th:each="crypto : ${cryptoList}" th:object="${crypto}">
-            <div class="panel panel-default">
-                <div class="panel-heading"><a class="panel-title challenge-link" th:href="@{'/cryptos/' + *{id}}"
-                                              th:text="*{name}"></a></div>
-                <div class="panel-body">
-                    <div>Type: <span th:text="*{scheme}"></span></div>
-                    <div class="decipherthis">Challenge: <span th:text="*{cryptoText}"></span></div>
-                    <div>Date Created: <span th:text="*{creationDate}"></span></div>
-                    <div>Creator: <span><a class="indexlink" th:href="@{'/users/'+*{user.id}}"
-                                           th:text="*{user.username}"></a></span></div>
+        <div th:each="crypto,iterStat : ${cryptoList}" th:object="${crypto}">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a class="panel-title challenge-link" th:href="@{'/cryptos/' + *{id}}"
+                                                  th:text="*{name}"></a></div>
+                    <div class="panel-body">
+                        <div>Type: <span th:text="*{scheme}"></span></div>
+                        <div class="decipherthis">Challenge: <span th:text="*{cryptoText}"></span></div>
+                        <div>Date Created: <span th:text="*{creationDate}"></span></div>
+                        <div>Creator: <span><a class="indexlink" th:href="@{'/users/'+*{user.id}}"
+                                               th:text="*{user.username}"></a></span></div>
+                    </div>
                 </div>
             </div>
+            <div th:if="((${iterStat.index} + 1) % 2) == 0" class="clearfix"></div>
         </div>
     </div>
     <div th:replace="fragments/footer :: footer" class="row footer">
