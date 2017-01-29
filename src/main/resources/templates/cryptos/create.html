@@ -20,14 +20,17 @@
                     </div>
                     <div>
                         <label for="plaintext">PlainText:</label>
-                        <textarea id="plaintext" class="form-control" th:value="*{plainText}"
+                        <textarea id="plaintext" placeholder="This is the text that will be encrypted"
+                                  class="form-control" th:value="*{plainText}"
                                   th:field="*{plainText}"></textarea>
                         <p class="alert alert-danger" th:if="${#fields.hasErrors('plainText')}"
                            th:errors="*{plainText}"></p>
                     </div>
                     <div>
                         <label for="solution">Solution:</label>
-                        <textarea id="solution" class="form-control" th:value="*{solution}"
+                        <textarea id="solution"
+                                  placeholder="This is what the user will have to enter to solve the challenge"
+                                  class="form-control" th:value="*{solution}"
                                   th:field="*{solution}"></textarea>
                         <p class="alert alert-danger" th:if="${#fields.hasErrors('solution')}"
                            th:errors="*{solution}"></p>

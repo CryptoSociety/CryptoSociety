@@ -645,3 +645,7 @@ textarea, input {
 .decipherthis {
     word-wrap: break-word;
 }
+
+.logout {
+    color: #00DE00;
+}
