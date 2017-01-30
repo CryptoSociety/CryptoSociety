@@ -652,4 +652,6 @@ textarea, input {
 
 .definitions {
     color: white;
+    font-size: 19px;
+    text-decoration: underline;
 }

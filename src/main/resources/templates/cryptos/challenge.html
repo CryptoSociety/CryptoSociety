@@ -11,6 +11,7 @@
             <h1 class="challenge-title text-center" id="challenge-page-header">
                 Challenge Page
             </h1>
+            <h2 class="text-center" id="wrong" th:if="${param.incorrect}">Incorrect Answer, Try Again!</h2>
         </div>
         <div class="col-md-2">
             <div class="text-center challenge-buttons"></div>
@@ -54,7 +55,6 @@
     <form th:if="${solvable}" th:action="@{'/cryptos/'+*{id}+'/solve'}" th:method="post">
         <textarea class="editinput" id="editinput2" title="workbench" type="text" name="solution"></textarea>
         <button class="button">Solve</button>
-        <h2 class="text-center" id="wrong" th:if="${param.incorrect}">Incorrect Answer, Try Again!</h2>
     </form>
 </div>
 
