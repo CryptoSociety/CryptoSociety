@@ -655,3 +655,8 @@ textarea, input {
     font-size: 19px;
     text-decoration: underline;
 }
+
+.titlepage {
+    font-size: 60px;
+    margin-bottom: 4%;
+}
